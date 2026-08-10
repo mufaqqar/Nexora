@@ -1,13 +1,36 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "about": {
       "type": "about-intro",
-      "settings": {}
+      "settings": {
+        "eyebrow": "À PROPOS DE NEXORA",
+        "heading": "Investir dans ce qui construit demain.",
+        "text": "<p>Nexora connecte les investisseurs à des entreprises ambitieuses qui développent les technologies, services et infrastructures du futur.</p><p>Notre objectif est de rendre l'accès aux opportunités plus simple, plus transparent et plus humain.</p>",
+        "image": "shopify://shop_images/Group_1.png"
+      }
     },
     "cta": {
       "type": "investment-cta",
-      "settings": {}
+      "settings": {
+        "eyebrow": "NEXORA",
+        "heading": "Commencez à investir dès aujourd'hui.",
+        "text": "Découvrez les projets actuellement ouverts aux investisseurs.",
+        "button_label": "Voir les projets",
+        "button_link": ""
+      }
     }
   },
-  "order": ["about", "cta"]
+  "order": [
+    "about",
+    "cta"
+  ]
 }
