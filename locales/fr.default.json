@@ -1,0 +1,19 @@
+{
+  "general": {
+    "skip_to_content": "Aller au contenu",
+    "login": "Se connecter",
+    "menu": "Menu",
+    "view_project": "Voir le projet",
+    "view_all": "Voir tous les projets",
+    "invest": "Investir maintenant",
+    "back_projects": "Retour aux projets",
+    "learn_more": "En savoir plus"
+  },
+  "sections": {
+    "projects": "Projets en cours",
+    "about": "À propos de Nexora",
+    "documents": "Documents",
+    "why_invest": "Pourquoi investir ?",
+    "investment": "Investir dans ce projet"
+  }
+}

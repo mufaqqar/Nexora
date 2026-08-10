@@ -1,0 +1,155 @@
+{% assign funded = product.metafields.project.funded_percent.value | default: 46 %}
+{% assign current = product.metafields.project.current_amount.value | default: 46000 %}
+{% assign target = product.metafields.project.target_amount.value | default: 100000 %}
+{% assign investors = product.metafields.project.investors.value | default: 28 %}
+{% assign category = product.metafields.project.category.value | default: 'Technologie' %}
+{% assign duration = product.metafields.project.duration.value | default: '24 mois' %}
+{% assign minimum = product.metafields.project.investment_minimum.value | default: 100 %}
+
+<section class="section project-detail">
+  <div class="container">
+    <a class="back-link" href="{{ routes.collections_url }}/projects">
+      ← Retour aux projets
+    </a>
+
+    <div class="detail-hero">
+      <div class="detail-hero__visual reveal">
+        {% render 'project-visual', image: product.featured_image, loading: 'eager' %}
+      </div>
+
+      <div class="detail-hero__content reveal reveal--delay">
+        <p class="eyebrow">{{ category }}</p>
+        <h1>{{ product.title }}</h1>
+
+        {% if product.description != blank %}
+          <p class="detail-lead">{{ product.description | strip_html }}</p>
+        {% endif %}
+
+        <div class="detail-stats">
+          {% render 'project-stat', value: funded | append: '%', label: 'Financé' %}
+          {% render 'project-stat', value: current | money_without_trailing_zeros, label: 'Collecté' %}
+          {% render 'project-stat', value: investors, label: 'Investisseurs' %}
+        </div>
+
+        <div class="progress progress--large">
+          <span style="width: {{ funded }}%"></span>
+        </div>
+
+        <a class="button button--wide" href="#investir">
+          Investir maintenant
+          {% render 'icon-arrow' %}
+        </a>
+      </div>
+    </div>
+
+    <div class="detail-content">
+      <div class="detail-main">
+        <p class="eyebrow">À PROPOS DU PROJET</p>
+        <h2>{{ section.settings.about_heading }}</h2>
+        <div class="richtext">
+          {% if product.metafields.project.long_description.value != blank %}
+            {{ product.metafields.project.long_description.value }}
+          {% else %}
+            {{ product.description }}
+          {% endif %}
+        </div>
+
+        <div class="detail-target">
+          <strong>{{ target | money_without_trailing_zeros }}</strong>
+          <span>Objectif du projet</span>
+        </div>
+
+        <h2>Pourquoi investir ?</h2>
+        <ul class="reason-list">
+          {% assign reasons = product.metafields.project.reasons.value %}
+          {% if reasons != blank %}
+            {% for reason in reasons %}
+              <li>{{ reason }}</li>
+            {% endfor %}
+          {% else %}
+            <li>Une opportunité positionnée sur un marché en croissance.</li>
+            <li>Une équipe et une vision orientées long terme.</li>
+            <li>Un projet présenté avec des informations transparentes.</li>
+            <li>Un accès simplifié depuis une expérience digitale moderne.</li>
+          {% endif %}
+        </ul>
+      </div>
+
+      <aside class="detail-side" id="investir">
+        <div class="investment-box">
+          <p class="eyebrow">INVESTISSEMENT</p>
+          <h2>Investir dans ce projet</h2>
+          <p class="investment-min">Minimum {{ minimum | money_without_trailing_zeros }}</p>
+
+          {% form 'product', product, class: 'investment-form', id: 'investment-form' %}
+            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+            <label for="InvestmentAmount">Montant</label>
+            <div class="amount-input">
+              <span>{{ cart.currency.symbol }}</span>
+              <input id="InvestmentAmount" type="number" name="quantity" min="1" value="1" data-investment-amount>
+            </div>
+
+            <div class="amount-presets" data-amount-presets>
+              <button type="button" data-amount="100">100 €</button>
+              <button type="button" data-amount="500">500 €</button>
+              <button type="button" data-amount="1000">1 000 €</button>
+              <button type="button" data-amount="5000">5 000 €</button>
+            </div>
+
+            <p class="investment-disclaimer">{{ section.settings.disclaimer }}</p>
+
+            <button class="button button--wide" type="submit">
+              {{ section.settings.button_label }}
+              {% render 'icon-arrow' %}
+            </button>
+          {% endform %}
+        </div>
+      </aside>
+    </div>
+
+    <div class="documents">
+      <div>
+        <p class="eyebrow">DOCUMENTS</p>
+        <h2>Informations du projet</h2>
+      </div>
+      <div class="documents__list">
+        {% if product.metafields.project.document_1.value != blank %}
+          <a href="{{ product.metafields.project.document_1.value }}" target="_blank" rel="noopener">Document 01 <span>PDF ↗</span></a>
+        {% endif %}
+        {% if product.metafields.project.document_2.value != blank %}
+          <a href="{{ product.metafields.project.document_2.value }}" target="_blank" rel="noopener">Document 02 <span>PDF ↗</span></a>
+        {% endif %}
+        {% if product.metafields.project.document_1.value == blank and product.metafields.project.document_2.value == blank %}
+          <div class="document-placeholder">Ajoutez vos documents dans les métachamps du produit.</div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Détail projet",
+  "settings": [
+    {
+      "type": "text",
+      "id": "about_heading",
+      "label": "Titre à propos",
+      "default": "Un projet conçu pour durer."
+    },
+    {
+      "type": "textarea",
+      "id": "disclaimer",
+      "label": "Disclaimer",
+      "default": "Les investissements présentent des risques. Les informations affichées doivent être validées selon votre cadre légal et financier."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Bouton",
+      "default": "Investir maintenant"
+    }
+  ]
+}
+{% endschema %}

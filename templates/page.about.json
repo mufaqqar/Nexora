@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "about": {
+      "type": "about-intro",
+      "settings": {}
+    },
+    "cta": {
+      "type": "investment-cta",
+      "settings": {}
+    }
+  },
+  "order": ["about", "cta"]
+}

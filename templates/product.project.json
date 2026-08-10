@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "main": {
+      "type": "project-detail",
+      "settings": {}
+    }
+  },
+  "order": ["main"]
+}

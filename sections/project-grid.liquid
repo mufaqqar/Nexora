@@ -1,0 +1,41 @@
+<section class="section projects-listing">
+  <div class="container">
+    <div class="page-heading">
+      <p class="eyebrow">NEXORA</p>
+      <h1>{{ collection.title | default: 'Tous les projets' }}</h1>
+      <p>{{ section.settings.intro }}</p>
+    </div>
+
+    {% if collection.products_count > 0 %}
+      <div class="projects-grid">
+        {% for product in collection.products %}
+          {% render 'project-card', product: product %}
+        {% endfor %}
+      </div>
+
+      {% if paginate.pages > 1 %}
+        <nav class="pagination" aria-label="Pagination">
+          {{ paginate | default_pagination }}
+        </nav>
+      {% endif %}
+    {% else %}
+      <div class="empty-state">
+        <p>Aucun projet n'est encore disponible.</p>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Liste des projets",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "intro",
+      "label": "Introduction",
+      "default": "Découvrez les opportunités actuellement ouvertes aux investisseurs."
+    }
+  ]
+}
+{% endschema %}

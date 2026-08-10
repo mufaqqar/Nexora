@@ -1,0 +1,61 @@
+<section class="section">
+  <div class="container">
+    <div class="cta-panel">
+      <div>
+        <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+        <h2>{{ section.settings.heading }}</h2>
+        <p>{{ section.settings.text }}</p>
+        <a class="button" href="{{ section.settings.button_link | default: routes.collections_url }}/projects">
+          {{ section.settings.button_label }}
+          {% render 'icon-arrow' %}
+        </a>
+      </div>
+      <div class="cta-panel__art">
+        <div class="cta-orbit"></div>
+        <span>N</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "CTA investissement",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Petit titre",
+      "default": "NEXORA"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Titre",
+      "default": "Commencez à investir dès aujourd'hui."
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Texte",
+      "default": "Découvrez les projets actuellement ouverts aux investisseurs."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Bouton",
+      "default": "Voir les projets"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Lien"
+    }
+  ],
+  "presets": [
+    {
+      "name": "CTA investissement"
+    }
+  ]
+}
+{% endschema %}

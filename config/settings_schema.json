@@ -1,0 +1,43 @@
+[
+  {
+    "name": "Nexora — Général",
+    "settings": [
+      {
+        "type": "text",
+        "id": "brand_name",
+        "label": "Nom de marque",
+        "default": "NEXORA"
+      },
+      {
+        "type": "textarea",
+        "id": "footer_description",
+        "label": "Description footer",
+        "default": "La plateforme d'investissement dédiée aux entreprises qui construisent le futur."
+      },
+      {
+        "type": "color",
+        "id": "background",
+        "label": "Fond principal",
+        "default": "#05051B"
+      },
+      {
+        "type": "color",
+        "id": "purple",
+        "label": "Accent violet",
+        "default": "#6938FF"
+      },
+      {
+        "type": "color",
+        "id": "text",
+        "label": "Texte principal",
+        "default": "#F8F7FF"
+      },
+      {
+        "type": "color",
+        "id": "muted",
+        "label": "Texte secondaire",
+        "default": "#8D8DA6"
+      }
+    ]
+  }
+]

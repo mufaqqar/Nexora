@@ -1,0 +1,35 @@
+<header class="site-header" data-header>
+  <div class="container site-header__inner">
+    {% render 'logo' %}
+
+    <nav class="desktop-nav" aria-label="Navigation principale">
+      <a href="{{ routes.root_url }}">Accueil</a>
+      <a href="{{ routes.collections_url }}/projects">Projets</a>
+      <a href="{{ pages['about'].url | default: '/pages/about' }}">À propos</a>
+    </nav>
+
+    <div class="site-header__actions">
+      <a class="login-link" href="/account">Se connecter</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="MobileNav" data-menu-toggle>
+        <span class="visually-hidden">Menu</span>
+        {% render 'icon-menu' %}
+      </button>
+    </div>
+  </div>
+
+  <div id="MobileNav" class="mobile-nav" data-mobile-nav>
+    <div class="mobile-nav__inner container">
+      <a href="{{ routes.root_url }}">Accueil</a>
+      <a href="{{ routes.collections_url }}/projects">Projets</a>
+      <a href="{{ pages['about'].url | default: '/pages/about' }}">À propos</a>
+      <a href="/account">Se connecter</a>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "En-tête Nexora",
+  "settings": []
+}
+{% endschema %}

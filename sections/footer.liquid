@@ -1,0 +1,37 @@
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__top">
+      <div class="footer-brand">
+        {% render 'logo' %}
+        <p>{{ settings.footer_description }}</p>
+      </div>
+
+      <div class="footer-links">
+        <div>
+          <span class="footer-title">Navigation</span>
+          <a href="{{ routes.root_url }}">Accueil</a>
+          <a href="{{ routes.collections_url }}/projects">Projets</a>
+          <a href="{{ pages['about'].url | default: '/pages/about' }}">À propos</a>
+        </div>
+        <div>
+          <span class="footer-title">Contact</span>
+          <a href="mailto:contact@nexora.example">contact@nexora.example</a>
+          <a href="/pages/contact">Contact</a>
+          <a href="/policies/privacy-policy">Confidentialité</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-footer__bottom">
+      <span>© {{ 'now' | date: '%Y' }} {{ settings.brand_name | default: 'NEXORA' }}. Tous droits réservés.</span>
+      <span>Plateforme d'investissement</span>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Pied de page Nexora",
+  "settings": []
+}
+{% endschema %}

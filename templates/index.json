@@ -1,0 +1,24 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {}
+    },
+    "featured": {
+      "type": "featured-project",
+      "settings": {}
+    },
+    "values": {
+      "type": "value-props",
+      "blocks": {
+        "one": {"type": "value", "settings": {"heading": "Opportunités sélectionnées", "text": "Des projets analysés avec une approche rigoureuse."}},
+        "two": {"type": "value", "settings": {"heading": "Vision long terme", "text": "Nous investissons dans les entreprises qui façonnent demain."}},
+        "three": {"type": "value", "settings": {"heading": "Transparence", "text": "Des informations claires pour prendre de meilleures décisions."}},
+        "four": {"type": "value", "settings": {"heading": "Accès simplifié", "text": "Une expérience digitale pensée pour aller à l'essentiel."}}
+      },
+      "block_order": ["one", "two", "three", "four"],
+      "settings": {}
+    }
+  },
+  "order": ["hero", "featured", "values"]
+}

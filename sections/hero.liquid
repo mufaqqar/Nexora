@@ -1,0 +1,78 @@
+<section class="hero section">
+  <div class="container hero__grid">
+    <div class="hero__content reveal">
+      <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      <h1>{{ section.settings.heading }}</h1>
+      <p class="hero__description">{{ section.settings.description }}</p>
+
+      {% if section.settings.button_label != blank %}
+        <a class="button" href="{{ section.settings.button_link | default: routes.collections_url }}">
+          {{ section.settings.button_label }}
+          {% render 'icon-arrow' %}
+        </a>
+      {% endif %}
+
+      <div class="hero__note">
+        <span class="status-dot"></span>
+        <span>{{ section.settings.note }}</span>
+      </div>
+    </div>
+
+    <div class="hero__visual reveal reveal--delay">
+      {% render 'project-visual', image: section.settings.image, loading: 'eager' %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero Nexora",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Petit titre",
+      "default": "PLATEFORME D'INVESTISSEMENT"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Titre",
+      "default": "Investissez dans les entreprises qui construisent le futur."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Accédez à des opportunités sélectionnées et participez à la croissance des entreprises de demain."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Texte bouton",
+      "default": "Découvrir les projets"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Lien bouton"
+    },
+    {
+      "type": "text",
+      "id": "note",
+      "label": "Note",
+      "default": "Opportunités sélectionnées avec soin"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image hero"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Nexora"
+    }
+  ]
+}
+{% endschema %}
