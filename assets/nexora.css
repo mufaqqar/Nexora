@@ -306,7 +306,7 @@ h3 {
 .project-visual {
   position: relative;
   min-height: 340px;
-  height: 100%;
+  height: auto;
   overflow: hidden;
   border-radius: var(--nx-radius);
   background:
