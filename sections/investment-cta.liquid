@@ -2,9 +2,7 @@
   <div class="container">
     <div class="cta-panel">
       <div>
-        {% comment %}
-<p class="eyebrow">{{ section.settings.eyebrow }}</p>
-{% endcomment %}
+        <p class="eyebrow">{{ section.settings.eyebrow }}</p>
         <h2>{{ section.settings.heading }}</h2>
         <p>{{ section.settings.text }}</p>
         <a class="button" href="{{ section.settings.button_link | default: routes.collections_url }}/projects">
