@@ -595,7 +595,7 @@ h3 {
 
 .projects-grid .project-card__media { min-height: 300px; }
 
-.projects-grid .project-card__body { padding: 24px; }
+.projects-grid .project-card__body { padding: 24px; display: flex;  }
 
 .pagination {
   display: flex;
