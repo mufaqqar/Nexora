@@ -309,14 +309,14 @@ h3 {
   height: auto;
   overflow: hidden;
   border-radius: var(--nx-radius);
-  background:
+  /* background:
     radial-gradient(circle at 53% 46%, rgba(120, 72, 255, .34), transparent 25%),
     radial-gradient(circle at 55% 55%, rgba(38, 33, 130, .40), transparent 45%),
     linear-gradient(135deg, #08082b 0%, #05051b 70%);
-  isolation: isolate;
+  isolation: isolate; */
 }
 
-.project-visual::before {
+/* .project-visual::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -326,12 +326,13 @@ h3 {
   background-size: 34px 34px;
   mask-image: linear-gradient(to bottom, transparent, black 25%, black 80%, transparent);
   z-index: -1;
-}
+} */
 
 .project-visual__image {
   width: 100%;
   height: auto;
   object-fit: cover;
+  margin-left: auto;
 }
 
 .device-art {
