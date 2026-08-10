@@ -50,3 +50,52 @@
 
   document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
 })();
+
+
+/* =========================================================
+   CUSTOMER AUTH
+========================================================= */
+
+document
+  .querySelectorAll('[data-password-toggle]')
+  .forEach((button) => {
+
+    button.addEventListener('click', () => {
+
+      const input = document.getElementById(
+        button.dataset.target
+      );
+
+      if (!input) return;
+
+      if (input.type === 'password') {
+        input.type = 'text';
+      } else {
+        input.type = 'password';
+      }
+
+    });
+
+});
+
+
+/* Password recovery */
+
+document
+  .querySelectorAll('[data-recover-toggle]')
+  .forEach((button) => {
+
+    button.addEventListener('click', (event) => {
+
+      event.preventDefault();
+
+      const recover =
+        document.getElementById('recover');
+
+      if (!recover) return;
+
+      recover.classList.toggle('is-open');
+
+    });
+
+});

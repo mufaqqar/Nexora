@@ -1,0 +1,189 @@
+<section class="customer-page">
+  <div class="customer-shell">
+
+    <div class="customer-card customer-card--register">
+
+      <div class="customer-brand">
+        {% render 'logo' %}
+      </div>
+
+      <p class="customer-welcome">
+        Créer un compte
+      </p>
+
+      <p class="customer-subtitle">
+        Rejoignez Nexora et découvrez les opportunités sélectionnées.
+      </p>
+
+
+      {% form 'create_customer', class: 'customer-form' %}
+
+        {{ form.errors | default_errors }}
+
+
+        <!-- Name -->
+
+        <div class="customer-field">
+
+          <label for="RegisterName">
+            Nom complet
+          </label>
+
+          <input
+            id="RegisterName"
+            type="text"
+            name="customer[first_name]"
+            autocomplete="given-name"
+            placeholder="Jean Dupont"
+            required
+          >
+
+        </div>
+
+
+        <!-- Email -->
+
+        <div class="customer-field">
+
+          <label for="RegisterEmail">
+            Email
+          </label>
+
+          <input
+            id="RegisterEmail"
+            type="email"
+            name="customer[email]"
+            autocomplete="email"
+            autocorrect="off"
+            autocapitalize="off"
+            placeholder="jean@example.com"
+            required
+          >
+
+        </div>
+
+
+        <!-- Password -->
+
+        <div class="customer-field">
+
+          <label for="RegisterPassword">
+            Mot de passe
+          </label>
+
+          <div class="customer-password">
+
+            <input
+              id="RegisterPassword"
+              type="password"
+              name="customer[password]"
+              autocomplete="new-password"
+              placeholder="••••••••"
+              required
+            >
+
+            <button
+              type="button"
+              class="password-toggle"
+              data-password-toggle
+              data-target="RegisterPassword"
+              aria-label="Afficher le mot de passe"
+            >
+              ◉
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- Terms -->
+
+        <label class="checkbox-label checkbox-label--terms">
+
+          <input
+            type="checkbox"
+            required
+          >
+
+          <span>
+
+            J'accepte les
+
+            <a href="/policies/terms-of-service">
+              Conditions d'utilisation
+            </a>
+
+            et la
+
+            <a href="/policies/privacy-policy">
+              Politique de confidentialité
+            </a>.
+
+          </span>
+
+        </label>
+
+
+        <button
+          class="customer-submit"
+          type="submit"
+        >
+          Créer mon compte
+        </button>
+
+      {% endform %}
+
+
+      <div class="customer-divider">
+        <span>OU</span>
+      </div>
+
+
+      <!-- Social buttons -->
+
+      <div class="customer-social">
+
+        <button
+          type="button"
+          class="social-button"
+          aria-label="Continuer avec Google"
+        >
+          G
+        </button>
+
+        <button
+          type="button"
+          class="social-button"
+          aria-label="Continuer avec Apple"
+        >
+          ●
+        </button>
+
+      </div>
+
+
+      <p class="customer-bottom">
+
+        Vous avez déjà un compte ?
+
+        <a href="{{ routes.account_login_url }}">
+          Se connecter
+        </a>
+
+      </p>
+
+    </div>
+
+  </div>
+</section>
+
+
+{% schema %}
+
+{
+  "name": "Création de compte",
+  "settings": []
+}
+
+{% endschema %}
