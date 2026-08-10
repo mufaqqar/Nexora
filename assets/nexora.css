@@ -1035,3 +1035,472 @@ h3 {
 
   .site-footer__bottom { flex-direction: column; }
 }
+
+
+
+/* =========================================================
+   NEXORA CUSTOMER AUTH
+========================================================= */
+
+.customer-page {
+  min-height: calc(100vh - 72px);
+
+  display: grid;
+  place-items: center;
+
+  padding: 52px 24px 80px;
+
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(77, 42, 190, 0.09),
+      transparent 31rem
+    ),
+    #05051b;
+}
+
+.customer-shell {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+}
+
+.customer-card {
+  width: min(100%, 352px);
+
+  padding: 31px 29px 27px;
+
+  border: 1px solid rgba(129, 104, 223, 0.20);
+
+  border-radius: 8px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(8, 8, 30, 0.98),
+      rgba(5, 5, 23, 0.98)
+    );
+
+  box-shadow:
+    0 25px 80px rgba(0, 0, 0, 0.38),
+    0 0 50px rgba(91, 48, 220, 0.05);
+}
+
+
+/* Logo */
+
+.customer-brand {
+  margin-bottom: 21px;
+}
+
+.customer-brand .brand-mark {
+  width: 15px;
+  height: 17px;
+
+  font-size: 12px;
+}
+
+.customer-brand .brand-name {
+  font-size: 8px;
+}
+
+
+/* Heading */
+
+.customer-welcome {
+  margin-bottom: 3px;
+
+  color: #f4f2fb;
+
+  font-size: 13px;
+  font-weight: 520;
+
+  letter-spacing: -0.015em;
+}
+
+.customer-subtitle {
+  margin-bottom: 20px;
+
+  color: #727188;
+
+  font-size: 7px;
+
+  line-height: 1.5;
+}
+
+
+/* Form */
+
+.customer-form {
+  display: grid;
+  gap: 10px;
+}
+
+.customer-field {
+  display: grid;
+  gap: 5px;
+}
+
+.customer-field label {
+  color: #9693aa;
+
+  font-size: 7px;
+}
+
+.customer-field input {
+  width: 100%;
+
+  height: 28px;
+
+  padding: 0 9px;
+
+  border: 1px solid rgba(142, 133, 185, 0.16);
+
+  border-radius: 3px;
+
+  outline: none;
+
+  background: #07071f;
+
+  color: #eeeaff;
+
+  font-size: 7px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.customer-field input::placeholder {
+  color: #44435a;
+}
+
+.customer-field input:focus {
+  border-color: rgba(111, 70, 255, 0.72);
+
+  box-shadow:
+    0 0 0 2px rgba(105, 56, 255, 0.08);
+}
+
+
+/* Password */
+
+.customer-password {
+  position: relative;
+}
+
+.customer-password input {
+  padding-right: 30px;
+}
+
+.password-toggle {
+  position: absolute;
+
+  right: 7px;
+  top: 50%;
+
+  width: 20px;
+  height: 20px;
+
+  padding: 0;
+
+  border: 0;
+
+  transform: translateY(-50%);
+
+  background: transparent;
+
+  color: #66637b;
+
+  cursor: pointer;
+
+  font-size: 8px;
+}
+
+
+/* Remember */
+
+.customer-options {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 10px;
+
+  margin: 1px 0 3px;
+}
+
+.checkbox-label {
+  display: flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  color: #6f6d83;
+
+  font-size: 6.5px;
+
+  line-height: 1.4;
+
+  cursor: pointer;
+}
+
+.checkbox-label input {
+  width: 8px;
+  height: 8px;
+
+  margin: 0;
+
+  accent-color: #6734f5;
+}
+
+.checkbox-label a,
+.customer-options a {
+  color: #8b6cff;
+}
+
+.customer-options a {
+  font-size: 6.5px;
+}
+
+
+/* Button */
+
+.customer-submit {
+  width: 100%;
+
+  height: 28px;
+
+  margin-top: 1px;
+
+  border: 1px solid rgba(145, 113, 255, 0.45);
+
+  border-radius: 3px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #713cff,
+      #5c2bee
+    );
+
+  box-shadow:
+    0 7px 20px rgba(83, 43, 223, 0.20);
+
+  color: #fff;
+
+  cursor: pointer;
+
+  font-size: 7px;
+
+  font-weight: 650;
+
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease;
+}
+
+.customer-submit:hover {
+  transform: translateY(-1px);
+
+  filter: brightness(1.08);
+}
+
+
+/* Divider */
+
+.customer-divider {
+  position: relative;
+
+  display: flex;
+
+  justify-content: center;
+
+  margin: 17px 0 12px;
+}
+
+.customer-divider::before {
+  content: "";
+
+  position: absolute;
+
+  top: 50%;
+  left: 0;
+  right: 0;
+
+  height: 1px;
+
+  background: rgba(255, 255, 255, 0.065);
+}
+
+.customer-divider span {
+  position: relative;
+
+  padding: 0 9px;
+
+  background: #07071f;
+
+  color: #555368;
+
+  font-size: 6px;
+}
+
+
+/* Social */
+
+.customer-social {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 7px;
+}
+
+.social-button {
+  width: 25px;
+  height: 25px;
+
+  display: grid;
+  place-items: center;
+
+  padding: 0;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  border-radius: 50%;
+
+  background: #080820;
+
+  color: #b4afc9;
+
+  cursor: pointer;
+
+  font-size: 8px;
+
+  font-weight: 700;
+}
+
+.social-button:hover {
+  border-color: rgba(117, 76, 255, 0.5);
+
+  color: white;
+}
+
+
+/* Bottom */
+
+.customer-bottom {
+  margin: 13px 0 0;
+
+  color: #656378;
+
+  text-align: center;
+
+  font-size: 6.5px;
+}
+
+.customer-bottom a {
+  color: #9074ff;
+}
+
+
+/* Errors */
+
+.customer-form .errors,
+.recover-form .errors {
+  padding: 7px 9px;
+
+  margin: 0 0 3px;
+
+  border: 1px solid rgba(225, 76, 111, 0.28);
+
+  border-radius: 3px;
+
+  background: rgba(180, 35, 74, 0.07);
+
+  color: #e98ca5;
+
+  font-size: 7px;
+}
+
+
+/* Password recovery */
+
+.recover-form {
+  display: none;
+
+  margin-top: 18px;
+
+  padding-top: 18px;
+
+  border-top: 1px solid var(--nx-line);
+}
+
+.recover-form.is-open {
+  display: block;
+}
+
+.recover-form h2 {
+  margin-bottom: 6px;
+
+  font-size: 17px;
+}
+
+.recover-form p {
+  color: #77758c;
+
+  font-size: 8px;
+}
+
+.recover-cancel {
+  display: block;
+
+  width: 100%;
+
+  margin-top: 8px;
+
+  padding: 7px;
+
+  border: 0;
+
+  background: transparent;
+
+  color: #77738c;
+
+  cursor: pointer;
+
+  font-size: 7px;
+}
+
+.customer-success {
+  color: #86d9ae !important;
+
+  font-size: 7px !important;
+}
+
+.checkbox-label--terms {
+  align-items: flex-start;
+
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+
+/* Mobile */
+
+@media (max-width: 560px) {
+
+  .customer-page {
+    min-height: calc(100vh - 64px);
+
+    padding: 35px 15px 55px;
+  }
+
+  .customer-card {
+    width: min(100%, 352px);
+  }
+
+}

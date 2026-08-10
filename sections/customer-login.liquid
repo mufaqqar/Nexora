@@ -1,0 +1,209 @@
+<section class="customer-page">
+  <div class="customer-shell">
+
+    <div class="customer-card customer-card--login">
+
+      <div class="customer-brand">
+        {% render 'logo' %}
+      </div>
+
+      <p class="customer-welcome">Bienvenue de retour !</p>
+
+      <p class="customer-subtitle">
+        Connectez-vous pour accéder à votre espace Nexora.
+      </p>
+
+      {% form 'customer_login', class: 'customer-form' %}
+
+        {{ form.errors | default_errors }}
+
+        <div class="customer-field">
+          <label for="CustomerEmail">
+            Email
+          </label>
+
+          <input
+            id="CustomerEmail"
+            type="email"
+            name="customer[email]"
+            autocomplete="email"
+            autocorrect="off"
+            autocapitalize="off"
+            placeholder="john@example.com"
+            required
+          >
+        </div>
+
+        <div class="customer-field">
+
+          <label for="CustomerPassword">
+            Mot de passe
+          </label>
+
+          <div class="customer-password">
+
+            <input
+              id="CustomerPassword"
+              type="password"
+              name="customer[password]"
+              autocomplete="current-password"
+              placeholder="••••••••"
+              required
+            >
+
+            <button
+              type="button"
+              class="password-toggle"
+              data-password-toggle
+              data-target="CustomerPassword"
+              aria-label="Afficher le mot de passe"
+            >
+              ◉
+            </button>
+
+          </div>
+
+        </div>
+
+        <div class="customer-options">
+
+          <label class="checkbox-label">
+
+            <input
+              type="checkbox"
+              name="remember_me"
+              value="1"
+            >
+
+            <span>
+              Se souvenir de moi
+            </span>
+
+          </label>
+
+          <a
+            href="#recover"
+            data-recover-toggle
+          >
+            Mot de passe oublié ?
+          </a>
+
+        </div>
+
+        <button
+          class="customer-submit"
+          type="submit"
+        >
+          Se connecter
+        </button>
+
+      {% endform %}
+
+      <div class="customer-divider">
+        <span>OU</span>
+      </div>
+
+      <div class="customer-social">
+
+        <button
+          type="button"
+          class="social-button"
+          aria-label="Continuer avec Google"
+        >
+          G
+        </button>
+
+        <button
+          type="button"
+          class="social-button"
+          aria-label="Continuer avec Apple"
+        >
+          ●
+        </button>
+
+      </div>
+
+      <p class="customer-bottom">
+
+        Pas encore de compte ?
+
+        <a href="{{ routes.account_register_url }}">
+          Créer un compte
+        </a>
+
+      </p>
+
+
+      <!-- Password recovery -->
+
+      {% form 'recover_customer_password',
+        class: 'recover-form',
+        id: 'recover'
+      %}
+
+        <h2>
+          Réinitialiser votre mot de passe
+        </h2>
+
+        <p>
+          Entrez votre email et nous vous enverrons
+          un lien de récupération.
+        </p>
+
+        {{ form.errors | default_errors }}
+
+        {% if form.posted_successfully? %}
+
+          <p class="customer-success">
+            Un email de récupération vient d'être envoyé.
+          </p>
+
+        {% endif %}
+
+        <div class="customer-field">
+
+          <label for="RecoverEmail">
+            Email
+          </label>
+
+          <input
+            id="RecoverEmail"
+            type="email"
+            name="email"
+            autocomplete="email"
+            required
+          >
+
+        </div>
+
+        <button
+          class="customer-submit"
+          type="submit"
+        >
+          Envoyer le lien
+        </button>
+
+        <button
+          class="recover-cancel"
+          type="button"
+          data-recover-toggle
+        >
+          Annuler
+        </button>
+
+      {% endform %}
+
+    </div>
+
+  </div>
+</section>
+
+
+{% schema %}
+
+{
+  "name": "Connexion client",
+  "settings": []
+}
+
+{% endschema %}
