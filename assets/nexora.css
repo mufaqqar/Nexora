@@ -209,7 +209,7 @@ h3 {
 .site-header__inner {
   min-height: 72px;
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: auto 1fr auto 1fr;
   align-items: center;
 }
 
@@ -1136,7 +1136,11 @@ h3 {
   }
 
   .site-header__inner {
-    grid-template-columns: 1fr auto;
+    grid-template-columns: auto 1fr auto;
+  }
+
+  .site-header__logo-image {
+    width: 80px;
   }
 
   .hero {
@@ -1329,6 +1333,18 @@ h3 {
 
 
 /* Logo */
+.site-header__logo {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.site-header__logo-image {
+  display: block;
+  width: 160px;
+  height: auto;
+  object-fit: contain;
+}
 
 .customer-brand {
   margin-bottom: 21px;
@@ -1727,22 +1743,6 @@ h3 {
 }
 
 
-/* Mobile */
-
-@media (max-width: 560px) {
-
-  .customer-page {
-    min-height: calc(100vh - 64px);
-
-    padding: 35px 15px 55px;
-  }
-
-  .customer-card {
-    width: min(100%, 352px);
-  }
-
-}
-
 /* =========================================
    FEATURED PROJECT
 ========================================= */
@@ -1750,14 +1750,10 @@ h3 {
 .featured-project {
   display: grid;
   grid-template-columns: 40% 60%;
-
   min-height: 588px;
-
   overflow: hidden;
-
   border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 28px;
-
   background: #05061f;
   color: #fff;
 }
@@ -1955,4 +1951,25 @@ h3 {
 .featured-project__button--primary svg {
   width: 20px;
   height: 20px;
+}
+
+/* Mobile */
+
+@media (max-width: 560px) {
+  .customer-page {
+    min-height: calc(100vh - 64px);
+    padding: 35px 15px 55px;
+  }
+
+  .customer-card {
+    width: min(100%, 352px);
+  }
+
+  .featured-project {
+    grid-template-columns: 100%;
+  }
+
+  .featured-project__content {
+    padding: 20px;
+  }
 }
