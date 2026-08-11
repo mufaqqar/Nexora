@@ -843,7 +843,7 @@ h3 {
   min-height: 500px;
 }
 .detail-hero__visual .reveal .is-visible .project-visual img{
-  margin-left: 0;
+  margin-left: 0 !important;
 }
 .detail-hero__content h1 {
   font-size: clamp(40px, 5vw, 70px);
