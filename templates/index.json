@@ -22,17 +22,6 @@
         "image": "shopify://shop_images/Group_1.png"
       }
     },
-    "hero": {
-      "type": "hero",
-      "settings": {
-        "eyebrow": "PLATEFORME D'INVESTISSEMENT",
-        "heading": "Investissez dans les entreprises qui construisent le futur.",
-        "description": "Accédez à des opportunités sélectionnées et participez à la croissance des entreprises de demain.",
-        "button_label": "Découvrir les projets",
-        "button_link": "",
-        "note": "Opportunités sélectionnées avec soin"
-      }
-    },
     "featured": {
       "type": "featured-project",
       "settings": {
@@ -85,7 +74,6 @@
   },
   "order": [
     "hero_yUB4ht",
-    "hero",
     "featured",
     "values"
   ]
