@@ -21,9 +21,8 @@
     "cta": {
       "type": "investment-cta",
       "settings": {
-        "eyebrow": "NEXORA",
         "heading": "Commencez à investir dès aujourd'hui.",
-        "text": "Rejoignez Nexora et investissez dans les entreprises qui construiront le futur.",
+        "text": "<p>Rejoignez Nexora et investissez dans les entreprises qui construiront le futur.</p>",
         "button_label": "Créer un compte",
         "button_link": "",
         "image": "shopify://shop_images/Group_59.png"
