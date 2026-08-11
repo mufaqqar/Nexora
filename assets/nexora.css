@@ -842,7 +842,7 @@ h3 {
 .detail-hero__visual {
   min-height: 500px;
 }
-.detail-hero__visual .reveal .is-visible .project-visual img{
+.detail-hero__visual.reveal.is-visible .project-visual img{
   margin-left: 0 !important;
 }
 .detail-hero__content h1 {
