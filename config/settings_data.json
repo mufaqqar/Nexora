@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
     "brand_name": "NEXORA",
@@ -5,6 +14,27 @@
     "background": "#05051B",
     "purple": "#6938FF",
     "text": "#F8F7FF",
-    "muted": "#8D8DA6"
+    "muted": "#8D8DA6",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {}
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "logo": "shopify://shop_images/logo.png",
+          "description": "Investir aujourd'hui dans les leaders de demain.",
+          "email": "contact@nexora.example",
+          "partner_link": "",
+          "terms_link": "",
+          "privacy_link": "",
+          "linkedin_url": "#",
+          "x_url": "#",
+          "instagram_url": "#"
+        }
+      }
+    },
+    "content_for_index": []
   }
 }
