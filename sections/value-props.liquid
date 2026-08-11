@@ -10,6 +10,20 @@
           </div>
         </div>
       {% endfor %}
+       {% if block.settings.icon != blank %}
+            <div class="value-item__icon">
+              {{
+                block.settings.icon
+                | image_url: width: 100
+                | image_tag:
+                  loading: 'lazy',
+                  widths: '50,75,100',
+                  sizes: '50px',
+                  class: 'value-item__icon-image',
+                  alt: block.settings.heading
+              }}
+            </div>
+          {% endif %}
     </div>
   </div>
 </section>
@@ -23,6 +37,11 @@
       "type": "value",
       "name": "Valeur",
       "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icône"
+        },
         {
           "type": "text",
           "id": "heading",
