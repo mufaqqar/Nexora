@@ -832,7 +832,7 @@ h3 {
 
 .detail-hero {
   display: grid;
-  grid-template-columns: 1.05fr .95fr;
+  grid-template-columns: 40% 60%;
   align-items: center;
   gap: 65px;
   padding-bottom: 85px;
@@ -842,9 +842,11 @@ h3 {
 .detail-hero__visual {
   min-height: 500px;
 }
-.detail-hero__visual.reveal.is-visible .project-visual img{
+
+.detail-hero__visual.reveal.is-visible .project-visual img {
   margin-left: 0 !important;
 }
+
 .detail-hero__content h1 {
   font-size: clamp(40px, 5vw, 70px);
 }
@@ -2000,6 +2002,7 @@ h3 {
   width: 20px;
   height: 20px;
 }
+
 /* Mobile */
 
 @media (max-width: 560px) {
