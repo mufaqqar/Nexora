@@ -37,16 +37,17 @@
         "one": {
           "type": "value",
           "settings": {
-            "heading": "Opportunités sélectionnées",
-            "text": "Des projets analysés avec une approche rigoureuse."
+            "icon": "shopify://shop_images/checkmark.png",
+            "heading": "Investissements sécurisés",
+            "text": "Vos fonds sont protégés à chaque étape."
           }
         },
         "two": {
           "type": "value",
           "settings": {
-            "icon": "shopify://shop_images/checkmark.png",
-            "heading": "Investissements sécurisés",
-            "text": "Vos fonds sont protégés à chaque étape."
+            "icon": "shopify://shop_images/graph.png",
+            "heading": "Dividendes versés",
+            "text": "Recevez vos dividendes lorsqu'ils sont distribués."
           }
         },
         "three": {
