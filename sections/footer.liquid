@@ -1,37 +1,263 @@
 <footer class="site-footer">
   <div class="container">
+
     <div class="site-footer__top">
+
+      <!-- BRAND -->
       <div class="footer-brand">
-        {% render 'logo' %}
-        <p>{{ settings.footer_description }}</p>
+
+        {% if section.settings.logo != blank %}
+          {{
+            section.settings.logo
+            | image_url: width: 400
+            | image_tag:
+              loading: 'lazy',
+              widths: '150,250,400',
+              sizes: '180px',
+              class: 'footer-brand__logo',
+              alt: section.settings.logo.alt | default: 'NEXORA'
+          }}
+        {% else %}
+          {% render 'logo' %}
+        {% endif %}
+
+        {% if section.settings.description != blank %}
+          <p class="footer-brand__description">
+            {{ section.settings.description }}
+          </p>
+        {% endif %}
+
       </div>
 
+
+      <!-- ABOUT LINKS -->
       <div class="footer-links">
-        <div>
-          <span class="footer-title">Navigation</span>
-          <a href="{{ routes.root_url }}">Accueil</a>
-          <a href="{{ routes.collections_url }}/projects">Projets</a>
-          <a href="{{ pages['about'].url | default: '/pages/about' }}">À propos</a>
-        </div>
-        <div>
-          <span class="footer-title">Contact</span>
-          <a href="mailto:contact@nexora.example">contact@nexora.example</a>
-          <a href="/pages/contact">Contact</a>
-          <a href="/policies/privacy-policy">Confidentialité</a>
-        </div>
+
+        <span class="footer-title">
+          À propos
+        </span>
+
+        <a href="{{ routes.root_url }}">
+          Accueil
+        </a>
+
+        <a href="{{ routes.collections_url }}/projects">
+          Projets
+        </a>
+
+        {% if section.settings.partner_link != blank %}
+          <a href="{{ section.settings.partner_link }}">
+            Devenir partenaire
+          </a>
+        {% else %}
+          <a href="/pages/contact">
+            Devenir partenaire
+          </a>
+        {% endif %}
+
       </div>
+
+
+      <!-- CONTACT LINKS -->
+      <div class="footer-links">
+
+        <span class="footer-title">
+          Contact
+        </span>
+
+        {% if section.settings.email != blank %}
+          <a href="mailto:{{ section.settings.email }}">
+            {{ section.settings.email }}
+          </a>
+        {% endif %}
+
+        <a href="{{ section.settings.terms_link | default: '/policies/terms-of-service' }}">
+          Conditions d'utilisation
+        </a>
+
+        <a href="{{ section.settings.privacy_link | default: '/policies/privacy-policy' }}">
+          Confidentialité
+        </a>
+
+      </div>
+
+
+      <!-- SOCIALS -->
+      <div class="footer-socials">
+
+        {% if section.settings.linkedin_url != blank %}
+          <a
+            href="{{ section.settings.linkedin_url }}"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            class="footer-social"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M6 8.5V18"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+              <path
+                d="M6 5.5V5.6"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <path
+                d="M10.5 18V8.5M10.5 12.5C10.5 10.3 11.8 8.5 14.1 8.5C16.4 8.5 18 10 18 12.8V18"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+            </svg>
+          </a>
+        {% endif %}
+
+
+        {% if section.settings.x_url != blank %}
+          <a
+            href="{{ section.settings.x_url }}"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="X"
+            class="footer-social"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M6 5L18 19M18 5L6 19"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+            </svg>
+          </a>
+        {% endif %}
+
+
+        {% if section.settings.instagram_url != blank %}
+          <a
+            href="{{ section.settings.instagram_url }}"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+            class="footer-social"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                x="5"
+                y="5"
+                width="14"
+                height="14"
+                rx="4"
+                stroke="currentColor"
+                stroke-width="1.5"
+              />
+              <circle
+                cx="12"
+                cy="12"
+                r="3.2"
+                stroke="currentColor"
+                stroke-width="1.5"
+              />
+              <circle
+                cx="16.5"
+                cy="7.8"
+                r="0.8"
+                fill="currentColor"
+              />
+            </svg>
+          </a>
+        {% endif %}
+
+      </div>
+
     </div>
 
+
+    <!-- COPYRIGHT -->
     <div class="site-footer__bottom">
-      <span>© {{ 'now' | date: '%Y' }} {{ settings.brand_name | default: 'NEXORA' }}. Tous droits réservés.</span>
-      <span>Plateforme d'investissement</span>
+
+      <span>
+        © {{ 'now' | date: '%Y' }}
+        {{ settings.brand_name | default: 'Nexora' }}
+        Tous droits réservés
+      </span>
+
     </div>
+
   </div>
 </footer>
+
 
 {% schema %}
 {
   "name": "Pied de page Nexora",
-  "settings": []
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Investir aujourd'hui dans les leaders de demain."
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Email",
+      "default": "contact@nexora.example"
+    },
+    {
+      "type": "url",
+      "id": "partner_link",
+      "label": "Lien devenir partenaire"
+    },
+    {
+      "type": "url",
+      "id": "terms_link",
+      "label": "Lien conditions d'utilisation"
+    },
+    {
+      "type": "url",
+      "id": "privacy_link",
+      "label": "Lien confidentialité"
+    },
+    {
+      "type": "url",
+      "id": "linkedin_url",
+      "label": "LinkedIn"
+    },
+    {
+      "type": "url",
+      "id": "x_url",
+      "label": "X / Twitter"
+    },
+    {
+      "type": "url",
+      "id": "instagram_url",
+      "label": "Instagram"
+    }
+  ]
 }
 {% endschema %}
