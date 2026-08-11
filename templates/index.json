@@ -44,8 +44,9 @@
         "two": {
           "type": "value",
           "settings": {
-            "heading": "Vision long terme",
-            "text": "Nous investissons dans les entreprises qui façonnent demain."
+            "icon": "shopify://shop_images/checkmark.png",
+            "heading": "Investissements sécurisés",
+            "text": "Vos fonds sont protégés à chaque étape."
           }
         },
         "three": {
