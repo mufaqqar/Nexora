@@ -9,15 +9,17 @@
  */
 {
   "sections": {
-    "hero": {
+    "hero_yUB4ht": {
       "type": "hero",
+      "name": "Hero Nexora",
       "settings": {
         "eyebrow": "PLATEFORME D'INVESTISSEMENT",
         "heading": "Investissez dans les entreprises qui construisent le futur.",
         "description": "Accédez à des opportunités sélectionnées et participez à la croissance des entreprises de demain.",
         "button_label": "Découvrir les projets",
         "button_link": "",
-        "note": "Opportunités sélectionnées avec soin"
+        "note": "Opportunités sélectionnées avec soin",
+        "image": "shopify://shop_images/Group_1.png"
       }
     },
     "featured": {
@@ -71,7 +73,7 @@
     }
   },
   "order": [
-    "hero",
+    "hero_yUB4ht",
     "featured",
     "values"
   ]
