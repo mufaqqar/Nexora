@@ -27,7 +27,7 @@
     "featured": {
       "type": "featured-project",
       "settings": {
-        "eyebrow": "PROJETS EN COURS",
+        "eyebrow": "",
         "heading": "Des opportunités sélectionnées.",
         "link_label": "Tous les projets",
         "product": "nexora-smart-security",
