@@ -18,6 +18,9 @@
         "description": "Accédez à des opportunités sélectionnées et participez à la croissance des entreprises de demain.",
         "button_label": "Découvrir les projets",
         "button_link": "",
+        "icon": "shopify://shop_images/checkmark.png",
+        "icon_heading": "Investissement sécurisé",
+        "icon_text": "Vos investissements sont protégés à chaque étape.",
         "note": "Opportunités sélectionnées avec soin",
         "image": "shopify://shop_images/Group_1.png"
       }
@@ -28,7 +31,14 @@
         "eyebrow": "PROJETS EN COURS",
         "heading": "Des opportunités sélectionnées.",
         "link_label": "Tous les projets",
-        "product": "nexora-smart-security"
+        "product": "nexora-smart-security",
+        "category": "Résidentiel & Pro",
+        "description": "Système d'alarme intelligent pour maisons et entreprises",
+        "funded": 46,
+        "amount": "46 000 €",
+        "target": "100 000 €",
+        "investors": 28,
+        "minimum": 100
       }
     },
     "values": {
