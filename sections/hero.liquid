@@ -53,15 +53,6 @@
 
         </div>
       {% endif %}
-
-
-      {% if section.settings.note != blank %}
-        <div class="hero__note">
-          <span class="status-dot"></span>
-          <span>{{ section.settings.note }}</span>
-        </div>
-      {% endif %}
-
     </div>
 
 
@@ -130,13 +121,6 @@
       "id": "icon_text",
       "label": "Texte de l'icône",
       "default": "Vos investissements sont protégés à chaque étape."
-    },
-
-    {
-      "type": "text",
-      "id": "note",
-      "label": "Note",
-      "default": "Opportunités sélectionnées avec soin"
     },
     {
       "type": "image_picker",
