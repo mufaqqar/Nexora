@@ -37,29 +37,33 @@
         "one": {
           "type": "value",
           "settings": {
-            "heading": "Opportunités sélectionnées",
-            "text": "Des projets analysés avec une approche rigoureuse."
+            "icon": "shopify://shop_images/checkmark.png",
+            "heading": "Investissements sécurisés",
+            "text": "Vos fonds sont protégés à chaque étape."
           }
         },
         "two": {
           "type": "value",
           "settings": {
-            "heading": "Vision long terme",
-            "text": "Nous investissons dans les entreprises qui façonnent demain."
+            "icon": "shopify://shop_images/graph.png",
+            "heading": "Dividendes versés",
+            "text": "Recevez vos dividendes lorsqu'ils sont distribués."
           }
         },
         "three": {
           "type": "value",
           "settings": {
-            "heading": "Transparence",
-            "text": "Des informations claires pour prendre de meilleures décisions."
+            "icon": "shopify://shop_images/sharp.png",
+            "heading": "Suivi en temps réel",
+            "text": "Suivez la performance de vos investissements."
           }
         },
         "four": {
           "type": "value",
           "settings": {
-            "heading": "Accès simplifié",
-            "text": "Une expérience digitale pensée pour aller à l'essentiel."
+            "icon": "shopify://shop_images/globe.png",
+            "heading": "Des projets sélectionnés",
+            "text": "Nous sélectionnons les meilleures opportunités."
           }
         }
       },
