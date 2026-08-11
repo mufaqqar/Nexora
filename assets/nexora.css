@@ -11,7 +11,7 @@
   --nx-line-bright: rgba(124,78,255,.35);
   --nx-shadow: 0 30px 90px rgba(30, 10, 100, .24);
   --nx-radius: 16px;
-  --nx-container: 1180px;
+  --nx-container: 1240px;
   --nx-ease: cubic-bezier(.22,.8,.2,1);
 }
 
@@ -90,7 +90,7 @@ h1, h2, h3 {
 }
 
 h1 {
-  max-width: 720px;
+  max-width: 675px;
   margin-bottom: 24px;
   font-size: clamp(42px, 5vw, 74px);
   font-weight: 520;
@@ -617,11 +617,11 @@ h3 {
   /* min-height: 620px; */
 }
 
-.about-intro__content h1 { font-size: clamp(44px, 5vw, 68px); }
+.about-intro__content h1 { font-size: 50px; }
 
 .richtext {
   color: #9a99af;
-  font-size: 13px;
+  font-size: 18px;
   line-height: 1.8;
 }
 

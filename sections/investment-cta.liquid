@@ -1,19 +1,32 @@
 <section class="section">
   <div class="container">
     <div class="cta-panel">
-      <div>
-        {% comment %}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{% endcomment %}
+
+      <div class="cta-panel__content">
+        {% comment %}
+          <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+        {% endcomment %}
+
         <h2>{{ section.settings.heading }}</h2>
+
         <p>{{ section.settings.text }}</p>
-        <a class="button" href="{{ section.settings.button_link | default: routes.collections_url }}/projects">
+
+        <a
+          class="button"
+          href="{{ section.settings.button_link | default: routes.collections_url }}"
+        >
           {{ section.settings.button_label }}
           {% render 'icon-arrow' %}
         </a>
       </div>
-      <div class="cta-panel__art">
-        <div class="cta-orbit"></div>
-        <span>N</span>
+
+      <div class="cta-panel__art reveal reveal--delay">
+        {% render 'project-visual',
+          image: section.settings.image,
+          loading: 'lazy'
+        %}
       </div>
+
     </div>
   </div>
 </section>
@@ -50,6 +63,11 @@
       "type": "url",
       "id": "button_link",
       "label": "Lien"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
     }
   ],
   "presets": [
