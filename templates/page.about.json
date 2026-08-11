@@ -12,8 +12,8 @@
     "about": {
       "type": "about-intro",
       "settings": {
-        "eyebrow": "À PROPOS DE NEXORA",
-        "heading": "Investir dans ce qui construit demain.",
+        "eyebrow": "",
+        "heading": "À PROPOS DE NEXORA",
         "text": "<p>Nexora connecte les investisseurs à des entreprises ambitieuses qui développent les technologies, services et infrastructures du futur.</p><p>Notre objectif est de rendre l'accès aux opportunités plus simple, plus transparent et plus humain.</p>",
         "image": "shopify://shop_images/Group_1.png"
       }
@@ -23,8 +23,8 @@
       "settings": {
         "eyebrow": "NEXORA",
         "heading": "Commencez à investir dès aujourd'hui.",
-        "text": "Découvrez les projets actuellement ouverts aux investisseurs.",
-        "button_label": "Voir les projets",
+        "text": "Rejoignez Nexora et investissez dans les entreprises qui construiront le futur.",
+        "button_label": "Créer un compte",
         "button_link": ""
       }
     }
