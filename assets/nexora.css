@@ -334,23 +334,24 @@ h3 {
   font-size: 18px;
 }
 
-.hero__note {
+.hero__icon-box {
+  margin-top: 50px;
   display: flex;
-  align-items: center;
-  gap: 8px;
-  max-width: 360px;
-  margin-top: 24px;
-  color: #78778f;
-  font-size: 9px;
+  gap: 10px;
 }
 
-.status-dot {
-  width: 6px;
-  height: 6px;
-  flex: 0 0 auto;
-  border-radius: 50%;
-  background: #7f5aff;
-  box-shadow: 0 0 15px #7f5aff;
+.hero__icon-box .hero__icon-content h3 {
+  font-size: 22px;
+}
+
+.hero__icon-box .hero__icon-content p {
+  font-size: 18px;
+}
+
+.hero__icon-box img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
 }
 
 .hero__visual {
