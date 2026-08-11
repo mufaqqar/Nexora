@@ -7,16 +7,13 @@
 <article class="project-card">
   <a class="project-card__media" href="{{ product.url }}">
     {% render 'project-visual', image: product.featured_image, loading: 'lazy' %}
-    <span class="project-card__category">{{ category }}</span>
+    
   </a>
 
   <div class="project-card__body">
     <div class="project-card__top">
-      <div>
-        <p class="eyebrow">{{ category }}</p>
         <h3><a href="{{ product.url }}">{{ product.title }}</a></h3>
-      </div>
-      <span class="project-card__arrow">{% render 'icon-arrow' %}</span>
+       <span class="project-card__category">{{ category }}</span>
     </div>
 
     {% if product.description != blank %}
@@ -41,10 +38,9 @@
     <div class="progress">
       <span style="width: {{ funded }}%"></span>
     </div>
-
-    <a class="button button--small" href="{{ product.url }}">
+ </div>
+    <a class="project__button--secondary" href="{{ product.url }}">
       Voir le projet
-      {% render 'icon-arrow' %}
     </a>
-  </div>
+ 
 </article>
