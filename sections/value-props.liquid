@@ -3,14 +3,7 @@
     <div class="value-grid">
       {% for block in section.blocks %}
         <div class="value-item reveal" {{ block.shopify_attributes }}>
-          <span class="value-item__number">{{ forloop.index | prepend: '0' }}</span>
-          <div>
-            <h3>{{ block.settings.heading }}</h3>
-            <p>{{ block.settings.text }}</p>
-          </div>
-        </div>
-      {% endfor %}
-       {% if block.settings.icon != blank %}
+            {% if block.settings.icon != blank %}
             <div class="value-item__icon">
               {{
                 block.settings.icon
@@ -24,6 +17,13 @@
               }}
             </div>
           {% endif %}
+          <div>
+            <h3>{{ block.settings.heading }}</h3>
+            <p>{{ block.settings.text }}</p>
+          </div>
+        </div>
+      {% endfor %}
+      
     </div>
   </div>
 </section>
@@ -61,10 +61,34 @@
     {
       "name": "Valeurs",
       "blocks": [
-        {"type": "value", "settings": {"heading": "Opportunités sélectionnées", "text": "Des projets analysés avec une approche rigoureuse."}},
-        {"type": "value", "settings": {"heading": "Vision long terme", "text": "Nous investissons dans les entreprises qui façonnent demain."}},
-        {"type": "value", "settings": {"heading": "Transparence", "text": "Des informations claires pour prendre de meilleures décisions."}},
-        {"type": "value", "settings": {"heading": "Accès simplifié", "text": "Une expérience digitale pensée pour aller à l'essentiel."}}
+        {
+          "type": "value",
+          "settings": {
+            "heading": "Opportunités sélectionnées",
+            "text": "Des projets analysés avec une approche rigoureuse."
+          }
+        },
+        {
+          "type": "value",
+          "settings": {
+            "heading": "Vision long terme",
+            "text": "Nous investissons dans les entreprises qui façonnent demain."
+          }
+        },
+        {
+          "type": "value",
+          "settings": {
+            "heading": "Transparence",
+            "text": "Des informations claires pour prendre de meilleures décisions."
+          }
+        },
+        {
+          "type": "value",
+          "settings": {
+            "heading": "Accès simplifié",
+            "text": "Une expérience digitale pensée pour aller à l'essentiel."
+          }
+        }
       ]
     }
   ]

@@ -560,7 +560,7 @@ h3 {
 
 .value-item {
   display: grid;
-  grid-template-columns: 30px 1fr;
+  grid-template-columns: 1fr;
   gap: 14px;
   padding: 26px 20px;
   border-right: 1px solid var(--nx-line);
