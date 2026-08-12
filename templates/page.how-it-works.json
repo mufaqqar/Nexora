@@ -11,6 +11,30 @@
   "sections": {
     "main": {
       "type": "how-it-works",
+      "blocks": {
+        "step_VAJtkj": {
+          "type": "step",
+          "settings": {
+            "number": "2",
+            "icon": "coins",
+            "title": "Découvrez des projets",
+            "text": "Explorez des projets innovants sélectionnés par notre équipe d'experts."
+          }
+        },
+        "step_YXKabM": {
+          "type": "step",
+          "settings": {
+            "number": "1",
+            "icon": "search",
+            "title": "Découvrez des projets",
+            "text": "Explorez des projets innovants sélectionnés par notre équipe d'experts."
+          }
+        }
+      },
+      "block_order": [
+        "step_VAJtkj",
+        "step_YXKabM"
+      ],
       "settings": {
         "heading": "Comment ça fonctionne ?",
         "intro": "Investir avec Nexora, c’est simple et sécurisé.",
