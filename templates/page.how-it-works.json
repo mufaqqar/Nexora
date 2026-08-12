@@ -15,8 +15,8 @@
         "step_VAJtkj": {
           "type": "step",
           "settings": {
-            "number": "2",
-            "icon": "coins",
+            "number": "1",
+            "icon": "search",
             "title": "Découvrez des projets",
             "text": "Explorez des projets innovants sélectionnés par notre équipe d'experts."
           }
@@ -24,21 +24,41 @@
         "step_YXKabM": {
           "type": "step",
           "settings": {
-            "number": "1",
-            "icon": "search",
-            "title": "Découvrez des projets",
-            "text": "Explorez des projets innovants sélectionnés par notre équipe d'experts."
+            "number": "2",
+            "icon": "coins",
+            "title": "Investissez dès 100 €",
+            "text": "Choisissez le montant que vous souhaitez investir en toute sécurité."
+          }
+        },
+        "step_fmqfwA": {
+          "type": "step",
+          "settings": {
+            "number": "3",
+            "icon": "chart",
+            "title": "Suivez vos investissements",
+            "text": "Suivez en temps réel la performance de vos projets."
+          }
+        },
+        "step_FG7cfX": {
+          "type": "step",
+          "settings": {
+            "number": "4",
+            "icon": "shield",
+            "title": "Recevez vos gains",
+            "text": "Recevez des dividendes selon la performance des projets dans lesquels vous avez investi."
           }
         }
       },
       "block_order": [
         "step_VAJtkj",
-        "step_YXKabM"
+        "step_YXKabM",
+        "step_fmqfwA",
+        "step_FG7cfX"
       ],
       "settings": {
         "heading": "Comment ça fonctionne ?",
         "intro": "Investir avec Nexora, c’est simple et sécurisé.",
-        "image": "shopify://shop_images/Group_1.png"
+        "image": "shopify://shop_images/Group_90.png"
       }
     },
     "investment_cta_LUGEGr": {
@@ -46,9 +66,9 @@
       "name": "CTA investissement",
       "settings": {
         "eyebrow": "NEXORA",
-        "heading": "Commencez à investir dès aujourd'hui.",
-        "text": "Découvrez les projets actuellement ouverts aux investisseurs.",
-        "button_label": "Voir les projets",
+        "heading": "Prêt à investir dans le futur ?",
+        "text": "Rejoignez des milliers d'investisseurs déjà inscrits.",
+        "button_label": "Commencer maintenant",
         "button_link": ""
       }
     }
