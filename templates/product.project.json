@@ -1,9 +1,24 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "project-detail",
-      "settings": {}
+      "settings": {
+        "about_heading": "Un projet conçu pour durer.",
+        "disclaimer": "Les investissements présentent des risques. Les informations affichées doivent être validées selon votre cadre légal et financier.123",
+        "button_label": "Investir maintenant"
+      }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }
