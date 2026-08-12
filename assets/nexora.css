@@ -2225,7 +2225,7 @@ h3 {
 }
 
 .figma-about {
-  padding-top: 0;
+  padding-top: 80px;
 }
 
 .figma-about h2,
@@ -3187,7 +3187,6 @@ h3 {
 
 .how-it-works {
   width: 100%;
-  background: #030518;
   color: #ffffff;
   overflow: hidden;
 }
@@ -3200,14 +3199,10 @@ h3 {
 .how-it-works__container {
   width: min(100%, 1360px);
   min-height: 690px;
-
   margin: 0 auto;
-
   padding: 35px 42px;
-
   display: grid;
   grid-template-columns: 52% 48%;
-
   align-items: center;
 }
 
@@ -3219,7 +3214,6 @@ h3 {
 .how-it-works__content {
   position: relative;
   z-index: 2;
-
   width: 100%;
   max-width: 570px;
 }
@@ -3227,26 +3221,19 @@ h3 {
 
 .how-it-works__heading {
   margin: 0;
-
-  font-size: 38px;
+  font-size: 50px;
   line-height: 1.15;
-
   font-weight: 400;
-
   letter-spacing: -1.2px;
-
   color: #ffffff;
 }
 
 
 .how-it-works__intro {
   margin: 10px 0 0;
-
-  font-size: 11px;
+  font-size: 18px;
   line-height: 1.5;
-
   font-weight: 400;
-
   color: rgba(255, 255, 255, 0.78);
 }
 
@@ -3258,10 +3245,8 @@ h3 {
 .how-it-works__steps {
   display: flex;
   flex-direction: column;
-
   gap: 26px;
-
-  margin-top: 27px;
+  margin-top: 50px;
 }
 
 
@@ -3272,9 +3257,7 @@ h3 {
 .how-it-works__step {
   display: flex;
   align-items: center;
-
   gap: 12px;
-
   min-height: 48px;
 }
 
@@ -3284,37 +3267,27 @@ h3 {
 ===================================================== */
 
 .how-it-works__icon {
-  width: 48px;
-  height: 48px;
-
-  flex: 0 0 48px;
-
+  width: 98px;
+  height: 98px;
+  flex: 0 0 98px;
   display: flex;
   align-items: center;
   justify-content: center;
-
   color: #7e3cff;
-
   background:
-    linear-gradient(
-      145deg,
+    linear-gradient(145deg,
       #10082f 0%,
-      #0c0829 100%
-    );
-
+      #0c0829 100%);
   border: 1px solid rgba(126, 60, 255, 0.48);
-
-  border-radius: 10px;
-
+  border-radius: 20px;
   box-shadow:
     inset 0 0 15px rgba(111, 47, 255, 0.08);
 }
 
 
 .how-it-works__icon svg {
-  width: 25px;
-  height: 25px;
-
+  width: 60px;
+  height: 60px;
   display: block;
 }
 
@@ -3325,35 +3298,26 @@ h3 {
 
 .how-it-works__step-content {
   flex: 1;
-
   min-width: 0;
 }
 
 
 .how-it-works__step-title {
   margin: 0;
-
   color: #ffffff;
-
-  font-size: 16px;
+  font-size: 30px;
   line-height: 1.25;
-
   font-weight: 400;
-
   letter-spacing: -0.25px;
 }
 
 
 .how-it-works__step-text {
   max-width: 390px;
-
   margin: 4px 0 0;
-
   color: rgba(255, 255, 255, 0.75);
-
-  font-size: 10px;
+  font-size: 18px;
   line-height: 1.4;
-
   font-weight: 400;
 }
 
@@ -3364,10 +3328,8 @@ h3 {
 
 .how-it-works__visual {
   position: relative;
-
   width: 100%;
   height: 620px;
-
   display: flex;
   align-items: center;
   justify-content: center;
