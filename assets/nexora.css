@@ -2619,3 +2619,255 @@ h3 {
     font-size: 5px;
   }
 }
+
+/* =========================================================
+   PROJECT DETAIL — THEME TYPOGRAPHY
+   (same heading/text font styles as the rest of the site)
+   ========================================================= */
+
+.project-detail--figma .figma-back-link {
+  font-size: 13px;
+}
+
+.project-detail--figma .figma-detail-summary h1 {
+  margin: 0 0 10px;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 520;
+  letter-spacing: -.035em;
+}
+
+.project-detail--figma .figma-detail-lead {
+  max-width: 440px;
+  margin: 0 0 14px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.project-detail--figma .figma-category {
+  padding: 6px 14px;
+  font-size: 13px;
+}
+
+.project-detail--figma .figma-stat strong {
+  margin-bottom: 3px;
+  font-size: 24px;
+  font-weight: 520;
+}
+
+.project-detail--figma .figma-stat span {
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.project-detail--figma .figma-progress__labels {
+  font-size: 12px;
+}
+
+.project-detail--figma .figma-primary-button {
+  min-height: 44px;
+  padding: 0 20px;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.project-detail--figma .figma-primary-button span {
+  font-size: 16px;
+}
+
+.project-detail--figma .figma-about h2,
+.project-detail--figma .figma-documents > h2,
+.project-detail--figma .figma-investment h2 {
+  font-size: clamp(24px, 2.5vw, 34px);
+  font-weight: 520;
+  line-height: 1.05;
+  letter-spacing: -.035em;
+}
+
+.project-detail--figma .figma-about__text {
+  margin-top: 12px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.project-detail--figma .figma-objective {
+  margin-top: 22px;
+  margin-bottom: 24px;
+}
+
+.project-detail--figma .figma-objective strong {
+  font-size: 28px;
+  font-weight: 520;
+}
+
+.project-detail--figma .figma-objective span {
+  margin-top: 4px;
+  font-size: 13px;
+}
+
+.project-detail--figma .figma-reasons {
+  gap: 8px;
+  margin-top: 12px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.project-detail--figma .figma-documents__grid {
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.project-detail--figma .figma-document {
+  min-height: 44px;
+  padding: 0 14px;
+  font-size: 14px;
+}
+
+.project-detail--figma .figma-investment {
+  padding: 22px 20px 18px;
+}
+
+.project-detail--figma .figma-investment__eyebrow {
+  font-size: 12px;
+}
+
+.project-detail--figma .figma-investment__label {
+  margin: 12px 0 10px;
+  font-size: 13px;
+}
+
+.project-detail--figma .figma-amount-input {
+  width: 200px;
+  height: 44px;
+  padding: 0 12px;
+}
+
+.project-detail--figma .figma-amount-input span {
+  font-size: 15px;
+}
+
+.project-detail--figma .figma-amount-input input {
+  font-size: 16px;
+}
+
+.project-detail--figma .figma-amount-presets {
+  width: 200px;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.project-detail--figma .figma-amount-presets button {
+  height: 36px;
+  font-size: 14px;
+}
+
+.project-detail--figma .figma-investment__footer {
+  margin-top: 14px;
+}
+
+.project-detail--figma .figma-investment__disclaimer {
+  font-size: 13px;
+}
+
+.project-detail--figma .figma-primary-button--investment {
+  width: auto;
+  min-width: 140px;
+  min-height: 40px;
+  padding: 0 18px;
+  font-size: 15px;
+}
+
+@media (max-width: 700px) {
+  .project-detail--figma .figma-detail-summary h1 {
+    font-size: 24px;
+  }
+
+  .project-detail--figma .figma-detail-lead {
+    font-size: 13px;
+  }
+
+  .project-detail--figma .figma-category {
+    padding: 4px 10px;
+    font-size: 12px;
+  }
+
+  .project-detail--figma .figma-stat strong {
+    font-size: 18px;
+  }
+
+  .project-detail--figma .figma-stat span {
+    font-size: 11px;
+  }
+
+  .project-detail--figma .figma-progress__labels {
+    font-size: 11px;
+  }
+
+  .project-detail--figma .figma-detail-summary > .figma-primary-button {
+    min-height: 40px;
+    font-size: 14px;
+  }
+
+  .project-detail--figma .figma-about h2,
+  .project-detail--figma .figma-documents > h2,
+  .project-detail--figma .figma-investment h2 {
+    font-size: 22px;
+  }
+
+  .project-detail--figma .figma-about__text {
+    font-size: 13px;
+  }
+
+  .project-detail--figma .figma-objective strong {
+    font-size: 24px;
+  }
+
+  .project-detail--figma .figma-objective span {
+    font-size: 11px;
+  }
+
+  .project-detail--figma .figma-reasons {
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  .project-detail--figma .figma-document {
+    min-height: 40px;
+    padding: 0 12px;
+    font-size: 13px;
+  }
+
+  .project-detail--figma .figma-investment {
+    padding: 18px 14px 14px;
+  }
+
+  .project-detail--figma .figma-investment__eyebrow {
+    font-size: 11px;
+  }
+
+  .project-detail--figma .figma-investment__label {
+    font-size: 12px;
+  }
+
+  .project-detail--figma .figma-amount-input {
+    width: 190px;
+    height: 40px;
+  }
+
+  .project-detail--figma .figma-amount-presets {
+    width: 190px;
+  }
+
+  .project-detail--figma .figma-amount-presets button {
+    height: 32px;
+    font-size: 13px;
+  }
+
+  .project-detail--figma .figma-investment__disclaimer {
+    font-size: 12px;
+  }
+
+  .project-detail--figma .figma-primary-button--investment {
+    min-width: 120px;
+    font-size: 14px;
+  }
+}
