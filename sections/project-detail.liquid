@@ -18,22 +18,34 @@
       </div>
 
       <div class="detail-hero__content reveal reveal--delay">
-        <p class="eyebrow">{{ category }}</p>
+       
         <h1>{{ product.title }}</h1>
 
-        {% if product.description != blank %}
-          <p class="detail-lead">{{ product.description | strip_html }}</p>
-        {% endif %}
+        <p class="detail-lead">{{ product.description | strip_html }}</p>
 
+        <span class="project-card__category">{{ category }}</span>
         <div class="detail-stats">
-          {% render 'project-stat', value: funded | append: '%', label: 'Financé' %}
+          {% render 'project-stat',
+  value: funded | append: '%',
+  label: 'Financé',
+  class: 'detail__stat--highlight'
+%}
           {% render 'project-stat', value: current | money_without_trailing_zeros, label: 'Collecté' %}
           {% render 'project-stat', value: investors, label: 'Investisseurs' %}
         </div>
 
-        <div class="progress progress--large">
-          <span style="width: {{ funded }}%"></span>
+      <div class="progress-wrapper">
+
+      <div class="progress progress--large">
+          <span style="width: {{ funded }}%;"></span>
         </div>
+
+        <div class="progress-labels">
+          <span>0%</span>
+          <span>100%</span>
+        </div>
+
+      </div>
 
         <a class="button button--wide" href="#investir">
           Investir maintenant

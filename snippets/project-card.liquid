@@ -21,15 +21,15 @@
     {% endif %}
 
     <div class="project-card__stats">
-      <div>
+      <div class="project__stat project__stat--highlight">
         <strong>{{ funded }}%</strong>
         <span>Financé</span>
       </div>
-      <div>
+      <div class="project__stat">
         <strong>{{ current | money_without_trailing_zeros }}</strong>
         <span>Collecté / {{ target | money_without_trailing_zeros }}</span>
       </div>
-      <div>
+      <div class="project__stat">
         <strong>{{ investors }}</strong>
         <span>Investisseurs</span>
       </div>
