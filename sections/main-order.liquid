@@ -1,0 +1,59 @@
+<section class="section customer-page">
+  <div class="container customer-account">
+    <div class="page-heading">
+      <p class="eyebrow">VOTRE ESPACE</p>
+      <h1>Commande #{{ order.order_number }}</h1>
+      <p class="customer-account__email">{{ order.created_at | date: format: 'date' }}</p>
+    </div>
+
+    <div class="customer-account__grid">
+      <div class="customer-account__panel">
+        <h2>Récapitulatif</h2>
+
+        <table class="customer-orders">
+          <thead>
+            <tr>
+              <th>Projet</th>
+              <th>Quantité</th>
+              <th>Prix unitaire</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for line_item in order.line_items %}
+              <tr>
+                <td>{{ line_item.title }}</td>
+                <td>{{ line_item.quantity }}</td>
+                <td>{{ line_item.final_price | money }}</td>
+                <td>{{ line_item.final_line_price | money }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <aside class="customer-account__panel customer-account__panel--tight">
+        <h2>Total</h2>
+        <p class="customer-account__row">
+          <strong>Montant total</strong>
+          <span>{{ order.total_price | money }}</span>
+        </p>
+        <p class="customer-account__row">
+          <strong>Paiement</strong>
+          <span>{{ order.financial_status_label }}</span>
+        </p>
+        <p class="customer-account__row">
+          <strong>Exécution</strong>
+          <span>{{ order.fulfillment_status_label }}</span>
+        </p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Détail de commande",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,84 @@
+{% if customer %}
+
+  <section class="section customer-page">
+    <div class="container customer-account">
+      <div class="page-heading">
+        <p class="eyebrow">VOTRE ESPACE</p>
+        <h1>Bonjour, {{ customer.first_name | default: customer.name }}</h1>
+        <p class="customer-account__email">{{ customer.email }}</p>
+      </div>
+
+      <div class="customer-account__grid">
+        <div class="customer-account__panel">
+          <div class="customer-account__panel-head">
+            <h2>Vos investissements</h2>
+            <a class="customer-account__logout" href="{{ routes.account_logout_url }}">Déconnexion</a>
+          </div>
+
+          {% if customer.orders.size > 0 %}
+            <table class="customer-orders">
+              <thead>
+                <tr>
+                  <th>Commande</th>
+                  <th>Date</th>
+                  <th>Montant</th>
+                  <th>Statut</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for order in customer.orders %}
+                  <tr>
+                    <td>
+                      <a href="{{ order.customer_url }}">#{{ order.order_number }}</a>
+                    </td>
+                    <td>{{ order.created_at | date: format: 'date' }}</td>
+                    <td>{{ order.total_price | money }}</td>
+                    <td>{{ order.financial_status_label }}</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          {% else %}
+            <p class="customer-account__empty">Vous n'avez pas encore effectué d'investissement.</p>
+          {% endif %}
+        </div>
+
+        <aside class="customer-account__panel customer-account__panel--tight">
+          <h2>Profil</h2>
+          <p class="customer-account__row">
+            <strong>Nom</strong>
+            <span>{{ customer.name }}</span>
+          </p>
+          <p class="customer-account__row">
+            <strong>Email</strong>
+            <span>{{ customer.email }}</span>
+          </p>
+          {% if customer.default_address != blank %}
+            <p class="customer-account__row">
+              <strong>Adresse</strong>
+              <span>{{ customer.default_address | format_address }}</span>
+            </p>
+          {% endif %}
+        </aside>
+      </div>
+    </div>
+  </section>
+
+{% else %}
+
+  <section class="section">
+    <div class="container empty-state">
+      <p class="eyebrow">NEXORA</p>
+      <h1>Accédez à votre espace</h1>
+      <a class="button" href="{{ routes.account_login_url }}">Se connecter</a>
+    </div>
+  </section>
+
+{% endif %}
+
+{% schema %}
+{
+  "name": "Espace client",
+  "settings": []
+}
+{% endschema %}
