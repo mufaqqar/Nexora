@@ -617,7 +617,8 @@ h3 {
   font-weight: 400;
 }
 
-.project-card__stats .project__stat--highlight strong, .detail__stat--highlight strong {
+.project-card__stats .project__stat--highlight strong,
+.detail__stat--highlight strong {
   color: #8344F4;
 }
 
@@ -625,16 +626,19 @@ h3 {
   color: #4B4C4F;
   font-size: 18px;
 }
+
 .progress-wrapper {
   width: 100%;
   margin-bottom: 40px;
 }
+
 .progress-labels {
   display: flex;
   justify-content: space-between;
   margin-top: 8px;
   font-size: 12px;
 }
+
 .progress {
   height: 5px;
   overflow: hidden;
@@ -1185,7 +1189,7 @@ h3 {
   }
 
   .site-header__inner {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 
   .site-header__logo-image {
@@ -2043,12 +2047,9 @@ h3 {
    ========================================================= */
 
 .project-detail--figma {
-  padding: 12px 0 55px;
+  padding: 60px 0 55px;
 }
 
-.project-detail__container {
-  max-width: 980px;
-}
 
 .figma-back-link {
   display: inline-flex;
@@ -2066,7 +2067,7 @@ h3 {
 
 .figma-detail-hero {
   display: grid;
-  grid-template-columns: 43% 57%;
+  grid-template-columns: 40% 60%;
   gap: 18px;
   align-items: center;
   margin-bottom: 28px;
@@ -2074,14 +2075,15 @@ h3 {
 
 .figma-detail-visual {
   width: 100%;
-  height: 300px;
+  height: 100%;
   overflow: hidden;
   border-radius: 9px;
   background: #111124;
 }
 
 .figma-detail-visual .project-visual,
-.figma-detail-visual .project-visual__image {
+.figma-detail-visual .project-visual__image,
+.figma-detail-visual .project-visual img {
   width: 100%;
   height: 100%;
 }
@@ -2135,8 +2137,8 @@ h3 {
   min-width: 0;
 }
 
-.figma-stat + .figma-stat {
-  border-left: 1px solid rgba(255,255,255,.08);
+.figma-stat+.figma-stat {
+  border-left: 1px solid rgba(255, 255, 255, .08);
   padding-left: 10px;
 }
 
@@ -2172,7 +2174,7 @@ h3 {
   height: 4px;
   overflow: hidden;
   border-radius: 99px;
-  background: rgba(255,255,255,.07);
+  background: rgba(255, 255, 255, .07);
 }
 
 .figma-progress__bar span {
@@ -2214,7 +2216,7 @@ h3 {
   filter: brightness(1.08);
 }
 
-.figma-detail-summary > .figma-primary-button {
+.figma-detail-summary>.figma-primary-button {
   margin-top: 11px;
 }
 
@@ -2227,7 +2229,7 @@ h3 {
 }
 
 .figma-about h2,
-.figma-documents > h2,
+.figma-documents>h2,
 .figma-investment h2 {
   margin: 0;
   color: #f2f0f9;
@@ -2285,7 +2287,7 @@ h3 {
 
 .figma-reasons li {
   position: relative;
-  padding-left: 10px;
+  padding-left: 15px;
 }
 
 .figma-reasons li::before {
@@ -2296,7 +2298,7 @@ h3 {
 }
 
 .figma-documents {
-  margin-top: 24px;
+  margin-top: 70px;
 }
 
 .figma-documents__grid {
@@ -2312,7 +2314,7 @@ h3 {
   justify-content: space-between;
   min-height: 31px;
   padding: 0 9px;
-  border: 1px solid rgba(127, 121, 160, .25);
+  border: 1px solid var(--nx-line);
   border-radius: 4px;
   color: #a8a5b7;
   font-size: 7px;
@@ -2326,27 +2328,27 @@ h3 {
   color: #fff;
 }
 
-.figma-document > span:first-child {
+.figma-document>span:first-child {
   display: inline-flex;
   align-items: center;
   gap: 5px;
 }
 
 .figma-document svg {
-  width: 11px;
-  height: 11px;
+  width: 24px;
+  height: 24px;
 }
 
 .figma-document__download {
   color: #77758b;
+  font-size: 20px;
 }
 
 .figma-investment {
   margin-top: 13px;
   padding: 15px 12px 13px;
-  border: 1px solid rgba(111, 77, 231, .30);
+  border: 1px solid var(--nx-line);
   border-radius: 6px;
-  background: linear-gradient(145deg, rgba(17, 14, 49, .88), rgba(7, 7, 27, .92));
 }
 
 .figma-investment__eyebrow {
@@ -2409,8 +2411,8 @@ h3 {
   padding: 0;
   border: 1px solid rgba(126, 119, 161, .22);
   border-radius: 3px;
-  background: rgba(255,255,255,.015);
-  color: #9794a7;
+  background: rgba(255, 255, 255, .015);
+  color: #fff;
   cursor: pointer;
   font-size: 6px;
 }
@@ -2435,13 +2437,12 @@ h3 {
   align-items: center;
   gap: 4px;
   margin: 0;
-  color: #716e84;
-  font-size: 6px;
+  color: #fff;
 }
 
 .figma-investment__disclaimer svg {
-  width: 9px;
-  height: 9px;
+  width: 20px;
+  height: 20px;
   color: #7650ff;
   flex: 0 0 auto;
 }
@@ -2454,24 +2455,29 @@ h3 {
 }
 
 @media (max-width: 700px) {
+  .login-link {
+    font-size: 14px;
+    padding: 5px 6px;
+  }
+
+  .site-header__actions {
+    gap: 7px;
+  }
+
   .project-detail--figma {
     padding: 10px 0 35px;
   }
 
-  .project-detail__container {
-    width: min(calc(100% - 56px), 980px);
-  }
-
   .figma-detail-hero {
-    grid-template-columns: 134px minmax(0, 1fr);
+    grid-template-columns: 1fr;
     gap: 19px;
     align-items: start;
     margin-bottom: 25px;
   }
 
   .figma-detail-visual {
-    width: 134px;
-    height: 154px;
+    width: 100%;
+    height: 100%;
     border-radius: 8px;
   }
 
@@ -2498,7 +2504,7 @@ h3 {
     margin-top: 12px;
   }
 
-  .figma-stat + .figma-stat {
+  .figma-stat+.figma-stat {
     padding-left: 6px;
   }
 
@@ -2524,14 +2530,14 @@ h3 {
     font-size: 5px;
   }
 
-  .figma-detail-summary > .figma-primary-button {
+  .figma-detail-summary>.figma-primary-button {
     margin-top: 8px;
     min-height: 23px;
     font-size: 5.5px;
   }
 
   .figma-about h2,
-  .figma-documents > h2,
+  .figma-documents>h2,
   .figma-investment h2 {
     font-size: 10px;
   }
@@ -2639,8 +2645,7 @@ h3 {
 .project-detail--figma .figma-detail-lead {
   max-width: 440px;
   margin: 0 0 14px;
-  font-size: 15px;
-  line-height: 1.6;
+  font-size: 18px;
 }
 
 .project-detail--figma .figma-category {
@@ -2650,17 +2655,17 @@ h3 {
 
 .project-detail--figma .figma-stat strong {
   margin-bottom: 3px;
-  font-size: 24px;
+  font-size: 30px;
   font-weight: 520;
 }
 
 .project-detail--figma .figma-stat span {
-  font-size: 13px;
+  font-size: 18px;
   line-height: 1.4;
 }
 
 .project-detail--figma .figma-progress__labels {
-  font-size: 12px;
+  font-size: 18px;
 }
 
 .project-detail--figma .figma-primary-button {
@@ -2675,9 +2680,9 @@ h3 {
 }
 
 .project-detail--figma .figma-about h2,
-.project-detail--figma .figma-documents > h2,
+.project-detail--figma .figma-documents>h2,
 .project-detail--figma .figma-investment h2 {
-  font-size: clamp(24px, 2.5vw, 34px);
+  font-size: clamp(36px, 2.5vw, 34px);
   font-weight: 520;
   line-height: 1.05;
   letter-spacing: -.035em;
@@ -2685,30 +2690,30 @@ h3 {
 
 .project-detail--figma .figma-about__text {
   margin-top: 12px;
-  font-size: 15px;
-  line-height: 1.6;
+  font-size: 18px;
+  color: #fff;
 }
 
 .project-detail--figma .figma-objective {
-  margin-top: 22px;
-  margin-bottom: 24px;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .project-detail--figma .figma-objective strong {
-  font-size: 28px;
+  font-size: 50px;
   font-weight: 520;
 }
 
 .project-detail--figma .figma-objective span {
   margin-top: 4px;
-  font-size: 13px;
+  font-size: 18px;
+  color: #fff;
 }
 
 .project-detail--figma .figma-reasons {
   gap: 8px;
   margin-top: 12px;
-  font-size: 15px;
-  line-height: 1.6;
+  font-size: 18px;
 }
 
 .project-detail--figma .figma-documents__grid {
@@ -2732,11 +2737,12 @@ h3 {
 
 .project-detail--figma .figma-investment__label {
   margin: 12px 0 10px;
-  font-size: 13px;
+  font-size: 18px;
+  color: #fff;
 }
 
 .project-detail--figma .figma-amount-input {
-  width: 200px;
+  width: 610px;
   height: 44px;
   padding: 0 12px;
 }
@@ -2750,7 +2756,7 @@ h3 {
 }
 
 .project-detail--figma .figma-amount-presets {
-  width: 200px;
+  width: 610px;
   gap: 8px;
   margin-top: 10px;
 }
@@ -2765,15 +2771,16 @@ h3 {
 }
 
 .project-detail--figma .figma-investment__disclaimer {
-  font-size: 13px;
+  font-size: 18px;
 }
 
 .project-detail--figma .figma-primary-button--investment {
   width: auto;
-  min-width: 140px;
+  min-width: 295px;
   min-height: 40px;
   padding: 0 18px;
-  font-size: 15px;
+  font-size: 18px;
+  font-weight: 400;
 }
 
 @media (max-width: 700px) {
@@ -2782,7 +2789,7 @@ h3 {
   }
 
   .project-detail--figma .figma-detail-lead {
-    font-size: 13px;
+    font-size: 16px;
   }
 
   .project-detail--figma .figma-category {
@@ -2802,13 +2809,13 @@ h3 {
     font-size: 11px;
   }
 
-  .project-detail--figma .figma-detail-summary > .figma-primary-button {
+  .project-detail--figma .figma-detail-summary>.figma-primary-button {
     min-height: 40px;
     font-size: 14px;
   }
 
   .project-detail--figma .figma-about h2,
-  .project-detail--figma .figma-documents > h2,
+  .project-detail--figma .figma-documents>h2,
   .project-detail--figma .figma-investment h2 {
     font-size: 22px;
   }
@@ -3171,4 +3178,528 @@ h3 {
   .customer-account__grid {
     grid-template-columns: 1fr;
   }
+}
+
+
+/* =====================================================
+   HOW IT WORKS
+===================================================== */
+
+.how-it-works {
+  width: 100%;
+  background: #030518;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+
+/* =====================================================
+   CONTAINER
+===================================================== */
+
+.how-it-works__container {
+  width: min(100%, 1360px);
+  min-height: 690px;
+
+  margin: 0 auto;
+
+  padding: 35px 42px;
+
+  display: grid;
+  grid-template-columns: 52% 48%;
+
+  align-items: center;
+}
+
+
+/* =====================================================
+   LEFT CONTENT
+===================================================== */
+
+.how-it-works__content {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 570px;
+}
+
+
+.how-it-works__heading {
+  margin: 0;
+
+  font-size: 38px;
+  line-height: 1.15;
+
+  font-weight: 400;
+
+  letter-spacing: -1.2px;
+
+  color: #ffffff;
+}
+
+
+.how-it-works__intro {
+  margin: 10px 0 0;
+
+  font-size: 11px;
+  line-height: 1.5;
+
+  font-weight: 400;
+
+  color: rgba(255, 255, 255, 0.78);
+}
+
+
+/* =====================================================
+   STEPS
+===================================================== */
+
+.how-it-works__steps {
+  display: flex;
+  flex-direction: column;
+
+  gap: 26px;
+
+  margin-top: 27px;
+}
+
+
+/* =====================================================
+   STEP
+===================================================== */
+
+.how-it-works__step {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  min-height: 48px;
+}
+
+
+/* =====================================================
+   ICON BOX
+===================================================== */
+
+.how-it-works__icon {
+  width: 48px;
+  height: 48px;
+
+  flex: 0 0 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #7e3cff;
+
+  background:
+    linear-gradient(
+      145deg,
+      #10082f 0%,
+      #0c0829 100%
+    );
+
+  border: 1px solid rgba(126, 60, 255, 0.48);
+
+  border-radius: 10px;
+
+  box-shadow:
+    inset 0 0 15px rgba(111, 47, 255, 0.08);
+}
+
+
+.how-it-works__icon svg {
+  width: 25px;
+  height: 25px;
+
+  display: block;
+}
+
+
+/* =====================================================
+   STEP CONTENT
+===================================================== */
+
+.how-it-works__step-content {
+  flex: 1;
+
+  min-width: 0;
+}
+
+
+.how-it-works__step-title {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: 16px;
+  line-height: 1.25;
+
+  font-weight: 400;
+
+  letter-spacing: -0.25px;
+}
+
+
+.how-it-works__step-text {
+  max-width: 390px;
+
+  margin: 4px 0 0;
+
+  color: rgba(255, 255, 255, 0.75);
+
+  font-size: 10px;
+  line-height: 1.4;
+
+  font-weight: 400;
+}
+
+
+/* =====================================================
+   RIGHT IMAGE
+===================================================== */
+
+.how-it-works__visual {
+  position: relative;
+
+  width: 100%;
+  height: 620px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/*
+   Purple glow behind the city.
+*/
+
+.how-it-works__visual::before {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  top: 46%;
+
+  width: 260px;
+  height: 260px;
+
+  transform: translate(-50%, -50%);
+
+  background: rgba(89, 28, 255, 0.10);
+
+  border-radius: 50%;
+
+  filter: blur(85px);
+
+  pointer-events: none;
+}
+
+
+.how-it-works__image {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: contain;
+  object-position: center;
+
+  mix-blend-mode: screen;
+}
+
+
+/* =====================================================
+   DESKTOP 1200
+===================================================== */
+
+@media screen and (max-width: 1200px) {
+
+  .how-it-works__container {
+    min-height: 620px;
+
+    padding-left: 50px;
+    padding-right: 50px;
+
+    grid-template-columns: 53% 47%;
+  }
+
+
+  .how-it-works__heading {
+    font-size: 36px;
+  }
+
+
+  .how-it-works__visual {
+    height: 570px;
+  }
+
+
+  .how-it-works__steps {
+    gap: 24px;
+  }
+
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media screen and (max-width: 900px) {
+
+  .how-it-works__container {
+    min-height: auto;
+
+    padding: 55px 40px 60px;
+
+    grid-template-columns: 1fr;
+
+    gap: 30px;
+  }
+
+
+  .how-it-works__content {
+    max-width: 700px;
+  }
+
+
+  .how-it-works__heading {
+    font-size: 38px;
+  }
+
+
+  .how-it-works__intro {
+    font-size: 13px;
+  }
+
+
+  .how-it-works__visual {
+    height: 420px;
+
+    order: -1;
+  }
+
+
+  .how-it-works__image {
+    max-width: 600px;
+  }
+
+
+  .how-it-works__steps {
+    gap: 25px;
+  }
+
+
+  .how-it-works__step-title {
+    font-size: 18px;
+  }
+
+
+  .how-it-works__step-text {
+    font-size: 12px;
+  }
+
+
+  .how-it-works__icon {
+    width: 56px;
+    height: 56px;
+
+    flex-basis: 56px;
+  }
+
+
+  .how-it-works__icon svg {
+    width: 29px;
+    height: 29px;
+  }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media screen and (max-width: 600px) {
+
+  .how-it-works__container {
+    padding: 35px 20px 50px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px;
+  }
+
+
+  /* Image */
+
+  .how-it-works__visual {
+    width: 100%;
+    height: 300px;
+
+    order: -1;
+  }
+
+
+  .how-it-works__image {
+    width: 100%;
+    height: 300px;
+
+    object-fit: contain;
+  }
+
+
+  .how-it-works__visual::before {
+    width: 180px;
+    height: 180px;
+
+    filter: blur(65px);
+  }
+
+
+  /* Heading */
+
+  .how-it-works__heading {
+    font-size: 31px;
+
+    line-height: 1.15;
+
+    letter-spacing: -0.8px;
+  }
+
+
+  .how-it-works__intro {
+    margin-top: 9px;
+
+    font-size: 12px;
+  }
+
+
+  /* Steps */
+
+  .how-it-works__steps {
+    gap: 24px;
+
+    margin-top: 28px;
+  }
+
+
+  .how-it-works__step {
+    align-items: flex-start;
+
+    gap: 12px;
+  }
+
+
+  .how-it-works__icon {
+    width: 50px;
+    height: 50px;
+
+    flex: 0 0 50px;
+
+    border-radius: 10px;
+  }
+
+
+  .how-it-works__icon svg {
+    width: 26px;
+    height: 26px;
+  }
+
+
+  .how-it-works__step-content {
+    padding-top: 2px;
+  }
+
+
+  .how-it-works__step-title {
+    font-size: 17px;
+
+    line-height: 1.25;
+  }
+
+
+  .how-it-works__step-text {
+    max-width: 100%;
+
+    margin-top: 5px;
+
+    font-size: 11px;
+
+    line-height: 1.45;
+  }
+
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media screen and (max-width: 400px) {
+
+  .how-it-works__container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+
+  .how-it-works__visual {
+    height: 270px;
+  }
+
+
+  .how-it-works__image {
+    height: 270px;
+  }
+
+
+  .how-it-works__heading {
+    font-size: 28px;
+  }
+
+
+  .how-it-works__intro {
+    font-size: 11px;
+  }
+
+
+  .how-it-works__steps {
+    gap: 21px;
+  }
+
+
+  .how-it-works__icon {
+    width: 46px;
+    height: 46px;
+
+    flex-basis: 46px;
+  }
+
+
+  .how-it-works__icon svg {
+    width: 23px;
+    height: 23px;
+  }
+
+
+  .how-it-works__step-title {
+    font-size: 15px;
+  }
+
+
+  .how-it-works__step-text {
+    font-size: 10px;
+  }
+
 }
