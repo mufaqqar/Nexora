@@ -40,9 +40,21 @@
         "intro": "Investir avec Nexora, c’est simple et sécurisé.",
         "image": "shopify://shop_images/Group_1.png"
       }
+    },
+    "investment_cta_LUGEGr": {
+      "type": "investment-cta",
+      "name": "CTA investissement",
+      "settings": {
+        "eyebrow": "NEXORA",
+        "heading": "Commencez à investir dès aujourd'hui.",
+        "text": "Découvrez les projets actuellement ouverts aux investisseurs.",
+        "button_label": "Voir les projets",
+        "button_link": ""
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "investment_cta_LUGEGr"
   ]
 }
