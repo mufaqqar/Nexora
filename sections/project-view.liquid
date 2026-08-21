@@ -1,9 +1,9 @@
-{% assign current_amount = product.metafields.project.current_amount.value | default: 4600 %}
-{% assign target_amount = product.metafields.project.target_amount.value | default: 100000 %}
-{% assign category = product.metafields.project.category.value | default: 'Technologie' %}
-{% assign share_price = product.metafields.project.share_price.value | default: 135 %}
-{% assign remaining_shares = product.metafields.project.remaining_shares.value | default: 12 %}
-{% assign monthly_return = product.metafields.project.monthly_return.value | default: '€648 /mois' %}
+{% assign current_amount = product.metafields.project.current_amount.value | default: 0 %}
+{% assign target_amount = product.metafields.project.target_amount.value | default: 1 %}
+{% assign category = product.metafields.project.category.value | default: '' %}
+{% assign share_price = product.metafields.project.share_price.value | default: 0 %}
+{% assign remaining_shares = product.metafields.project.remaining_shares.value | default: 0 %}
+{% assign monthly_return = product.metafields.project.monthly_return.value | default: '' %}
 {% assign platform_fee = section.settings.platform_fee | default: 2 %}
 
 <section class="nx-project-view" data-project-view>
