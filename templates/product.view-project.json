@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "main": {
+      "type": "project-view",
+      "settings": {}
+    }
+  },
+  "order": ["main"]
+}
