@@ -14,7 +14,7 @@
       "name": "Hero Nexora",
       "settings": {
         "eyebrow": "PLATEFORME D'INVESTISSEMENT",
-        "heading": "Investissez dans les entreprises qui construisent le futur.",
+        "heading": "Investissez dans les entreprises qui construisent <span> le futur. </span>",
         "description": "Accédez à des opportunités sélectionnées et participez à la croissance des entreprises de demain.",
         "button_label": "Découvrir les projets",
         "button_link": "",
@@ -33,10 +33,6 @@
         "product": "nexora-smart-security",
         "category": "Résidentiel & Pro",
         "description": "Système d'alarme intelligent pour maisons et entreprises",
-        "funded": 46,
-        "amount": "46 000 €",
-        "target": "100 000 €",
-        "investors": 28,
         "minimum": 100
       }
     },
