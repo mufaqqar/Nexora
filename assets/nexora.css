@@ -3720,6 +3720,13 @@ h3 {
 
 .template-suffix-view-project #MainContent {
   min-height: 100vh;
+  padding-bottom: 80px;
+}
+
+@media (max-width: 560px) {
+  .template-suffix-view-project #MainContent {
+    padding-bottom: 100px;
+  }
 }
 
 .nx-project-view {
@@ -4465,12 +4472,112 @@ h3 {
 
 @media (max-width: 560px) {
   .nx-project-view { padding: 20px 16px; }
-  .nx-project-view__columns { gap: 16px; }
+  .nx-project-view__columns { 
+    gap: 16px;
+    grid-template-columns: 1fr;
+  }
   .nx-pv-panel { border-radius: var(--nx-radius); }
   .nx-pv-dashboard-body, .nx-pv-sell-body { padding: 16px; }
-  .nx-pv-bottom-nav { margin-left: -16px; margin-right: -16px; padding: 12px 16px; }
+  .nx-pv-bottom-nav { 
+    margin-left: -16px; 
+    margin-right: -16px; 
+    padding: 12px 16px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    border-radius: 0;
+    border-top: 1px solid var(--nx-line);
+  }
   .nx-pv-list-item { grid-template-columns: 48px minmax(0,1fr) auto 12px; gap: 10px; padding: 12px; }
   .nx-pv-list-thumb { width: 48px; height: 48px; border-radius: 8px; }
   .nx-pv-product-mini { grid-template-columns: 48px minmax(0,1fr) auto; }
   .nx-pv-product-mini__image { width: 48px; height: 48px; border-radius: 8px; }
+  
+  .nx-pv-greeting strong { font-size: 24px; }
+  .nx-pv-greeting p { font-size: 14px; }
+  
+  .nx-pv-portfolio-card { 
+    flex-direction: column; 
+    align-items: flex-start; 
+    gap: 16px; 
+    min-height: auto;
+    text-align: left;
+  }
+  .nx-pv-portfolio-glow { margin: 0; width: 60px; height: 60px; font-size: 28px; }
+  
+  .nx-pv-metric-grid { grid-template-columns: 1fr; gap: 12px; }
+  .nx-pv-metric { min-height: 80px; padding: 16px; }
+  .nx-pv-metric strong { font-size: 22px; }
+  .nx-pv-metric i { font-size: 16px; right: 16px; top: 16px; }
+  
+  .nx-pv-section-heading strong { font-size: 16px; }
+  .nx-pv-section-heading a { font-size: 13px; }
+  
+  .nx-pv-chart { height: 80px; gap: 8px; }
+  .nx-pv-bar { max-width: 28px; }
+  .nx-pv-chart-meta strong { font-size: 20px; }
+  .nx-pv-chart-bubble { font-size: 11px; padding: 4px 8px; }
+  
+  .nx-pv-product-mini__copy strong { font-size: 14px; }
+  .nx-pv-product-mini__copy span,
+  .nx-pv-product-mini__copy small { font-size: 13px; }
+  .nx-pv-product-mini__return strong { font-size: 14px; }
+  .nx-pv-product-mini__return span { font-size: 13px; }
+  
+  .nx-pv-step { padding: 16px; margin-top: 16px; }
+  .nx-pv-step-title strong { font-size: 16px; }
+  .nx-pv-step-title span { font-size: 13px; }
+  
+  .nx-pv-quantity { height: 44px; grid-template-columns: 44px 1fr 44px; }
+  .nx-pv-quantity button { width: 44px; height: 44px; font-size: 18px; }
+  .nx-pv-quantity input { font-size: 16px; }
+  
+  .nx-pv-range { font-size: 13px; gap: 8px; }
+  .nx-pv-range input { height: 4px; }
+  
+  .nx-pv-price-input { height: 44px; padding: 0 12px; font-size: 13px; }
+  .nx-pv-price-input span { font-size: 16px; margin-right: 6px; }
+  .nx-pv-price-input input { font-size: 16px; }
+  
+  .nx-pv-step-heading { font-size: 16px; margin-bottom: 12px; }
+  .nx-pv-summary-row,
+  .nx-pv-summary-total { font-size: 14px; padding: 8px 0; }
+  .nx-pv-summary-row strong { font-size: 14px; }
+  .nx-pv-summary-total { font-size: 16px; }
+  .nx-pv-summary-total strong { font-size: 20px; }
+  
+  .nx-pv-important { padding: 16px; }
+  .nx-pv-important strong { font-size: 14px; }
+  .nx-pv-important ul { font-size: 14px; gap: 8px; }
+  .nx-pv-important li { padding-left: 20px; }
+  
+  .nx-pv-list-button { min-height: 48px; font-size: 14px; margin-top: 16px; }
+  .nx-pv-cancel { font-size: 14px; padding: 10px; margin-top: 8px; }
+  
+  .nx-pv-sell-header strong { font-size: 16px; }
+  .nx-pv-back { width: 36px; height: 36px; font-size: 18px; }
+  .nx-pv-help { width: 36px; height: 36px; font-size: 13px; }
+  
+  .nx-pv-announcements-heading { margin-top: 24px; }
+  .nx-pv-list-item--announcement { grid-template-columns: 48px minmax(0,1fr) auto 12px; }
+  .nx-pv-status { font-size: 11px; padding: 4px 10px; }
+}
+
+@media (max-width: 390px) {
+  .nx-project-view { padding: 16px 12px; }
+  .nx-pv-dashboard-body, .nx-pv-sell-body { padding: 12px; }
+  .nx-pv-bottom-nav { margin-left: -12px; margin-right: -12px; padding: 10px 12px; }
+  .nx-pv-list-item { grid-template-columns: 40px minmax(0,1fr) auto 8px; gap: 8px; padding: 10px; }
+  .nx-pv-list-thumb { width: 40px; height: 40px; border-radius: 6px; }
+  .nx-pv-product-mini { grid-template-columns: 40px minmax(0,1fr) auto; }
+  .nx-pv-product-mini__image { width: 40px; height: 40px; border-radius: 6px; }
+  
+  .nx-pv-greeting strong { font-size: 20px; }
+  .nx-pv-metric { min-height: 70px; padding: 12px; }
+  .nx-pv-metric strong { font-size: 18px; }
+  
+  .nx-pv-chart { height: 60px; }
+  .nx-pv-bar { max-width: 22px; }
 }
