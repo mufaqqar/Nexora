@@ -1,6 +1,6 @@
-{% assign funded = product.metafields.project.funded_percent.value | default: 62 %}
 {% assign current = product.metafields.project.current_amount.value | default: 62000 %}
 {% assign target = product.metafields.project.target_amount.value | default: 100000 %}
+{% assign funded = current | times: 100 | divided_by: target %}
 {% assign investors = product.metafields.project.investors.value | default: 34 %}
 {% assign category = product.metafields.project.category.value | default: 'Technologie & IA' %}
 {% assign minimum = product.metafields.project.investment_minimum.value | default: 100 %}
