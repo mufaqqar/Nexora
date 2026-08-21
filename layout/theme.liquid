@@ -22,13 +22,17 @@
   <body class="template-{{ template.name | handle }}{% if template.suffix != blank %} template-suffix-{{ template.suffix | handle }}{% endif %}">
     <a class="skip-link" href="#MainContent">Aller au contenu</a>
 
-    {% section 'header' %}
+    {% unless template.suffix == 'view-project' %}
+      {% section 'header' %}
+    {% endunless %}
 
     <main id="MainContent" role="main">
       {{ content_for_layout }}
     </main>
 
-    {% section 'footer' %}
+    {% unless template.suffix == 'view-project' %}
+      {% section 'footer' %}
+    {% endunless %}
 
     <script src="{{ 'nexora.js' | asset_url }}" defer></script>
   </body>

@@ -3718,15 +3718,6 @@ h3 {
   }
 }
 
-/* =========================================================
-   NEXORA — VIEW PROJECT / SELL SHARES APP SCREEN
-   Based on the supplied mobile reference (375 x 812).
-   ========================================================= */
-.template-suffix-view-project .site-header,
-.template-suffix-view-project .site-footer {
-  display: none !important;
-}
-
 .template-suffix-view-project #MainContent {
   min-height: 100vh;
 }
