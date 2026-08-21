@@ -1,2 +1,6 @@
 # Shopify CLI theme metadata
 [commands]
+
+[theme]
+name = "Nexora"
+version = "1.0.1"

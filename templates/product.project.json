@@ -12,8 +12,6 @@
     "main": {
       "type": "project-detail",
       "settings": {
-        "about_heading": "Un projet conçu pour durer.",
-        "disclaimer": "Les investissements présentent des risques. Les informations affichées doivent être validées selon votre cadre légal et financier.123",
         "button_label": "Investir maintenant"
       }
     }

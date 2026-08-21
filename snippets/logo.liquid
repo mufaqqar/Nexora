@@ -1,4 +1,4 @@
 <a class="brand" href="{{ routes.root_url }}" aria-label="{{ shop.name }}">
   <span class="brand-mark" aria-hidden="true">N</span>
-  <span class="brand-name">1</span>
+  <span class="brand-name">{{ settings.brand_name | default: shop.name }}</span>
 </a>
