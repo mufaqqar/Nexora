@@ -54,6 +54,20 @@
 
         </div>
       {% endif %}
+      <div class="cart-payment-methods">
+  <p class="cart-payment-methods__title">
+    Paiement sécurisé
+  </p>
+
+  <div class="cart-payment-methods__icons">
+    {{ 'apple_pay' | payment_type_svg_tag }}
+    {{ 'google_pay' | payment_type_svg_tag }}
+    {{ 'paypal' | payment_type_svg_tag }}
+    {{ 'visa' | payment_type_svg_tag }}
+    {{ 'master' | payment_type_svg_tag }}
+    {{ 'american_express' | payment_type_svg_tag }}
+  </div>
+</div>
     </div>
 
 
