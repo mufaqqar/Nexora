@@ -30,10 +30,10 @@
     <!-- FEATURED PROJECT -->
     {% if featured != blank %}
 
-      {% assign feat_current = featured.metafields.project.current_amount.value | default: 0 %}
+      {% assign feat_current = featured.metafields.project.total_purchases.value | default: 0 %}
       {% assign feat_target = featured.metafields.project.target_amount.value | default: 1 %}
       {% assign feat_funded = feat_current | times: 100 | divided_by: feat_target %}
-      {% assign feat_investors = featured.metafields.project.investors.value | default: 0 %}
+      {% assign feat_customers = featured.metafields.project.customers.value | default: 0 %}
 
       <div class="featured-project">
 
@@ -90,12 +90,12 @@
 
             <div class="featured-project__stat">
               <strong>{{ feat_current | money_without_trailing_zeros }}</strong>
-              <span>Sur {{ feat_target | money_without_trailing_zeros }}</span>
+              <span>Total achats / {{ feat_target | money_without_trailing_zeros }}</span>
             </div>
 
             <div class="featured-project__stat">
-              <strong>{{ feat_investors }}</strong>
-              <span>Investisseurs</span>
+              <strong>{{ feat_customers }}</strong>
+              <span>Clients</span>
             </div>
 
           </div>

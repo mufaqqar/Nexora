@@ -1,7 +1,7 @@
-{% assign current = product.metafields.project.current_amount.value | default: 0 %}
+{% assign current = product.metafields.project.total_purchases.value | default: 0 %}
 {% assign target = product.metafields.project.target_amount.value | default: 1 %}
 {% assign funded = current | times: 100 | divided_by: target %}
-{% assign investors = product.metafields.project.investors.value | default: 0 %}
+{% assign customers = product.metafields.project.customers.value | default: 0 %}
 {% assign category = product.metafields.project.category.value | default: 'Technologie & IA' %}
 {% assign minimum = product.metafields.project.investment_minimum.value | default: 100 %}
 
@@ -30,11 +30,11 @@
           </div>
           <div class="figma-stat">
             <strong>{{ current | money_without_trailing_zeros }}</strong>
-            <span>Sur {{ target | money_without_trailing_zeros }}</span>
+            <span>Total achats / {{ target | money_without_trailing_zeros }}</span>
           </div>
           <div class="figma-stat">
-            <strong>{{ investors }}</strong>
-            <span>Investisseurs</span>
+            <strong>{{ customers }}</strong>
+            <span>Clients</span>
           </div>
         </div>
 

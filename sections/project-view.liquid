@@ -1,4 +1,4 @@
-{% assign current_amount = product.metafields.project.current_amount.value | default: 0 %}
+{% assign current_amount = product.metafields.project.total_purchases.value | default: 0 %}
 {% assign target_amount = product.metafields.project.target_amount.value | default: 1 %}
 {% assign category = product.metafields.project.category.value | default: '' %}
 {% assign share_price = product.metafields.project.share_price.value | default: 0 %}
@@ -70,7 +70,7 @@
             {% assign projects_collection = collections.projects %}
             {% if projects_collection.products_count > 0 %}
               {% for investment in projects_collection.products limit: 5 %}
-                {% assign investment_current = investment.metafields.project.current_amount.value | default: 0 %}
+                {% assign investment_current = investment.metafields.project.total_purchases.value | default: 0 %}
                 {% assign investment_category = investment.metafields.project.category.value | default: 'Technologie' %}
                 <a href="{{ investment.url }}?view=view-project" class="nx-pv-list-item">
                   <div class="nx-pv-list-thumb">{% render 'project-visual', image: investment.featured_image, loading: 'lazy' %}</div>
