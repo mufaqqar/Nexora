@@ -3105,6 +3105,12 @@ h3 {
   color: #ff7a8a;
 }
 
+.cart-summary.is-checking-out {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .cart-summary {
   position: sticky;
   top: 92px;

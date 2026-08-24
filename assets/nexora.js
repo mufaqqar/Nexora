@@ -98,3 +98,16 @@ document
     });
 
 });
+
+
+/* Cart checkout: hide the cart summary while moving to checkout */
+document
+  .querySelectorAll('[data-cart-checkout]')
+  .forEach((button) => {
+    button.addEventListener('click', () => {
+      const summary = button.closest('.cart-layout')?.querySelector('.cart-summary');
+      if (summary) {
+        summary.classList.add('is-checking-out');
+      }
+    });
+  });
