@@ -2,7 +2,7 @@
 {% assign target_amount = product.metafields.project.target_amount.value | default: 1 %}
 {% assign category = product.metafields.project.category.value | default: '' %}
 {% assign share_price = product.metafields.project.share_price.value | default: 0 %}
-{% assign remaining_shares = product.metafields.project.remaining_shares.value | default: 0 %}
+{% assign remaining_shares = product.metafields.project.remaining_shares.value | default: 100 %}
 {% assign monthly_return = product.metafields.project.monthly_return.value | default: '' %}
 {% assign platform_fee = section.settings.platform_fee | default: 2 %}
 
@@ -120,11 +120,14 @@
           <div class="nx-pv-step">
             <div class="nx-pv-step-title"><strong>1. Combien de parts voulez-vous vendre ?</strong><span>Disponibles : {{ remaining_shares }} parts</span></div>
             <div class="nx-pv-quantity">
-              <button type="button" data-qty-minus aria-label="Diminuer">−</button>
-              <input type="number" value="5" min="1" max="{{ remaining_shares }}" data-share-quantity aria-label="Nombre de parts">
-              <button type="button" data-qty-plus aria-label="Augmenter">+</button>
+              <button type="button" data-qty-minus aria-label="Diminuer" class="nx-pv-qty-btn">−</button>
+              <div class="nx-pv-qty-track">
+                <input type="range" min="1" max="{{ remaining_shares }}" value="1" data-share-range aria-label="Nombre de parts">
+                <input type="number" value="1" min="1" max="{{ remaining_shares }}" data-share-quantity aria-label="Nombre de parts">
+              </div>
+              <button type="button" data-qty-plus aria-label="Augmenter" class="nx-pv-qty-btn">+</button>
             </div>
-            <div class="nx-pv-range"><span>1</span><input type="range" min="1" max="{{ remaining_shares }}" value="5" data-share-range aria-label="Nombre de parts"><span>{{ remaining_shares }}</span></div>
+            <div class="nx-pv-range-labels"><span>1</span><span>{{ remaining_shares }}</span></div>
           </div>
 
           <div class="nx-pv-step">
@@ -186,15 +189,19 @@
   var qty = root.querySelector('[data-share-quantity]');
   var range = root.querySelector('[data-share-range]');
   var price = root.querySelector('[data-share-price]');
+  var minusBtn = root.querySelector('[data-qty-minus]');
+  var plusBtn = root.querySelector('[data-qty-plus]');
+  if (!qty || !range || !price || !minusBtn || !plusBtn) return;
   var max = Number(qty.max || 12);
   var feeRate = Number({{ platform_fee | json }}) / 100;
-  var currency = '€';
 
   function update() {
     var q = Math.max(1, Math.min(max, Number(qty.value) || 1));
     var p = Math.max(1, Number(price.value) || 1);
     qty.value = q;
     range.value = q;
+    minusBtn.disabled = q <= 1;
+    plusBtn.disabled = q >= max;
     var total = q * p;
     var fee = total * feeRate;
     var net = total - fee;
@@ -205,8 +212,14 @@
     root.querySelector('[data-summary-net]').textContent = net.toFixed(2);
   }
 
-  root.querySelector('[data-qty-minus]').addEventListener('click', function() { qty.value = Math.max(1, Number(qty.value || 1) - 1); update(); });
-  root.querySelector('[data-qty-plus]').addEventListener('click', function() { qty.value = Math.min(max, Number(qty.value || 1) + 1); update(); });
+  function changeQty(delta) {
+    var current = Number(qty.value) || 1;
+    qty.value = Math.max(1, Math.min(max, current + delta));
+    update();
+  }
+
+  minusBtn.addEventListener('click', function(e) { e.preventDefault(); changeQty(-1); });
+  plusBtn.addEventListener('click', function(e) { e.preventDefault(); changeQty(1); });
   qty.addEventListener('input', update);
   range.addEventListener('input', function() { qty.value = range.value; update(); });
   price.addEventListener('input', update);
