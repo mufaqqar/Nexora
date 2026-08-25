@@ -25,16 +25,35 @@
 
         <div class="customer-field">
 
-          <label for="RegisterName">
-            Nom complet
+          <label for="RegisterFirstName">
+            Prénom
           </label>
 
           <input
-            id="RegisterName"
+            id="RegisterFirstName"
             type="text"
             name="customer[first_name]"
             autocomplete="given-name"
-            placeholder="Jean Dupont"
+            placeholder="Jean"
+            required
+          >
+
+        </div>
+
+        <!-- Last Name -->
+
+        <div class="customer-field">
+
+          <label for="RegisterLastName">
+            Nom de famille
+          </label>
+
+          <input
+            id="RegisterLastName"
+            type="text"
+            name="customer[last_name]"
+            autocomplete="family-name"
+            placeholder="Dupont"
             required
           >
 
@@ -58,6 +77,41 @@
             autocapitalize="off"
             placeholder="jean@example.com"
             required
+          >
+
+        </div>
+
+        <!-- Phone -->
+
+        <div class="customer-field">
+
+          <label for="RegisterPhone">
+            Téléphone
+          </label>
+
+          <input
+            id="RegisterPhone"
+            type="tel"
+            name="customer[phone]"
+            autocomplete="tel"
+            placeholder="+33 6 12 34 56 78"
+          >
+
+        </div>
+
+        <!-- Company -->
+
+        <div class="customer-field">
+
+          <label for="RegisterCompany">
+            Entreprise
+          </label>
+
+          <input
+            id="RegisterCompany"
+            type="text"
+            name="customer[note]"
+            placeholder="Nom de votre entreprise"
           >
 
         </div>
