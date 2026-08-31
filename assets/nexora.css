@@ -2981,6 +2981,17 @@ h3 {
   align-items: start;
 }
 
+.cart-layout--summary {
+  grid-template-columns: 1fr;
+  max-width: 520px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.cart-layout--summary .cart-summary {
+  position: static;
+}
+
 .cart-items {
   display: grid;
   gap: 12px;

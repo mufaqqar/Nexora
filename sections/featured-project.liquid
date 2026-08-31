@@ -122,19 +122,12 @@
           <div class="featured-project__actions">
 
             <a
-              href="{{ featured.url }}?view=view-project"
+              href="{{ featured.url }}"
               class="featured-project__button featured-project__button--secondary"
             >
               Voir le projet
             </a>
-
-            <a
-              href="{{ featured.url }}"
-              class="featured-project__button featured-project__button--primary"
-            >
-              Investir dès {{ section.settings.minimum }} €
-              {% render 'icon-arrow' %}
-            </a>
+            
 
           </div>
 

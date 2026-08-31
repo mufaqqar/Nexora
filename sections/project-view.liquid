@@ -1,108 +1,18 @@
 {% assign current_amount = product.metafields.project.total_purchases.value | default: 0 %}
 {% assign target_amount = product.metafields.project.target_amount.value | default: 1 %}
 {% assign category = product.metafields.project.category.value | default: '' %}
-{% assign share_price = product.metafields.project.share_price.value | default: 0 %}
+{% assign share_price = product.selected_or_first_available_variant.price | default: 0 %}
+{% assign share_price_decimal = share_price | divided_by: 100.0 %}
 {% assign remaining_shares = product.metafields.project.remaining_shares.value | default: 100 %}
 {% assign monthly_return = product.metafields.project.monthly_return.value | default: '' %}
 {% assign platform_fee = section.settings.platform_fee | default: 2 %}
 
 <section class="nx-project-view" data-project-view>
   <div class="nx-project-view__shell">
-    <div class="nx-project-view__columns">
-      <!-- LEFT: investor dashboard -->
-      <article class="nx-pv-panel nx-pv-dashboard">
-        <header class="nx-pv-topbar">
-          <a href="{{ routes.root_url }}" class="nx-pv-brand" aria-label="Nexora">
-            <span class="nx-pv-brand__mark">N</span>
-            <span>NEXORA</span>
-          </a>
-          <div class="nx-pv-top-actions">
-            <button type="button" aria-label="Notifications" class="nx-pv-icon-button">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg>
-            </button>
-            <button type="button" aria-label="Menu" class="nx-pv-icon-button">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14M5 12h14M5 17h14"/></svg>
-            </button>
-          </div>
-        </header>
-
-        <div class="nx-pv-dashboard-body">
-          <div class="nx-pv-greeting">
-            <strong>{{ section.settings.user_name }}</strong>
-            <span>{{ section.settings.greeting }}</span>
-            <p>{{ section.settings.greeting_subtitle }}</p>
-          </div>
-
-          <div class="nx-pv-portfolio-card">
-            <div>
-              <span>VALEUR TOTALE DU PORTEFEUILLE</span>
-              <strong>{{ section.settings.portfolio_value }}</strong>
-              <small class="nx-pv-positive">{{ section.settings.portfolio_growth }}</small>
-            </div>
-            <div class="nx-pv-portfolio-glow" aria-hidden="true">N</div>
-          </div>
-
-          <div class="nx-pv-metric-grid">
-            <div class="nx-pv-metric"><span>Revenus mensuels</span><strong>{{ section.settings.monthly_income }}</strong><small class="nx-pv-positive">+{{ section.settings.monthly_growth }}</small><i>↗</i></div>
-            <div class="nx-pv-metric"><span>Total investi</span><strong>{{ section.settings.total_invested }}</strong><small>{{ section.settings.invested_count }}</small><i>▣</i></div>
-            <div class="nx-pv-metric"><span>Prochain versement</span><strong>{{ section.settings.next_payment }}</strong><small>{{ section.settings.next_payment_subtitle }}</small><i>▣</i></div>
-            <div class="nx-pv-metric"><span>Projets actifs</span><strong>{{ section.settings.active_projects }}</strong><small>Sur {{ section.settings.total_projects }} projets</small><i>◔</i></div>
-          </div>
-
-          <div class="nx-pv-section-heading"><strong>Revenus mensuels</strong><a href="{{ routes.collections_url }}/projects">Voir tout</a></div>
-          <div class="nx-pv-chart-card">
-            <div class="nx-pv-chart-meta"><strong>{{ section.settings.chart_value }}</strong><span class="nx-pv-positive">{{ section.settings.chart_growth }}</span></div>
-            <div class="nx-pv-chart" aria-label="Graphique des revenus mensuels">
-              {% assign chart_values = '28,40,34,58,70,86,74' | split: ',' %}
-              {% assign chart_months = 'Fév,Mar,Avr,Mai,Juin,Juil,Août' | split: ',' %}
-              {% for value in chart_values %}
-                <div class="nx-pv-bar-wrap">
-                  <span class="nx-pv-bar" style="height: {{ value }}%;"></span>
-                  <small>{{ chart_months[forloop.index0] }}</small>
-                </div>
-              {% endfor %}
-              <b class="nx-pv-chart-bubble">€{{ section.settings.chart_peak }}</b>
-            </div>
-          </div>
-
-          <div class="nx-pv-section-heading"><strong>Mes investissements</strong><a href="{{ routes.collections_url }}/projects">Voir tout</a></div>
-          <div class="nx-pv-list">
-            {% assign projects_collection = collections.projects %}
-            {% if projects_collection.products_count > 0 %}
-              {% for investment in projects_collection.products limit: 5 %}
-                {% assign investment_current = investment.metafields.project.total_purchases.value | default: 0 %}
-                {% assign investment_category = investment.metafields.project.category.value | default: 'Technologie' %}
-                <a href="{{ investment.url }}?view=view-project" class="nx-pv-list-item">
-                  <div class="nx-pv-list-thumb">{% render 'project-visual', image: investment.featured_image, loading: 'lazy' %}</div>
-                  <div class="nx-pv-list-copy"><strong>{{ investment.title }}</strong><span>{{ investment_category }}</span></div>
-                  <div class="nx-pv-list-value"><strong>€{{ section.settings.default_share_count }}</strong><span>{{ investment_current | money_without_trailing_zeros }}</span><em class="nx-pv-positive">+{{ section.settings.default_growth }}</em></div>
-                  <span class="nx-pv-chevron">›</span>
-                </a>
-              {% endfor %}
-            {% else %}
-              <a href="{{ product.url }}?view=view-project" class="nx-pv-list-item">
-                <div class="nx-pv-list-thumb">{% render 'project-visual', image: product.featured_image, loading: 'lazy' %}</div>
-                <div class="nx-pv-list-copy"><strong>{{ product.title }}</strong><span>{{ category }}</span></div>
-                <div class="nx-pv-list-value"><strong>{{ section.settings.default_share_count }} parts</strong><span>{{ current_amount | money_without_trailing_zeros }}</span><em class="nx-pv-positive">+{{ section.settings.default_growth }}</em></div>
-                <span class="nx-pv-chevron">›</span>
-              </a>
-            {% endif %}
-          </div>
-
-          <nav class="nx-pv-bottom-nav" aria-label="Navigation du compte">
-            <a href="{{ routes.root_url }}"><span>⌂</span>Accueil</a>
-            <a href="{{ routes.collections_url }}/projects"><span>▣</span>Projets</a>
-            <a class="is-active" href="{{ product.url }}?view=view-project"><span>◈</span>Investissements</a>
-            <a href="{{ routes.account_url }}"><span>◯</span>Profil</a>
-          </nav>
-        </div>
-      </article>
-
-      <!-- RIGHT: sell shares / project action -->
       <article class="nx-pv-panel nx-pv-sell">
         <header class="nx-pv-sell-header">
           <a href="{{ product.url }}" class="nx-pv-back" aria-label="Retour">←</a>
-          <strong>Vendre des parts</strong>
+          <strong>Investir</strong>
           <button type="button" class="nx-pv-help" aria-label="Aide">?</button>
         </header>
 
@@ -118,7 +28,7 @@
           </div>
 
           <div class="nx-pv-step">
-            <div class="nx-pv-step-title"><strong>1. Combien de parts voulez-vous vendre ?</strong><span>Disponibles : {{ remaining_shares }} parts</span></div>
+            <div class="nx-pv-step-title"><strong>1. Combien de parts voulez-vous investir ?</strong><span>Disponibles : {{ remaining_shares }} parts</span></div>
             <div class="nx-pv-quantity">
               <button type="button" data-qty-minus aria-label="Diminuer" class="nx-pv-qty-btn">−</button>
               <div class="nx-pv-qty-track">
@@ -131,32 +41,32 @@
           </div>
 
           <div class="nx-pv-step">
-            <div class="nx-pv-step-title"><strong>2. Prix par part</strong><span>Prix suggéré : €120 - €130</span></div>
-            <label class="nx-pv-price-input"><span>€</span><input type="number" value="{{ share_price }}" min="1" step="1" data-share-price aria-label="Prix par part"></label>
+            <div class="nx-pv-step-title"><strong>2. Prix par part</strong><span>Prix du produit : {{ share_price | money_without_trailing_zeros }}</span></div>
+            <label class="nx-pv-price-input"><span>€</span><input type="number" value="{{ share_price_decimal }}" min="1" step="0.01" data-share-price aria-label="Prix par part" readonly></label>
           </div>
 
           <div class="nx-pv-step nx-pv-summary">
-            <strong class="nx-pv-step-heading">3. Récapitulatif de la vente</strong>
-            <div class="nx-pv-summary-row"><span>Parts à vendre</span><strong><b data-summary-quantity>5</b> parts</strong></div>
-            <div class="nx-pv-summary-row"><span>Prix par part</span><strong>€<b data-summary-price>{{ share_price }}</b></strong></div>
+            <strong class="nx-pv-step-heading">3. Récapitulatif de votre investissement</strong>
+            <div class="nx-pv-summary-row"><span>Nombre de parts</span><strong><b data-summary-quantity>5</b> parts</strong></div>
+            <div class="nx-pv-summary-row"><span>Prix par part</span><strong>€<b data-summary-price>{{ share_price_decimal }}</b></strong></div>
             <div class="nx-pv-summary-row"><span>Valeur totale</span><strong>€<b data-summary-total>675</b></strong></div>
             <div class="nx-pv-summary-row nx-pv-summary-row--fee"><span>Frais de plateforme ({{ platform_fee }}%)</span><strong>-€<b data-summary-fee>13.50</b></strong></div>
-            <div class="nx-pv-summary-total"><span>Vous recevrez</span><strong>€<b data-summary-net>661.50</b></strong></div>
+            <div class="nx-pv-summary-total"><span>Total à payer</span><strong>€<b data-summary-net>661.50</b></strong></div>
           </div>
 
           <div class="nx-pv-important">
             <strong>Informations importantes</strong>
             <ul>
-              <li>Votre annonce sera visible par les investisseurs.</li>
-              <li>Vous restez propriétaire jusqu'à la vente effective.</li>
-              <li>Les frais sont prélevés après la transaction.</li>
+              <li>Votre investissement sera ajouté au panier.</li>
+              <li>Vous restez propriétaire de vos parts une fois la transaction effectuée.</li>
+              <li>Les frais sont indiqués lors du paiement.</li>
             </ul>
           </div>
 
-          <button type="button" class="nx-pv-list-button" data-list-sale>✎&nbsp; Lister à la vente</button>
+          <button type="button" class="nx-pv-list-button" data-list-sale>🛒&nbsp; Ajouter au panier</button>
           <button type="button" class="nx-pv-cancel" data-cancel-sale>Annuler</button>
 
-          <div class="nx-pv-section-heading nx-pv-announcements-heading"><strong>Mes annonces</strong><a href="{{ routes.collections_url }}/projects">Voir toutes</a></div>
+          <div class="nx-pv-section-heading nx-pv-announcements-heading"><strong>Mes investissements</strong><a href="{{ routes.collections_url }}/projects">Voir toutes</a></div>
           <div class="nx-pv-list nx-pv-announcements">
             {% assign announcement_products = collections.projects.products %}
             {% if announcement_products.size > 0 %}
@@ -171,14 +81,13 @@
             {% else %}
               <a href="{{ product.url }}?view=view-project" class="nx-pv-list-item nx-pv-list-item--announcement">
                 <div class="nx-pv-list-thumb">{% render 'project-visual', image: product.featured_image, loading: 'lazy' %}</div>
-                <div class="nx-pv-list-copy"><strong>{{ product.title }}</strong><span>5 parts à €{{ share_price }}</span></div>
+                <div class="nx-pv-list-copy"><strong>{{ product.title }}</strong><span>5 parts à €{{ share_price_decimal }}</span></div>
                 <span class="nx-pv-status">En attente</span><span class="nx-pv-chevron">›</span>
               </a>
             {% endif %}
           </div>
         </div>
       </article>
-    </div>
   </div>
 </section>
 
@@ -206,8 +115,8 @@
     var fee = total * feeRate;
     var net = total - fee;
     root.querySelector('[data-summary-quantity]').textContent = q;
-    root.querySelector('[data-summary-price]').textContent = p.toFixed(0);
-    root.querySelector('[data-summary-total]').textContent = total.toFixed(0);
+    root.querySelector('[data-summary-price]').textContent = p.toFixed(2);
+    root.querySelector('[data-summary-total]').textContent = total.toFixed(2);
     root.querySelector('[data-summary-fee]').textContent = fee.toFixed(2);
     root.querySelector('[data-summary-net]').textContent = net.toFixed(2);
   }
@@ -225,8 +134,29 @@
   price.addEventListener('input', update);
 
   root.querySelector('[data-list-sale]').addEventListener('click', function() {
-    this.textContent = '✓ Annonce prête à être publiée';
-    this.classList.add('is-success');
+    var q = Math.max(1, Number(qty.value) || 1);
+    var self = this;
+    self.disabled = true;
+    fetch('{{ routes.cart_add_url }}', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        id: {{ product.selected_or_first_available_variant.id | json }},
+        quantity: q
+      })
+    }).then(function(res) {
+      if (!res.ok) { throw new Error('error'); }
+      self.textContent = '✓ Ajouté au panier';
+      self.classList.add('is-success');
+      var cartLink = document.createElement('a');
+      cartLink.href = '{{ routes.cart_url }}';
+      cartLink.className = 'nx-pv-list-button is-success';
+      cartLink.textContent = 'Voir le panier →';
+      self.replaceWith(cartLink);
+      return true;
+    }).catch(function() {
+      self.disabled = false;
+    });
   });
   root.querySelector('[data-cancel-sale]').addEventListener('click', function() {
     window.location.href = '{{ product.url }}';
