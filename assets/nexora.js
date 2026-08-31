@@ -111,3 +111,19 @@ document
       }
     });
   });
+
+
+/* Empty the cart */
+document
+  .querySelectorAll('[data-cart-clear]')
+  .forEach((button) => {
+    button.addEventListener('click', async () => {
+      if (!window.confirm('Vider le panier ?')) return;
+      try {
+        await fetch('/cart/clear.js', { method: 'POST' });
+        window.location.reload();
+      } catch (err) {
+        // ignore
+      }
+    });
+  });
