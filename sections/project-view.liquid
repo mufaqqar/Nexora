@@ -27,18 +27,68 @@
             <div class="nx-pv-product-mini__return"><strong>{{ monthly_return }}</strong><span>par mois</span></div>
           </div>
 
-          <div class="nx-pv-step">
-            <div class="nx-pv-step-title"><strong>1. Combien de parts voulez-vous investir ?</strong><span>Disponibles : {{ remaining_shares }} parts</span></div>
-            <div class="nx-pv-quantity">
-              <button type="button" data-qty-minus aria-label="Diminuer" class="nx-pv-qty-btn">−</button>
-              <div class="nx-pv-qty-track">
-                <input type="range" min="1" max="{{ remaining_shares }}" value="1" data-share-range aria-label="Nombre de parts">
-                <input type="number" value="1" min="1" max="{{ remaining_shares }}" data-share-quantity aria-label="Nombre de parts">
-              </div>
-              <button type="button" data-qty-plus aria-label="Augmenter" class="nx-pv-qty-btn">+</button>
-            </div>
-            <div class="nx-pv-range-labels"><span>1</span><span>{{ remaining_shares }}</span></div>
-          </div>
+       <div class="nx-pv-step">
+
+  <div class="nx-pv-step-title">
+    <strong>1. Combien de parts voulez-vous investir ?</strong>
+    <span>Disponibles : {{ remaining_shares }} parts</span>
+  </div>
+
+  <div class="nx-pv-quantity">
+
+    <!-- Minus -->
+    <button
+      type="button"
+      data-qty-minus
+      aria-label="Diminuer"
+      class="nx-pv-qty-btn"
+    >
+      −
+    </button>
+
+    <!-- Quantity -->
+    <div class="nx-pv-qty-value">
+      <input
+        type="number"
+        value="1"
+        min="1"
+        max="{{ remaining_shares }}"
+        data-share-quantity
+        aria-label="Nombre de parts"
+      >
+    </div>
+
+    <!-- Plus -->
+    <button
+      type="button"
+      data-qty-plus
+      aria-label="Augmenter"
+      class="nx-pv-qty-btn"
+    >
+      +
+    </button>
+
+  </div>
+
+  <!-- Slider -->
+  <div class="nx-pv-range">
+    <input
+      type="range"
+      min="1"
+      max="{{ remaining_shares }}"
+      value="1"
+      data-share-range
+      aria-label="Nombre de parts"
+    >
+  </div>
+
+  <!-- Range labels -->
+  <div class="nx-pv-range-labels">
+    <span>1</span>
+    <span>{{ remaining_shares }}</span>
+  </div>
+
+</div>
 
           <div class="nx-pv-step">
             <div class="nx-pv-step-title"><strong>2. Prix par part</strong><span>Prix du produit : {{ share_price | money_without_trailing_zeros }}</span></div>
@@ -92,79 +142,373 @@
 </section>
 
 <script>
-(function() {
+(function () {
+
   var root = document.querySelector('[data-project-view]');
+
   if (!root) return;
+
   var qty = root.querySelector('[data-share-quantity]');
   var range = root.querySelector('[data-share-range]');
   var price = root.querySelector('[data-share-price]');
   var minusBtn = root.querySelector('[data-qty-minus]');
   var plusBtn = root.querySelector('[data-qty-plus]');
+
   if (!qty || !range || !price || !minusBtn || !plusBtn) return;
+
   var max = Number(qty.max || 12);
+  var min = Number(qty.min || 1);
+
   var feeRate = Number({{ platform_fee | json }}) / 100;
 
+
+  /* =====================================================
+     UPDATE SLIDER PROGRESS
+  ===================================================== */
+
+  function updateRangeProgress(value) {
+
+    var rangeMin = Number(range.min || 1);
+    var rangeMax = Number(range.max || max);
+
+    if (rangeMax <= rangeMin) {
+      range.style.setProperty('--range-progress', '0%');
+      return;
+    }
+
+    var percentage =
+      ((Number(value) - rangeMin) /
+      (rangeMax - rangeMin)) * 100;
+
+    percentage = Math.max(0, Math.min(100, percentage));
+
+    range.style.setProperty(
+      '--range-progress',
+      percentage + '%'
+    );
+  }
+
+
+  /* =====================================================
+     MAIN UPDATE
+  ===================================================== */
+
   function update() {
-    var q = Math.max(1, Math.min(max, Number(qty.value) || 1));
-    var p = Math.max(1, Number(price.value) || 1);
+
+    var q = Number(qty.value) || min;
+
+    q = Math.max(
+      min,
+      Math.min(max, q)
+    );
+
+    var p = Number(price.value) || 1;
+
+    p = Math.max(1, p);
+
+
+    /* Quantity */
+
     qty.value = q;
     range.value = q;
-    minusBtn.disabled = q <= 1;
+
+
+    /* Slider */
+
+    updateRangeProgress(q);
+
+
+    /* Buttons */
+
+    minusBtn.disabled = q <= min;
     plusBtn.disabled = q >= max;
+
+
+    /* Calculations */
+
     var total = q * p;
     var fee = total * feeRate;
     var net = total - fee;
-    root.querySelector('[data-summary-quantity]').textContent = q;
-    root.querySelector('[data-summary-price]').textContent = p.toFixed(2);
-    root.querySelector('[data-summary-total]').textContent = total.toFixed(2);
-    root.querySelector('[data-summary-fee]').textContent = fee.toFixed(2);
-    root.querySelector('[data-summary-net]').textContent = net.toFixed(2);
+
+
+    /* Summary */
+
+    var summaryQuantity =
+      root.querySelector('[data-summary-quantity]');
+
+    var summaryPrice =
+      root.querySelector('[data-summary-price]');
+
+    var summaryTotal =
+      root.querySelector('[data-summary-total]');
+
+    var summaryFee =
+      root.querySelector('[data-summary-fee]');
+
+    var summaryNet =
+      root.querySelector('[data-summary-net]');
+
+
+    if (summaryQuantity) {
+      summaryQuantity.textContent = q;
+    }
+
+    if (summaryPrice) {
+      summaryPrice.textContent = p.toFixed(2);
+    }
+
+    if (summaryTotal) {
+      summaryTotal.textContent = total.toFixed(2);
+    }
+
+    if (summaryFee) {
+      summaryFee.textContent = fee.toFixed(2);
+    }
+
+    if (summaryNet) {
+      summaryNet.textContent = net.toFixed(2);
+    }
+
   }
 
+
+  /* =====================================================
+     CHANGE QUANTITY
+  ===================================================== */
+
   function changeQty(delta) {
-    var current = Number(qty.value) || 1;
-    qty.value = Math.max(1, Math.min(max, current + delta));
+
+    var current =
+      Number(qty.value) || min;
+
+    var newValue =
+      current + delta;
+
+    newValue = Math.max(
+      min,
+      Math.min(max, newValue)
+    );
+
+    qty.value = newValue;
+
     update();
   }
 
-  minusBtn.addEventListener('click', function(e) { e.preventDefault(); changeQty(-1); });
-  plusBtn.addEventListener('click', function(e) { e.preventDefault(); changeQty(1); });
-  qty.addEventListener('input', update);
-  range.addEventListener('input', function() { qty.value = range.value; update(); });
-  price.addEventListener('input', update);
 
-  root.querySelector('[data-list-sale]').addEventListener('click', function() {
-    var q = Math.max(1, Number(qty.value) || 1);
-    var self = this;
-    self.disabled = true;
-    fetch('{{ routes.cart_add_url }}', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        id: {{ product.selected_or_first_available_variant.id | json }},
-        quantity: q
-      })
-    }).then(function(res) {
-      if (!res.ok) { throw new Error('error'); }
-      self.textContent = '✓ Ajouté au panier';
-      self.classList.add('is-success');
-      var cartLink = document.createElement('a');
-      cartLink.href = '{{ routes.cart_url }}';
-      cartLink.className = 'nx-pv-list-button is-success';
-      cartLink.textContent = 'Voir le panier →';
-      self.replaceWith(cartLink);
-      return true;
-    }).catch(function() {
-      self.disabled = false;
-    });
-  });
-  root.querySelector('[data-cancel-sale]').addEventListener('click', function() {
-    window.location.href = '{{ product.url }}';
-  });
+  /* =====================================================
+     MINUS
+  ===================================================== */
+
+  minusBtn.addEventListener(
+    'click',
+    function (e) {
+
+      e.preventDefault();
+
+      changeQty(-1);
+
+    }
+  );
+
+
+  /* =====================================================
+     PLUS
+  ===================================================== */
+
+  plusBtn.addEventListener(
+    'click',
+    function (e) {
+
+      e.preventDefault();
+
+      changeQty(1);
+
+    }
+  );
+
+
+  /* =====================================================
+     NUMBER INPUT
+  ===================================================== */
+
+  qty.addEventListener(
+    'input',
+    function () {
+
+      var value =
+        Number(qty.value) || min;
+
+      value = Math.max(
+        min,
+        Math.min(max, value)
+      );
+
+      range.value = value;
+
+      updateRangeProgress(value);
+
+    }
+  );
+
+
+  qty.addEventListener(
+    'change',
+    function () {
+
+      update();
+
+    }
+  );
+
+
+  /* =====================================================
+     RANGE SLIDER
+  ===================================================== */
+
+  range.addEventListener(
+    'input',
+    function () {
+
+      var value =
+        Number(range.value) || min;
+
+      qty.value = value;
+
+      updateRangeProgress(value);
+
+      /* Update calculations immediately */
+      update();
+
+    }
+  );
+
+
+  /* =====================================================
+     PRICE
+  ===================================================== */
+
+  price.addEventListener(
+    'input',
+    function () {
+
+      update();
+
+    }
+  );
+
+
+  /* =====================================================
+     ADD TO CART
+  ===================================================== */
+
+  var addButton =
+    root.querySelector('[data-list-sale]');
+
+  if (addButton) {
+
+    addButton.addEventListener(
+      'click',
+      function () {
+
+        var q =
+          Math.max(
+            min,
+            Number(qty.value) || min
+          );
+
+        var self = this;
+
+        self.disabled = true;
+
+        fetch('{{ routes.cart_add_url }}', {
+
+          method: 'POST',
+
+          headers: {
+            'Content-Type': 'application/json'
+          },
+
+          body: JSON.stringify({
+
+            id: {{ product.selected_or_first_available_variant.id | json }},
+
+            quantity: q
+
+          })
+
+        })
+        .then(function (res) {
+
+          if (!res.ok) {
+            throw new Error('error');
+          }
+
+          self.textContent =
+            '✓ Ajouté au panier';
+
+          self.classList.add(
+            'is-success'
+          );
+
+
+          var cartLink =
+            document.createElement('a');
+
+          cartLink.href =
+            '{{ routes.cart_url }}';
+
+          cartLink.className =
+            'nx-pv-list-button is-success';
+
+          cartLink.textContent =
+            'Voir le panier →';
+
+
+          self.replaceWith(cartLink);
+
+        })
+        .catch(function () {
+
+          self.disabled = false;
+
+        });
+
+      }
+    );
+
+  }
+
+
+  /* =====================================================
+     CANCEL
+  ===================================================== */
+
+  var cancelButton =
+    root.querySelector('[data-cancel-sale]');
+
+  if (cancelButton) {
+
+    cancelButton.addEventListener(
+      'click',
+      function () {
+
+        window.location.href =
+          '{{ product.url }}';
+
+      }
+    );
+
+  }
+
+
+  /* =====================================================
+     INITIAL STATE
+  ===================================================== */
+
   update();
+
 })();
 </script>
-
 {% schema %}
 {
   "name": "Vue projet / vente",

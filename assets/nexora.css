@@ -5374,3 +5374,347 @@ h3 {
     padding: 0 8px;
   }
 }
+
+/* =========================================================
+   STEP 1 — SHARE QUANTITY
+========================================================= */
+
+.nx-pv-step {
+  width: 100%;
+}
+
+.nx-pv-step-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 22px;
+  gap: 20px;
+}
+
+.nx-pv-step-title strong {
+  margin: 0;
+  color: #f1f1f5;
+  font-size: 17px;
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+.nx-pv-step-title span {
+  flex-shrink: 0;
+  color: #858592;
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+
+/* =========================================================
+   QUANTITY BOX
+========================================================= */
+
+.nx-pv-quantity {
+  position: relative;
+
+  display: grid;
+  grid-template-columns: 74px minmax(0, 1fr) 74px;
+
+  width: 100%;
+  height: 66px;
+
+  overflow: hidden;
+
+  background: #070912;
+  border: 1px solid #101320;
+  border-radius: 13px;
+}
+
+
+/* =========================================================
+   MINUS / PLUS BUTTONS
+========================================================= */
+
+.nx-pv-qty-btn {
+  position: relative;
+
+  width: 100%;
+  height: 66px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+  margin: 0;
+
+  border: 0;
+  outline: none;
+
+  background: #171a29;
+  color: #f2f2f5;
+
+  font-family: inherit;
+  font-size: 30px;
+  font-weight: 300;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.18s ease,
+    color 0.18s ease;
+}
+
+.nx-pv-qty-btn:hover {
+  background: #1c2031;
+}
+
+.nx-pv-qty-btn:active {
+  background: #22263a;
+}
+
+.nx-pv-qty-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+
+/* =========================================================
+   CENTER NUMBER
+========================================================= */
+
+.nx-pv-qty-value {
+  width: 100%;
+  height: 66px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #070912;
+}
+
+.nx-pv-qty-value input {
+  width: 100%;
+  height: 66px;
+
+  display: block;
+
+  margin: 0;
+  padding: 0;
+
+  border: 0;
+  outline: none;
+
+  background: transparent;
+
+  color: #f4f4f7;
+
+  text-align: center;
+
+  font-family: inherit;
+  font-size: 25px;
+  font-weight: 500;
+  line-height: 66px;
+
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.nx-pv-qty-value input::-webkit-outer-spin-button,
+.nx-pv-qty-value input::-webkit-inner-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+
+/* =========================================================
+   SLIDER
+========================================================= */
+
+.nx-pv-range {
+  width: 100%;
+
+  margin-top: 25px;
+  padding: 0;
+
+  line-height: 0;
+}
+
+.nx-pv-range input[type="range"] {
+  --range-progress: 0%;
+
+  display: block;
+
+  width: 100%;
+  height: 5px;
+
+  margin: 0;
+  padding: 0;
+
+  border: 0;
+  outline: none;
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  background: linear-gradient(
+    to right,
+    #7135ff 0%,
+    #7135ff var(--range-progress),
+    #171925 var(--range-progress),
+    #171925 100%
+  );
+
+  border-radius: 999px;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   CHROME / EDGE / SAFARI TRACK
+========================================================= */
+
+.nx-pv-range input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 5px;
+
+  border: 0;
+  border-radius: 999px;
+
+  background: transparent;
+}
+
+
+/* =========================================================
+   CHROME / EDGE / SAFARI THUMB
+========================================================= */
+
+.nx-pv-range input[type="range"]::-webkit-slider-thumb {
+  width: 24px;
+  height: 24px;
+
+  margin-top: -9.5px;
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  border: 0;
+  border-radius: 50%;
+
+  background: #7135ff;
+
+  box-shadow: none;
+
+  cursor: grab;
+}
+
+.nx-pv-range input[type="range"]::-webkit-slider-thumb:active {
+  cursor: grabbing;
+}
+
+
+/* =========================================================
+   FIREFOX
+========================================================= */
+
+.nx-pv-range input[type="range"]::-moz-range-track {
+  width: 100%;
+  height: 5px;
+
+  border: 0;
+  border-radius: 999px;
+
+  background: #171925;
+}
+
+.nx-pv-range input[type="range"]::-moz-range-progress {
+  height: 5px;
+
+  border-radius: 999px;
+
+  background: #7135ff;
+}
+
+.nx-pv-range input[type="range"]::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+
+  border: 0;
+  border-radius: 50%;
+
+  background: #7135ff;
+
+  cursor: grab;
+}
+
+
+/* =========================================================
+   1 — 12 LABELS
+========================================================= */
+
+.nx-pv-range-labels {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+
+  margin-top: 14px;
+}
+
+.nx-pv-range-labels span {
+  color: #777987;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media screen and (max-width: 600px) {
+
+  .nx-pv-step-title {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 18px;
+  }
+
+  .nx-pv-step-title strong {
+    font-size: 15px;
+  }
+
+  .nx-pv-step-title span {
+    font-size: 13px;
+  }
+
+  .nx-pv-quantity {
+    grid-template-columns: 62px minmax(0, 1fr) 62px;
+    height: 62px;
+  }
+
+  .nx-pv-qty-btn {
+    height: 62px;
+    font-size: 28px;
+  }
+
+  .nx-pv-qty-value {
+    height: 62px;
+  }
+
+  .nx-pv-qty-value input {
+    height: 62px;
+    line-height: 62px;
+    font-size: 23px;
+  }
+
+  .nx-pv-range {
+    margin-top: 23px;
+  }
+}
