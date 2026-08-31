@@ -4622,8 +4622,19 @@ h3 {
 }
 
 .nx-pv-list-button.is-success {
-  background: linear-gradient(90deg, #3fbe73, #238955);
-  border-color: #55d991;
+  width: 100%;
+  min-height: 52px;
+  margin-top: 24px;
+  border: 1px solid rgba(145, 108, 255, 0.45);
+  border-radius: 8px;
+  background: linear-gradient(90deg, var(--nx-purple), var(--nx-purple-2));
+  color: #fff;
+  font-size: 16px;
+  font-weight: 520;
+  cursor: pointer;
+  box-shadow: 0 12px 35px rgba(91, 41, 233, 0.25);
+  transition: all 0.25s var(--nx-ease);
+  display: block;
 }
 
 .nx-pv-cancel {
@@ -5557,13 +5568,11 @@ h3 {
   appearance: none;
   -webkit-appearance: none;
 
-  background: linear-gradient(
-    to right,
-    #7135ff 0%,
-    #7135ff var(--range-progress),
-    #171925 var(--range-progress),
-    #171925 100%
-  );
+  background: linear-gradient(to right,
+      #7135ff 0%,
+      #7135ff var(--range-progress),
+      #171925 var(--range-progress),
+      #171925 100%);
 
   border-radius: 999px;
 
