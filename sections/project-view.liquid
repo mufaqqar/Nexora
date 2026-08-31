@@ -11,7 +11,7 @@
       <article class="nx-pv-panel nx-pv-sell">
         <header class="nx-pv-sell-header">
           <a href="{{ product.url }}" class="nx-pv-back" aria-label="Retour">←</a>
-          <strong>Vendre des parts</strong>
+          <strong>Investir</strong>
           <button type="button" class="nx-pv-help" aria-label="Aide">?</button>
         </header>
 
@@ -27,7 +27,7 @@
           </div>
 
           <div class="nx-pv-step">
-            <div class="nx-pv-step-title"><strong>1. Combien de parts voulez-vous vendre ?</strong><span>Disponibles : {{ remaining_shares }} parts</span></div>
+            <div class="nx-pv-step-title"><strong>1. Combien de parts voulez-vous investir ?</strong><span>Disponibles : {{ remaining_shares }} parts</span></div>
             <div class="nx-pv-quantity">
               <button type="button" data-qty-minus aria-label="Diminuer" class="nx-pv-qty-btn">−</button>
               <div class="nx-pv-qty-track">
@@ -45,27 +45,27 @@
           </div>
 
           <div class="nx-pv-step nx-pv-summary">
-            <strong class="nx-pv-step-heading">3. Récapitulatif de la vente</strong>
-            <div class="nx-pv-summary-row"><span>Parts à vendre</span><strong><b data-summary-quantity>5</b> parts</strong></div>
+            <strong class="nx-pv-step-heading">3. Récapitulatif de votre investissement</strong>
+            <div class="nx-pv-summary-row"><span>Nombre de parts</span><strong><b data-summary-quantity>5</b> parts</strong></div>
             <div class="nx-pv-summary-row"><span>Prix par part</span><strong>€<b data-summary-price>{{ share_price }}</b></strong></div>
             <div class="nx-pv-summary-row"><span>Valeur totale</span><strong>€<b data-summary-total>675</b></strong></div>
             <div class="nx-pv-summary-row nx-pv-summary-row--fee"><span>Frais de plateforme ({{ platform_fee }}%)</span><strong>-€<b data-summary-fee>13.50</b></strong></div>
-            <div class="nx-pv-summary-total"><span>Vous recevrez</span><strong>€<b data-summary-net>661.50</b></strong></div>
+            <div class="nx-pv-summary-total"><span>Total à payer</span><strong>€<b data-summary-net>661.50</b></strong></div>
           </div>
 
           <div class="nx-pv-important">
             <strong>Informations importantes</strong>
             <ul>
-              <li>Votre annonce sera visible par les investisseurs.</li>
-              <li>Vous restez propriétaire jusqu'à la vente effective.</li>
-              <li>Les frais sont prélevés après la transaction.</li>
+              <li>Votre investissement sera ajouté au panier.</li>
+              <li>Vous restez propriétaire de vos parts une fois la transaction effectuée.</li>
+              <li>Les frais sont indiqués lors du paiement.</li>
             </ul>
           </div>
 
-          <button type="button" class="nx-pv-list-button" data-list-sale>✎&nbsp; Lister à la vente</button>
+          <button type="button" class="nx-pv-list-button" data-list-sale>🛒&nbsp; Ajouter au panier</button>
           <button type="button" class="nx-pv-cancel" data-cancel-sale>Annuler</button>
 
-          <div class="nx-pv-section-heading nx-pv-announcements-heading"><strong>Mes annonces</strong><a href="{{ routes.collections_url }}/projects">Voir toutes</a></div>
+          <div class="nx-pv-section-heading nx-pv-announcements-heading"><strong>Mes investissements</strong><a href="{{ routes.collections_url }}/projects">Voir toutes</a></div>
           <div class="nx-pv-list nx-pv-announcements">
             {% assign announcement_products = collections.projects.products %}
             {% if announcement_products.size > 0 %}
@@ -133,8 +133,29 @@
   price.addEventListener('input', update);
 
   root.querySelector('[data-list-sale]').addEventListener('click', function() {
-    this.textContent = '✓ Annonce prête à être publiée';
-    this.classList.add('is-success');
+    var q = Math.max(1, Number(qty.value) || 1);
+    var self = this;
+    self.disabled = true;
+    fetch('{{ routes.cart_add_url }}', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        id: {{ product.selected_or_first_available_variant.id | json }},
+        quantity: q
+      })
+    }).then(function(res) {
+      if (!res.ok) { throw new Error('error'); }
+      self.textContent = '✓ Ajouté au panier';
+      self.classList.add('is-success');
+      var cartLink = document.createElement('a');
+      cartLink.href = '{{ routes.cart_url }}';
+      cartLink.className = 'nx-pv-list-button is-success';
+      cartLink.textContent = 'Voir le panier →';
+      self.replaceWith(cartLink);
+      return true;
+    }).catch(function() {
+      self.disabled = false;
+    });
   });
   root.querySelector('[data-cancel-sale]').addEventListener('click', function() {
     window.location.href = '{{ product.url }}';
