@@ -1,9 +1,0 @@
-{
-  "sections": {
-    "main": {
-      "type": "project-grid",
-      "settings": {}
-    }
-  },
-  "order": ["main"]
-}
