@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% assign current_amount = product.metafields.project.total_purchases.value | default: 0 %}
 {% assign target_amount = product.metafields.project.target_amount.value | default: 1 %}
 {% assign category = product.metafields.project.category.value | default: '' %}
@@ -192,3 +193,199 @@
   ]
 }
 {% endschema %}
+=======
+{% assign current_amount = product.metafields.project.total_purchases.value | default: 0 %}
+{% assign target_amount = product.metafields.project.target_amount.value | default: 1 %}
+{% assign category = product.metafields.project.category.value | default: '' %}
+{% assign share_price = product.selected_or_first_available_variant.price | default: 0 %}
+{% assign share_price_decimal = share_price | divided_by: 100.0 %}
+{% assign remaining_shares = product.metafields.project.remaining_shares.value | default: 100 %}
+{% assign monthly_return = product.metafields.project.monthly_return.value | default: '' %}
+{% assign platform_fee = section.settings.platform_fee | default: 2 %}
+
+<section class="nx-project-view" data-project-view>
+  <div class="nx-project-view__shell">
+      <article class="nx-pv-panel nx-pv-sell">
+        <header class="nx-pv-sell-header">
+          <a href="{{ product.url }}" class="nx-pv-back" aria-label="Retour">←</a>
+          <strong>Investir</strong>
+          <button type="button" class="nx-pv-help" aria-label="Aide">?</button>
+        </header>
+
+        <div class="nx-pv-sell-body">
+          <div class="nx-pv-product-mini">
+            <div class="nx-pv-product-mini__image">{% render 'project-visual', image: product.featured_image, loading: 'eager' %}</div>
+            <div class="nx-pv-product-mini__copy">
+              <strong>{{ product.title }}</strong>
+              <span>{{ category }}</span>
+              <small>{{ remaining_shares }} parts</small>
+            </div>
+            <div class="nx-pv-product-mini__return"><strong>{{ monthly_return }}</strong><span>par mois</span></div>
+          </div>
+
+          <div class="nx-pv-step">
+            <div class="nx-pv-step-title"><strong>1. Combien de parts voulez-vous investir ?</strong><span>Disponibles : {{ remaining_shares }} parts</span></div>
+            <div class="nx-pv-quantity">
+              <button type="button" data-qty-minus aria-label="Diminuer" class="nx-pv-qty-btn">−</button>
+              <div class="nx-pv-qty-track">
+                <input type="range" min="1" max="{{ remaining_shares }}" value="1" data-share-range aria-label="Nombre de parts">
+                <input type="number" value="1" min="1" max="{{ remaining_shares }}" data-share-quantity aria-label="Nombre de parts">
+              </div>
+              <button type="button" data-qty-plus aria-label="Augmenter" class="nx-pv-qty-btn">+</button>
+            </div>
+            <div class="nx-pv-range-labels"><span>1</span><span>{{ remaining_shares }}</span></div>
+          </div>
+
+          <div class="nx-pv-step">
+            <div class="nx-pv-step-title"><strong>2. Prix par part</strong><span>Prix du produit : {{ share_price | money_without_trailing_zeros }}</span></div>
+            <label class="nx-pv-price-input"><span>€</span><input type="number" value="{{ share_price_decimal }}" min="1" step="0.01" data-share-price aria-label="Prix par part" readonly></label>
+          </div>
+
+          <div class="nx-pv-step nx-pv-summary">
+            <strong class="nx-pv-step-heading">3. Récapitulatif de votre investissement</strong>
+            <div class="nx-pv-summary-row"><span>Nombre de parts</span><strong><b data-summary-quantity>5</b> parts</strong></div>
+            <div class="nx-pv-summary-row"><span>Prix par part</span><strong>€<b data-summary-price>{{ share_price_decimal }}</b></strong></div>
+            <div class="nx-pv-summary-row"><span>Valeur totale</span><strong>€<b data-summary-total>675</b></strong></div>
+            <div class="nx-pv-summary-row nx-pv-summary-row--fee"><span>Frais de plateforme ({{ platform_fee }}%)</span><strong>-€<b data-summary-fee>13.50</b></strong></div>
+            <div class="nx-pv-summary-total"><span>Total à payer</span><strong>€<b data-summary-net>661.50</b></strong></div>
+          </div>
+
+          <div class="nx-pv-important">
+            <strong>Informations importantes</strong>
+            <ul>
+              <li>Votre investissement sera ajouté au panier.</li>
+              <li>Vous restez propriétaire de vos parts une fois la transaction effectuée.</li>
+              <li>Les frais sont indiqués lors du paiement.</li>
+            </ul>
+          </div>
+
+          <button type="button" class="nx-pv-list-button" data-list-sale>🛒&nbsp; Ajouter au panier</button>
+          <button type="button" class="nx-pv-cancel" data-cancel-sale>Annuler</button>
+
+          <div class="nx-pv-section-heading nx-pv-announcements-heading"><strong>Mes investissements</strong><a href="{{ routes.collections_url }}/projects">Voir toutes</a></div>
+          <div class="nx-pv-list nx-pv-announcements">
+            {% assign announcement_products = collections.projects.products %}
+            {% if announcement_products.size > 0 %}
+              {% for announcement in announcement_products limit: 3 %}
+                <a href="{{ announcement.url }}?view=view-project" class="nx-pv-list-item nx-pv-list-item--announcement">
+                  <div class="nx-pv-list-thumb">{% render 'project-visual', image: announcement.featured_image, loading: 'lazy' %}</div>
+                  <div class="nx-pv-list-copy"><strong>{{ announcement.title }}</strong><span>{{ section.settings.default_share_count }} parts à {{ share_price | money_without_trailing_zeros }}</span></div>
+                  <span class="nx-pv-status nx-pv-status--{{ forloop.index }}">{{ section.settings.default_status }}</span>
+                  <span class="nx-pv-chevron">›</span>
+                </a>
+              {% endfor %}
+            {% else %}
+              <a href="{{ product.url }}?view=view-project" class="nx-pv-list-item nx-pv-list-item--announcement">
+                <div class="nx-pv-list-thumb">{% render 'project-visual', image: product.featured_image, loading: 'lazy' %}</div>
+                <div class="nx-pv-list-copy"><strong>{{ product.title }}</strong><span>5 parts à €{{ share_price_decimal }}</span></div>
+                <span class="nx-pv-status">En attente</span><span class="nx-pv-chevron">›</span>
+              </a>
+            {% endif %}
+          </div>
+        </div>
+      </article>
+  </div>
+</section>
+
+<script>
+(function() {
+  var root = document.querySelector('[data-project-view]');
+  if (!root) return;
+  var qty = root.querySelector('[data-share-quantity]');
+  var range = root.querySelector('[data-share-range]');
+  var price = root.querySelector('[data-share-price]');
+  var minusBtn = root.querySelector('[data-qty-minus]');
+  var plusBtn = root.querySelector('[data-qty-plus]');
+  if (!qty || !range || !price || !minusBtn || !plusBtn) return;
+  var max = Number(qty.max || 12);
+  var feeRate = Number({{ platform_fee | json }}) / 100;
+
+  function update() {
+    var q = Math.max(1, Math.min(max, Number(qty.value) || 1));
+    var p = Math.max(1, Number(price.value) || 1);
+    qty.value = q;
+    range.value = q;
+    minusBtn.disabled = q <= 1;
+    plusBtn.disabled = q >= max;
+    var total = q * p;
+    var fee = total * feeRate;
+    var net = total - fee;
+    root.querySelector('[data-summary-quantity]').textContent = q;
+    root.querySelector('[data-summary-price]').textContent = p.toFixed(2);
+    root.querySelector('[data-summary-total]').textContent = total.toFixed(2);
+    root.querySelector('[data-summary-fee]').textContent = fee.toFixed(2);
+    root.querySelector('[data-summary-net]').textContent = net.toFixed(2);
+  }
+
+  function changeQty(delta) {
+    var current = Number(qty.value) || 1;
+    qty.value = Math.max(1, Math.min(max, current + delta));
+    update();
+  }
+
+  minusBtn.addEventListener('click', function(e) { e.preventDefault(); changeQty(-1); });
+  plusBtn.addEventListener('click', function(e) { e.preventDefault(); changeQty(1); });
+  qty.addEventListener('input', update);
+  range.addEventListener('input', function() { qty.value = range.value; update(); });
+  price.addEventListener('input', update);
+
+  root.querySelector('[data-list-sale]').addEventListener('click', function() {
+    var q = Math.max(1, Number(qty.value) || 1);
+    var self = this;
+    self.disabled = true;
+    fetch('{{ routes.cart_add_url }}', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        id: {{ product.selected_or_first_available_variant.id | json }},
+        quantity: q
+      })
+    }).then(function(res) {
+      if (!res.ok) { throw new Error('error'); }
+      self.textContent = '✓ Ajouté au panier';
+      self.classList.add('is-success');
+      var cartLink = document.createElement('a');
+      cartLink.href = '{{ routes.cart_url }}';
+      cartLink.className = 'nx-pv-list-button is-success';
+      cartLink.textContent = 'Voir le panier →';
+      self.replaceWith(cartLink);
+      return true;
+    }).catch(function() {
+      self.disabled = false;
+    });
+  });
+  root.querySelector('[data-cancel-sale]').addEventListener('click', function() {
+    window.location.href = '{{ product.url }}';
+  });
+  update();
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Vue projet / vente",
+  "settings": [
+    { "type": "text", "id": "user_name", "label": "Nom utilisateur", "default": "Bonjour, Alex 👋" },
+    { "type": "text", "id": "greeting", "label": "Salutation", "default": "Bienvenue" },
+    { "type": "text", "id": "greeting_subtitle", "label": "Sous-titre", "default": "Voici un aperçu de vos investissements." },
+    { "type": "text", "id": "portfolio_value", "label": "Valeur portefeuille", "default": "€ 4 600" },
+    { "type": "text", "id": "portfolio_growth", "label": "Croissance portefeuille", "default": "+12.4% depuis le début" },
+    { "type": "text", "id": "monthly_income", "label": "Revenus mensuels", "default": "€185" },
+    { "type": "text", "id": "monthly_growth", "label": "Croissance mensuelle", "default": "6.8%" },
+    { "type": "text", "id": "total_invested", "label": "Total investi", "default": "€2 345" },
+    { "type": "text", "id": "invested_count", "label": "Nombre d'investissements", "default": "5 projets" },
+    { "type": "text", "id": "next_payment", "label": "Prochain versement", "default": "5 Août 2025" },
+    { "type": "text", "id": "next_payment_subtitle", "label": "Sous-titre prochain versement", "default": "Dans 5 jours" },
+    { "type": "text", "id": "active_projects", "label": "Projets actifs", "default": "46" },
+    { "type": "text", "id": "total_projects", "label": "Total projets", "default": "50" },
+    { "type": "text", "id": "chart_value", "label": "Valeur graphique", "default": "€185" },
+    { "type": "text", "id": "chart_growth", "label": "Croissance graphique", "default": "+6.8%" },
+    { "type": "text", "id": "chart_peak", "label": "Pic graphique", "default": "185" },
+    { "type": "text", "id": "default_share_count", "label": "Parts par défaut", "default": "10" },
+    { "type": "text", "id": "default_growth", "label": "Croissance par défaut", "default": "3.6%" },
+    { "type": "text", "id": "default_status", "label": "Statut annonce", "default": "En attente" },
+    { "type": "number", "id": "platform_fee", "label": "Frais de plateforme (%)", "default": 2 }
+  ]
+}
+{% endschema %}
+>>>>>>> 8929517114d23f6c5319d29640365ad9d69cf18a

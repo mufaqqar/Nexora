@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% assign current = product.metafields.project.total_purchases.value | default: 0 %}
 {% assign target = product.metafields.project.target_amount.value | default: 1 %}
 {% assign funded = current | times: 100 | divided_by: target %}
@@ -103,3 +104,110 @@
   ]
 }
 {% endschema %}
+=======
+{% assign current = product.metafields.project.total_purchases.value | default: 0 %}
+{% assign target = product.metafields.project.target_amount.value | default: 1 %}
+{% assign funded = current | times: 100 | divided_by: target %}
+{% assign customers = product.metafields.project.customers.value | default: 0 %}
+{% assign category = product.metafields.project.category.value | default: 'Technologie & IA' %}
+{% assign minimum = product.metafields.project.investment_minimum.value | default: 100 %}
+
+<section class="section project-detail project-detail--figma">
+  <div class="container project-detail__container">
+
+    <a class="figma-back-link" href="{{ routes.collections_url }}/projects">
+      <span aria-hidden="true">←</span> Retour aux projets
+    </a>
+
+    <div class="figma-detail-hero">
+      <div class="figma-detail-visual">
+        {% render 'project-visual', image: product.featured_image, loading: 'eager' %}
+      </div>
+
+      <div class="figma-detail-summary">
+        <h1>{{ product.title }}</h1>
+        <p class="figma-detail-lead">{{ product.description | strip_html | truncate: 180 }}</p>
+
+        <span class="figma-category">{{ category }}</span>
+
+        <div class="figma-stats">
+          <div class="figma-stat figma-stat--purple">
+            <strong>{{ funded }}%</strong>
+            <span>Financé</span>
+          </div>
+          <div class="figma-stat">
+            <strong>{{ current | money_without_trailing_zeros }}</strong>
+            <span>Total achats / {{ target | money_without_trailing_zeros }}</span>
+          </div>
+          <div class="figma-stat">
+            <strong>{{ customers }}</strong>
+            <span>Clients</span>
+          </div>
+        </div>
+
+        <div class="figma-progress">
+          <div class="figma-progress__bar">
+            <span style="width: {{ funded }}%;"></span>
+          </div>
+          <div class="figma-progress__labels">
+            <span>0%</span>
+            <span>100%</span>
+          </div>
+        </div>
+
+        <a class="figma-primary-button" href="?view=view-project">
+          Investir dès 100 € <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="figma-about">
+      <h2>À propos du projet</h2>
+      <div class="figma-about__text">
+        {% if product.metafields.project.long_description.value != blank %}
+          {{ product.metafields.project.long_description.value }}
+        {% else %}
+          {{ product.description }}
+        {% endif %}
+      </div>
+
+      <div class="figma-objective">
+        <strong>{{ target | money_without_trailing_zeros }}</strong>
+        <span>Objectif</span>
+      </div>
+
+      <h2>Pourquoi investir ?</h2>
+      <ul class="figma-reasons">
+        {% assign reasons = product.metafields.project.reasons.value %}
+        {% if reasons != blank %}
+          {% for reason in reasons %}
+            <li>{{ reason }}</li>
+          {% endfor %}
+        {% else %}
+          <li>Marché en forte croissance (+15% par an).</li>
+          <li>Équipe expérimentée et vision claire.</li>
+          <li>Produit innovant et éprouvé avec 3 000 utilisateurs.</li>
+          <li>Partenariats stratégiques déjà en place.</li>
+        {% endif %}
+      </ul>
+    </div>
+
+   
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Détail projet Figma",
+  "settings": [
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Bouton",
+      "default": "Investir maintenant"
+    }
+  ]
+}
+{% endschema %}
+>>>>>>> 8929517114d23f6c5319d29640365ad9d69cf18a
