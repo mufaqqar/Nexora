@@ -3743,6 +3743,10 @@ h3 {
   align-items: start;
 }
 
+.nx-pv-dashboard-page .nx-project-view__columns {
+  grid-template-columns: minmax(0, 1fr);
+}
+
 .nx-pv-panel {
   position: relative;
   min-width: 0;

@@ -1,0 +1,116 @@
+<section class="nx-project-view nx-pv-dashboard-page" data-user-dashboard>
+  <div class="nx-project-view__shell">
+    <div class="nx-pv-panel nx-pv-dashboard">
+      <header class="nx-pv-topbar">
+        <a href="{{ routes.root_url }}" class="nx-pv-brand" aria-label="Nexora">
+          <span class="nx-pv-brand__mark">N</span>
+          <span>NEXORA</span>
+        </a>
+        <div class="nx-pv-top-actions">
+          <button type="button" aria-label="Notifications" class="nx-pv-icon-button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg>
+          </button>
+          <button type="button" aria-label="Menu" class="nx-pv-icon-button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14M5 12h14M5 17h14"/></svg>
+          </button>
+        </div>
+      </header>
+
+      <div class="nx-pv-dashboard-body">
+        <div class="nx-pv-greeting">
+          <strong>{{ section.settings.user_name }}</strong>
+          <span>{{ section.settings.greeting }}</span>
+          <p>{{ section.settings.greeting_subtitle }}</p>
+        </div>
+
+        <div class="nx-pv-portfolio-card">
+          <div>
+            <span>VALEUR TOTALE DU PORTEFEUILLE</span>
+            <strong>{{ section.settings.portfolio_value }}</strong>
+            <small class="nx-pv-positive">{{ section.settings.portfolio_growth }}</small>
+          </div>
+          <div class="nx-pv-portfolio-glow" aria-hidden="true">N</div>
+        </div>
+
+        <div class="nx-pv-metric-grid">
+          <div class="nx-pv-metric"><span>Revenus mensuels</span><strong>{{ section.settings.monthly_income }}</strong><small class="nx-pv-positive">+{{ section.settings.monthly_growth }}</small><i>↗</i></div>
+          <div class="nx-pv-metric"><span>Total investi</span><strong>{{ section.settings.total_invested }}</strong><small>{{ section.settings.invested_count }}</small><i>▣</i></div>
+          <div class="nx-pv-metric"><span>Prochain versement</span><strong>{{ section.settings.next_payment }}</strong><small>{{ section.settings.next_payment_subtitle }}</small><i>▣</i></div>
+          <div class="nx-pv-metric"><span>Projets actifs</span><strong>{{ section.settings.active_projects }}</strong><small>Sur {{ section.settings.total_projects }} projets</small><i>◔</i></div>
+        </div>
+
+        <div class="nx-pv-section-heading"><strong>Revenus mensuels</strong><a href="{{ routes.collections_url }}/projects">Voir tout</a></div>
+        <div class="nx-pv-chart-card">
+          <div class="nx-pv-chart-meta"><strong>{{ section.settings.chart_value }}</strong><span class="nx-pv-positive">{{ section.settings.chart_growth }}</span></div>
+          <div class="nx-pv-chart" aria-label="Graphique des revenus mensuels">
+            {% assign chart_values = '28,40,34,58,70,86,74' | split: ',' %}
+            {% assign chart_months = 'Fév,Mar,Avr,Mai,Juin,Juil,Août' | split: ',' %}
+            {% for value in chart_values %}
+              <div class="nx-pv-bar-wrap">
+                <span class="nx-pv-bar" style="height: {{ value }}%;"></span>
+                <small>{{ chart_months[forloop.index0] }}</small>
+              </div>
+            {% endfor %}
+            <b class="nx-pv-chart-bubble">€{{ section.settings.chart_peak }}</b>
+          </div>
+        </div>
+
+        <div class="nx-pv-section-heading"><strong>Mes investissements</strong><a href="{{ routes.collections_url }}/projects">Voir tout</a></div>
+        <div class="nx-pv-list">
+          {% assign projects_collection = collections.projects %}
+          {% if projects_collection.products_count > 0 %}
+            {% for investment in projects_collection.products limit: 5 %}
+              {% assign investment_current = investment.metafields.project.total_purchases.value | default: 0 %}
+              {% assign investment_category = investment.metafields.project.category.value | default: 'Technologie' %}
+              <a href="{{ investment.url }}?view=view-project" class="nx-pv-list-item">
+                <div class="nx-pv-list-thumb">{% render 'project-visual', image: investment.featured_image, loading: 'lazy' %}</div>
+                <div class="nx-pv-list-copy"><strong>{{ investment.title }}</strong><span>{{ investment_category }}</span></div>
+                <div class="nx-pv-list-value"><strong>€{{ section.settings.default_share_count }}</strong><span>{{ investment_current | money_without_trailing_zeros }}</span><em class="nx-pv-positive">+{{ section.settings.default_growth }}</em></div>
+                <span class="nx-pv-chevron">›</span>
+              </a>
+            {% endfor %}
+          {% else %}
+            <a href="{{ routes.collections_url }}/projects" class="nx-pv-list-item">
+              <div class="nx-pv-list-thumb"></div>
+              <div class="nx-pv-list-copy"><strong>Aucun investissement</strong><span>Découvrez nos projets</span></div>
+              <span class="nx-pv-chevron">›</span>
+            </a>
+          {% endif %}
+        </div>
+
+        <nav class="nx-pv-bottom-nav" aria-label="Navigation du compte">
+          <a href="{{ routes.root_url }}"><span>⌂</span>Accueil</a>
+          <a href="{{ routes.collections_url }}/projects"><span>▣</span>Projets</a>
+          <a class="is-active" href="{{ routes.account_url }}"><span>◈</span>Investissements</a>
+          <a href="{{ routes.account_url }}"><span>◯</span>Profil</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Tableau de bord utilisateur",
+  "settings": [
+    { "type": "text", "id": "user_name", "label": "Nom utilisateur", "default": "Bonjour, Alex 👋" },
+    { "type": "text", "id": "greeting", "label": "Salutation", "default": "Bienvenue" },
+    { "type": "text", "id": "greeting_subtitle", "label": "Sous-titre", "default": "Voici un aperçu de vos investissements." },
+    { "type": "text", "id": "portfolio_value", "label": "Valeur portefeuille", "default": "€ 4 600" },
+    { "type": "text", "id": "portfolio_growth", "label": "Croissance portefeuille", "default": "+12.4% depuis le début" },
+    { "type": "text", "id": "monthly_income", "label": "Revenus mensuels", "default": "€185" },
+    { "type": "text", "id": "monthly_growth", "label": "Croissance mensuelle", "default": "6.8%" },
+    { "type": "text", "id": "total_invested", "label": "Total investi", "default": "€2 345" },
+    { "type": "text", "id": "invested_count", "label": "Nombre d'investissements", "default": "5 projets" },
+    { "type": "text", "id": "next_payment", "label": "Prochain versement", "default": "5 Août 2025" },
+    { "type": "text", "id": "next_payment_subtitle", "label": "Sous-titre prochain versement", "default": "Dans 5 jours" },
+    { "type": "text", "id": "active_projects", "label": "Projets actifs", "default": "46" },
+    { "type": "text", "id": "total_projects", "label": "Total projets", "default": "50" },
+    { "type": "text", "id": "chart_value", "label": "Valeur graphique", "default": "€185" },
+    { "type": "text", "id": "chart_growth", "label": "Croissance graphique", "default": "+6.8%" },
+    { "type": "text", "id": "chart_peak", "label": "Pic graphique", "default": "185" },
+    { "type": "text", "id": "default_share_count", "label": "Parts par défaut", "default": "10" },
+    { "type": "text", "id": "default_growth", "label": "Croissance par défaut", "default": "3.6%" }
+  ]
+}
+{% endschema %}
