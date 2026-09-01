@@ -1,6 +1,5 @@
 <section class="hero section">
   <div class="container hero__grid">
-
     <div class="hero__content reveal">
 
       {% comment %}
@@ -23,61 +22,58 @@
           {% render 'icon-arrow' %}
         </a>
       {% endif %}
-
-
-      <!-- STATIC ICON BOX -->
-      {% if section.settings.icon != blank %}
-        <div class="hero__icon-box">
-
-          <div class="hero__icon">
-            {{
-              section.settings.icon
-              | image_url: width: 100
-              | image_tag:
-                loading: 'lazy',
-                widths: '50,75,100',
-                sizes: '50px',
-                class: 'hero__icon-image',
-                alt: section.settings.icon_heading
-            }}
-          </div>
-
-          <div class="hero__icon-content">
-            {% if section.settings.icon_heading != blank %}
-              <h3>{{ section.settings.icon_heading }}</h3>
-            {% endif %}
-
-            {% if section.settings.icon_text != blank %}
-              <p>{{ section.settings.icon_text }}</p>
-            {% endif %}
-          </div>
-
-        </div>
-      {% endif %}
-      <div class="cart-payment-methods">
-  <p class="cart-payment-methods__title">
-    Paiement sécurisé
-  </p>
-
-  <div class="cart-payment-methods__icons">
-    {{ 'apple_pay' | payment_type_svg_tag }}
-    {{ 'google_pay' | payment_type_svg_tag }}
-    {{ 'paypal' | payment_type_svg_tag }}
-    {{ 'visa' | payment_type_svg_tag }}
-    {{ 'master' | payment_type_svg_tag }}
-    {{ 'american_express' | payment_type_svg_tag }}
-  </div>
-</div>
     </div>
-
-
     <div class="hero__visual reveal reveal--delay">
       {% render 'project-visual',
         image: section.settings.image,
         loading: 'eager'
       %}
     </div>
+  </div>
+  <div class="container hero__grid">
+    <!-- STATIC ICON BOX -->
+    {% if section.settings.icon != blank %}
+      <div class="hero__icon-box">
 
+        <div class="hero__icon">
+          {{
+            section.settings.icon
+            | image_url: width: 100
+            | image_tag:
+              loading: 'lazy',
+              widths: '50,75,100',
+              sizes: '50px',
+              class: 'hero__icon-image',
+              alt: section.settings.icon_heading
+          }}
+        </div>
+
+        <div class="hero__icon-content">
+          {% if section.settings.icon_heading != blank %}
+            <h3>{{ section.settings.icon_heading }}</h3>
+          {% endif %}
+
+          {% if section.settings.icon_text != blank %}
+            <p>{{ section.settings.icon_text }}</p>
+          {% endif %}
+        </div>
+
+      </div>
+    {% endif %}
+    <div div class="cart-payment-methods">
+      <p class="cart-payment-methods__title">
+        Paiement sécurisé
+      </p>
+
+      <div class="cart-payment-methods__icons">
+        {{ 'apple_pay' | payment_type_svg_tag }}
+        {{ 'google_pay' | payment_type_svg_tag }}
+        {{ 'paypal' | payment_type_svg_tag }}
+        {{ 'visa' | payment_type_svg_tag }}
+        {{ 'master' | payment_type_svg_tag }}
+        {{ 'american_express' | payment_type_svg_tag }}
+      </div>
+    </div>
   </div>
 </section>
 

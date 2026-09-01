@@ -2888,6 +2888,14 @@ h3 {
 }
 
 @media (max-width: 700px) {
+  .hero__grid .project-visual {
+    min-height: 270px;
+  }
+
+  .hero__grid .hero__visual {
+    min-height: 270px;
+  }
+
   .project-detail--figma .figma-detail-summary h1 {
     font-size: 24px;
   }
