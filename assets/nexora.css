@@ -1245,7 +1245,7 @@ h3 {
     padding: 60px 0 30px;
   }
 
-  .hero__grid,
+ 
   .about-intro__grid,
   .detail-hero,
   .detail-content {
@@ -2518,6 +2518,9 @@ h3 {
 }
 
 @media (max-width: 700px) {
+  .hero__grid{
+    gap: 20px;
+  }
   .login-link {
     font-size: 14px;
     padding: 5px 6px;
@@ -2547,9 +2550,9 @@ h3 {
     width: 20px;
   }
 
-  .hero__content {
+  /* .hero__content {
     order: 2;
-  }
+  } */
 
   .hero__visual {
     order: 1;
