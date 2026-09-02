@@ -6,7 +6,7 @@
         <p class="eyebrow">{{ section.settings.eyebrow }}</p>
       {% endcomment %}
 
-      <h1>{{ section.settings.heading }}</h1>
+      <h1>{{ section.settings.heading }} <span class="accent">{{ section.settings.heading_accent }}</span></h1>
    
 
       <p class="hero__description">
@@ -23,12 +23,15 @@
         </a>
       {% endif %}
     </div>
+    <div class="tower"></div>
+     {% comment %}
     <div class="hero__visual reveal reveal--delay">
       {% render 'project-visual',
         image: section.settings.image,
         loading: 'eager'
       %}
     </div>
+     {% endcomment %}
   </div>
   <div class="container hero__grid">
     <!-- STATIC ICON BOX -->
@@ -93,6 +96,12 @@
       "id": "heading",
       "label": "Titre",
       "default": "Investissez dans les entreprises qui construisent le futur."
+    },
+    {
+      "type": "text",
+      "id": "heading_accent",
+      "label": "Titre accent",
+      "default": "le futur."
     },
     {
       "type": "textarea",
