@@ -14,7 +14,8 @@
       "name": "Hero Nexora",
       "settings": {
         "eyebrow": "PLATEFORME D'INVESTISSEMENT",
-        "heading": "Investissez dans les entreprises qui construisent  le futur.",
+        "heading": "Investissez dans les entreprises qui construisent",
+        "heading_accent": "le futur.",
         "description": "Accédez à des opportunités sélectionnées et participez à la croissance des entreprises de demain.",
         "button_label": "Découvrir les projets",
         "button_link": "shopify://collections/projects",
