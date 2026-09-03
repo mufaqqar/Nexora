@@ -139,7 +139,7 @@ h1 {
 
 h2 {
   margin-bottom: 18px;
-  font-size: clamp(22px, 3vw, 44px);
+  font-size: clamp(19px, 3vw, 44px);
   font-weight: 520;
 }
 
@@ -198,7 +198,7 @@ h3 {
   align-items: center;
   gap: 8px;
   color: #b7abff;
-  font-size: 22px;
+  font-size: 11px;
   font-weight: 400;
 }
 
@@ -328,6 +328,15 @@ h3 {
   align-items: center;
   padding-top: 72px;
   overflow: hidden;
+
+}
+
+.hero_bg {
+  background-image: none;
+}
+
+.hero_bg .hero__visual .project-visual img {
+  display: block;
 }
 
 .hero__grid {
@@ -1311,17 +1320,35 @@ h3 {
 }
 
 @media (max-width: 560px) {
+
   .container {
     width: min(calc(100% - 30px), var(--nx-container));
   }
 
   .section {
-    padding: 62px 0;
+    padding: 20px 0;
+  }
+
+.hero.section{
+  border-bottom: 1px solid #ffffff34;
+}
+  .hero_bg {
+    background-image: url(https://nexora-zdo2l477.myshopify.com/cdn/shop/files/banner.png);
+    background-position-x: right;
+    background-size: 65% 100%;
+    background-repeat: no-repeat;
+  }
+
+  .hero_bg .hero__visual .project-visual img {
+    display: none;
   }
 
   h1 {
-    font-size: 16px;
-    margin-bottom: 10px;
+    font-size: 34px;
+    line-height: 1.05;
+    margin: 0 0 20px;
+    font-weight: 800;
+    letter-spacing: -.025em;
   }
 
   .hero__description,
@@ -1329,30 +1356,41 @@ h3 {
   .footer-links a,
   .footer-brand p,
   .value-item p {
-    font-size: 12px;
-    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 1.55;
+    color: #b0b0ba;
+    margin: 0 0 22px;
   }
 
   .button {
     width: 100%;
-    font-size: 12px;
-    gap: 5px;
-    min-height: 32px;
-    padding: 0 5px;
+    height: 48px;
+    border-radius: 11px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
   }
 
-  .hero__icon-box {
-    margin-top: 10px;
+  .hero__icon-box, .cart-payment-methods {
+    margin-top: 28px;
   }
 
   .hero__icon-box .hero__icon-content h3 {
     font-size: 12px;
+    display: block;
+    color: white;
+    font-size: 11px;
+    margin-bottom: 4px;
   }
 
   .hero__icon-box .hero__icon-content p {
-    font-size: 12px;
+    font-size: 11px;
   }
-
+.hero__icon-box img {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+}
   .hero__visual,
   .about-intro__visual,
   .detail-hero__visual {
@@ -1394,11 +1432,6 @@ h3 {
 
   .value-item:last-child {
     border-bottom: 0;
-  }
-
-  .section-heading {
-    align-items: start;
-    flex-direction: column;
   }
 
   .cta-panel {
@@ -2076,9 +2109,12 @@ h3 {
   }
 
   .featured-project {
-    grid-template-columns: 100%;
+   grid-template-columns: 35% 65%;
+       min-height: 230px;
   }
-
+.featured-project__image{
+   min-height: 230px;
+}
   .featured-project__content {
     padding: 20px;
   }
@@ -3183,10 +3219,6 @@ h3 {
 }
 
 @media (max-width: 800px) {
-   .hero h1 {
-    font-size: 30px
-  }
-
   .cart-layout {
     grid-template-columns: 1fr;
     gap: 24px;
@@ -5100,10 +5132,6 @@ h3 {
 }
 
 @media screen and (max-width: 749px) {
-  .cart-payment-methods {
-    margin-top: 0px;
-  }
-
   .cart-payment-methods__icons {
     gap: 4px;
   }

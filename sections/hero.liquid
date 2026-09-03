@@ -1,5 +1,5 @@
 <section class="hero section">
-  <div class="container hero__grid">
+  <div class="container hero__grid hero_bg">
     <div class="hero__content reveal">
 
       {% comment %}
@@ -60,6 +60,7 @@
 
       </div>
     {% endif %}
+     {% comment %}
     <div div class="cart-payment-methods">
       <p class="cart-payment-methods__title">
         Paiement sécurisé
@@ -74,6 +75,7 @@
         {{ 'american_express' | payment_type_svg_tag }}
       </div>
     </div>
+    {% endcomment %}
   </div>
 </section>
 
