@@ -1457,7 +1457,7 @@ h3 {
     display: grid;
     grid-template-columns: 35% 65%;
     min-height: 230px;
-    border-radius: 15px;
+  
     overflow: hidden;
     border: 1px solid var(--nx-line);
     background: linear-gradient(180deg, var(--nx-panel-strong), var(--nx-bg));
@@ -2267,7 +2267,6 @@ h3 {
   min-height: 588px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 28px;
   background: #05061f;
   color: #fff;
 }
