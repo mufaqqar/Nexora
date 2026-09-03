@@ -22,16 +22,16 @@
             <div class="nx-pv-product-mini__copy">
               <strong>{{ product.title }}</strong>
               <span>{{ category }}</span>
-              <small>{{ remaining_shares }} parts</small>
+           
             </div>
-            <div class="nx-pv-product-mini__return"><strong>{{ monthly_return }}</strong><span>par mois</span></div>
+            <div class="nx-pv-product-mini__return"><strong>{{ monthly_return }}</strong></div>
           </div>
 
        <div class="nx-pv-step">
 
   <div class="nx-pv-step-title">
     <strong>1. Combien de parts voulez-vous investir ?</strong>
-    <span>Disponibles : {{ remaining_shares }} parts</span>
+    <span>Disponibles : 12 parts</span>
   </div>
 
   <div class="nx-pv-quantity">
@@ -85,20 +85,20 @@
   <!-- Range labels -->
   <div class="nx-pv-range-labels">
     <span>1</span>
-    <span>{{ remaining_shares }}</span>
+    <span>12</span>
   </div>
 
 </div>
 
           <div class="nx-pv-step">
-            <div class="nx-pv-step-title"><strong>2. Prix par part</strong><span>Prix du produit : {{ share_price | money_without_trailing_zeros }}</span></div>
-            <label class="nx-pv-price-input"><span>€</span><input type="number" value="{{ share_price_decimal }}" min="1" step="0.01" data-share-price aria-label="Prix par part" readonly></label>
+            <div class="nx-pv-step-title"><strong>2. Prix par part</strong><span>Prix du produit : 100</span></div>
+            <label class="nx-pv-price-input"><span>€</span><input type="number" value="100" min="1" step="0.01" data-share-price aria-label="Prix par part" readonly></label>
           </div>
 
           <div class="nx-pv-step nx-pv-summary">
             <strong class="nx-pv-step-heading">3. Récapitulatif de votre investissement</strong>
             <div class="nx-pv-summary-row"><span>Nombre de parts</span><strong><b data-summary-quantity>5</b> parts</strong></div>
-            <div class="nx-pv-summary-row"><span>Prix par part</span><strong>€<b data-summary-price>{{ share_price_decimal }}</b></strong></div>
+            <div class="nx-pv-summary-row"><span>Prix par part</span><strong>€<b data-summary-price>12</b></strong></div>
             <div class="nx-pv-summary-row"><span>Valeur totale</span><strong>€<b data-summary-total>675</b></strong></div>
             <div class="nx-pv-summary-row nx-pv-summary-row--fee"><span>Frais de plateforme ({{ platform_fee }}%)</span><strong>-€<b data-summary-fee>13.50</b></strong></div>
             <div class="nx-pv-summary-total"><span>Total à payer</span><strong>€<b data-summary-net>661.50</b></strong></div>
@@ -116,26 +116,7 @@
           <button type="button" class="nx-pv-list-button" data-list-sale>🛒&nbsp; Ajouter au panier</button>
           <button type="button" class="nx-pv-cancel" data-cancel-sale>Annuler</button>
 
-          <div class="nx-pv-section-heading nx-pv-announcements-heading"><strong>Mes investissements</strong><a href="{{ routes.collections_url }}/projects">Voir toutes</a></div>
-          <div class="nx-pv-list nx-pv-announcements">
-            {% assign announcement_products = collections.projects.products %}
-            {% if announcement_products.size > 0 %}
-              {% for announcement in announcement_products limit: 3 %}
-                <a href="{{ announcement.url }}?view=view-project" class="nx-pv-list-item nx-pv-list-item--announcement">
-                  <div class="nx-pv-list-thumb">{% render 'project-visual', image: announcement.featured_image, loading: 'lazy' %}</div>
-                  <div class="nx-pv-list-copy"><strong>{{ announcement.title }}</strong><span>{{ section.settings.default_share_count }} parts à {{ share_price | money_without_trailing_zeros }}</span></div>
-                  <span class="nx-pv-status nx-pv-status--{{ forloop.index }}">{{ section.settings.default_status }}</span>
-                  <span class="nx-pv-chevron">›</span>
-                </a>
-              {% endfor %}
-            {% else %}
-              <a href="{{ product.url }}?view=view-project" class="nx-pv-list-item nx-pv-list-item--announcement">
-                <div class="nx-pv-list-thumb">{% render 'project-visual', image: product.featured_image, loading: 'lazy' %}</div>
-                <div class="nx-pv-list-copy"><strong>{{ product.title }}</strong><span>5 parts à €{{ share_price_decimal }}</span></div>
-                <span class="nx-pv-status">En attente</span><span class="nx-pv-chevron">›</span>
-              </a>
-            {% endif %}
-          </div>
+         
         </div>
       </article>
   </div>
