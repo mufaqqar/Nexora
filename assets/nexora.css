@@ -5000,7 +5000,7 @@ h3 {
 }
 
 .nx-pv-important li::before {
-  content: 'âœ“';
+  content: '✓ ';
   position: absolute;
   left: 0;
   color: var(--nx-purple);
