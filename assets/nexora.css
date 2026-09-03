@@ -326,12 +326,13 @@ h3 {
   min-height: 690px;
   display: grid;
   align-items: center;
-  padding-top: 72px;
   overflow: hidden;
 
 }
+.hero.section { padding-top: 0;}
 
 .hero_bg {
+
   background-image: none;
 }
 
@@ -1333,8 +1334,7 @@ h3 {
     border-bottom: 1px solid #17171d;
   }
 
-  .hero {
-   
+  .hero {   
     padding: 0px 0 24px;
     border-bottom: 1px solid #17171d;
     overflow: hidden;
