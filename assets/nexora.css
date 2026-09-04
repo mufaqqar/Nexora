@@ -348,6 +348,7 @@ h3 {
   width: 100%;
   height: auto;
   object-fit: cover;
+  margin-bottom: -2px;
 }
 
 .hero__content {
@@ -1336,7 +1337,7 @@ h3 {
   .hero_bg {
     background-image: url(https://nexora-zdo2l477.myshopify.com/cdn/shop/files/new_main.jpg);
     background-position-x: right;
-    background-size: 65% 100%;
+    background-size: 65% 101%;
     background-repeat: no-repeat;
   }
 
