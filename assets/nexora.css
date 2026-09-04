@@ -1210,7 +1210,7 @@ h3 {
   justify-content: center;
   gap: 20px;
   padding-top: 20px;
-  color: #59586d;
+  color: #fff;
   font-size: 18px;
   text-align: center;
 }
@@ -1489,12 +1489,12 @@ h3 {
   .featured-project__stats {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-    margin-top: 20px;
+    gap: 8px!important;
+    margin-top: 10px!important;
   }
 
   .featured-project__stat {
-    padding-right: 14px;
+    padding-right: 8px!important;
     border-right: 1px solid var(--nx-line);
   }
 
@@ -1521,7 +1521,7 @@ h3 {
   }
 
   .featured-project__progress {
-    margin: 14px 0 6px;
+    margin: 14px 0 6px!important;
   }
 
   .featured-project__progress-bar {
@@ -1684,7 +1684,6 @@ h3 {
     display: flex;
     justify-content: center;
     margin-top: 17px;
-    color: var(--nx-muted);
     font-size: 9px;
     flex-direction: row;
     text-align: center;
@@ -2472,14 +2471,14 @@ h3 {
   }
 
   .featured-project {
-   grid-template-columns: 35% 65%;
+   grid-template-columns: 45% 55%;
        min-height: 230px;
   }
 .featured-project__image{
    min-height: 230px;
 }
   .featured-project__content {
-    padding: 20px;
+    padding: 10px;
   }
 
   .featured-project__header h3 {
