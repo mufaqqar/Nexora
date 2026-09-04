@@ -1341,7 +1341,7 @@ h3 {
   }
 
   .hero_bg {
-    background-image: url(https://nexora-zdo2l477.myshopify.com/cdn/shop/files/banner.png);
+    background-image: url(https://nexora-zdo2l477.myshopify.com/cdn/shop/files/new_main.jpg);
     background-position-x: right;
     background-size: 65% 100%;
     background-repeat: no-repeat;
@@ -1383,12 +1383,13 @@ h3 {
   }
 
   .button {
-    width: 100%;
+    width: 80%;
     height: 48px;
     border-radius: 11px;
     font-size: 13px;
     font-weight: 700;
     cursor: pointer;
+    padding: 0px 5px;
   }
 
   .hero__icon-box {
