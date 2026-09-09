@@ -40,7 +40,7 @@
         </div>
 
         <div class="nx-pv-metric-grid">
-          <div class="nx-pv-metric"><span>Revenus mensuels</span><strong>{{ section.settings.monthly_income }}</strong><small class="nx-pv-positive">+{{ section.settings.monthly_growth }}</small><i>↗</i></div>
+          <div class="nx-pv-metric"><span>Revenus mensuels</span><strong>{{ section.settings.monthly_income }}</strong><i>↗</i></div>
           <div class="nx-pv-metric"><span>Total investi</span><strong>{{ total_spent | money_without_trailing_zeros }}</strong><small>{{ order_count }} {% if order_count > 1 %}projets{% else %}projet{% endif %}</small><i>▣</i></div>
           <div class="nx-pv-metric"><span>Prochain versement</span><strong>{{ section.settings.next_payment }}</strong><small>{{ section.settings.next_payment_subtitle }}</small><i>▣</i></div>
           <div class="nx-pv-metric"><span>Projets actifs</span><strong>{{ order_count }}</strong><small>{{ order_count }} {% if order_count > 1 %}projets{% else %}projet{% endif %}</small><i>◔</i></div>
@@ -79,7 +79,7 @@
         {% assign chart_totals = chart_total_feb | append: ',' | append: chart_total_mar | append: ',' | append: chart_total_apr | append: ',' | append: chart_total_may | append: ',' | append: chart_total_jun | append: ',' | append: chart_total_jul | append: ',' | append: chart_total_aug | split: ',' %}
 
         <div class="nx-pv-chart-card">
-          <div class="nx-pv-chart-meta"><strong>{{ total_spent | money_without_trailing_zeros }}</strong><span class="nx-pv-positive">{{ section.settings.chart_growth }}</span></div>
+          <div class="nx-pv-chart-meta"><strong>{{ total_spent | money_without_trailing_zeros }}</strong></div>
           <div class="nx-pv-chart" aria-label="Graphique des revenus mensuels">
             {% for total in chart_totals %}
               {% assign pct = total | times: 100 | divided_by: chart_max %}
