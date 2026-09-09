@@ -39,10 +39,26 @@
           <div class="nx-pv-portfolio-glow" aria-hidden="true">N</div>
         </div>
 
+        {% assign next_payment_date = '' %}
+        {% assign next_payment_days = '' %}
+        {% if customer %}
+          {% assign now_ts = 'now' | date: '%s' %}
+          {% for order in customer.orders %}
+            {% assign order_ts = order.created_at | date: '%s' %}
+            {% if order_ts > now_ts %}
+              {% if next_payment_date == '' %}
+                {% assign next_payment_date = order.created_at | date: '%-d %B %Y' %}
+                {% assign diff_seconds = order_ts | minus: now_ts %}
+                {% assign next_payment_days = diff_seconds | divided_by: 86400 %}
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+
         <div class="nx-pv-metric-grid">
           <div class="nx-pv-metric"><span>Revenus mensuels</span><strong>{{ section.settings.monthly_income }}</strong><i>↗</i></div>
           <div class="nx-pv-metric"><span>Total investi</span><strong>{{ total_spent | money_without_trailing_zeros }}</strong><small>{{ order_count }} {% if order_count > 1 %}projets{% else %}projet{% endif %}</small><i>▣</i></div>
-          <div class="nx-pv-metric"><span>Prochain versement</span><strong>{{ section.settings.next_payment }}</strong><small>{{ section.settings.next_payment_subtitle }}</small><i>▣</i></div>
+          <div class="nx-pv-metric"><span>Prochain versement</span><strong>{% if next_payment_date != '' %}{{ next_payment_date }}{% else %}-{% endif %}</strong><small>{% if next_payment_days != '' %}Dans {{ next_payment_days }} jour{% if next_payment_days > 1 %}s{% endif %}{% else %}Aucun{% endif %}</small><i>▣</i></div>
           <div class="nx-pv-metric"><span>Projets actifs</span><strong>{{ order_count }}</strong><small>{{ order_count }} {% if order_count > 1 %}projets{% else %}projet{% endif %}</small><i>◔</i></div>
         </div>
 
