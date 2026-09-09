@@ -17,40 +17,80 @@
       </header>
       <div class="nx-pv-dashboard-body">
         <div class="nx-pv-greeting">
-          <strong>{{ section.settings.user_name }}</strong>
+          <strong>Bonjour, {{ customer.first_name | default: customer.name }} 👋</strong>
           <span>{{ section.settings.greeting }}</span>
           <p>{{ section.settings.greeting_subtitle }}</p>
         </div>
 
+        {% assign total_spent = 0 %}
+        {% assign order_count = 0 %}
+        {% if customer %}
+          {% for order in customer.orders %}
+            {% assign total_spent = total_spent | plus: order.total_price %}
+            {% assign order_count = order_count | plus: 1 %}
+          {% endfor %}
+        {% endif %}
+
         <div class="nx-pv-portfolio-card">
           <div>
             <span>VALEUR TOTALE DU PORTEFEUILLE</span>
-            <strong>{{ section.settings.portfolio_value }}</strong>
-            <small class="nx-pv-positive">{{ section.settings.portfolio_growth }}</small>
+            <strong>{{ total_spent | money_without_trailing_zeros }}</strong>
           </div>
           <div class="nx-pv-portfolio-glow" aria-hidden="true">N</div>
         </div>
 
         <div class="nx-pv-metric-grid">
           <div class="nx-pv-metric"><span>Revenus mensuels</span><strong>{{ section.settings.monthly_income }}</strong><small class="nx-pv-positive">+{{ section.settings.monthly_growth }}</small><i>↗</i></div>
-          <div class="nx-pv-metric"><span>Total investi</span><strong>{{ section.settings.total_invested }}</strong><small>{{ section.settings.invested_count }}</small><i>▣</i></div>
+          <div class="nx-pv-metric"><span>Total investi</span><strong>{{ total_spent | money_without_trailing_zeros }}</strong><small>{{ order_count }} {% if order_count > 1 %}projets{% else %}projet{% endif %}</small><i>▣</i></div>
           <div class="nx-pv-metric"><span>Prochain versement</span><strong>{{ section.settings.next_payment }}</strong><small>{{ section.settings.next_payment_subtitle }}</small><i>▣</i></div>
-          <div class="nx-pv-metric"><span>Projets actifs</span><strong>{{ section.settings.active_projects }}</strong><small>Sur {{ section.settings.total_projects }} projets</small><i>◔</i></div>
+          <div class="nx-pv-metric"><span>Projets actifs</span><strong>{{ order_count }}</strong><small>{{ order_count }} {% if order_count > 1 %}projets{% else %}projet{% endif %}</small><i>◔</i></div>
         </div>
 
         <div class="nx-pv-section-heading"><strong>Revenus mensuels</strong><a href="{{ routes.collections_url }}/projects">Voir tout</a></div>
+        {% assign chart_total_feb = 0 %}
+        {% assign chart_total_mar = 0 %}
+        {% assign chart_total_apr = 0 %}
+        {% assign chart_total_may = 0 %}
+        {% assign chart_total_jun = 0 %}
+        {% assign chart_total_jul = 0 %}
+        {% assign chart_total_aug = 0 %}
+        {% if customer %}
+          {% for order in customer.orders %}
+            {% assign order_month = order.created_at | date: "%m" %}
+            {% if order_month == "02" %}{% assign chart_total_feb = chart_total_feb | plus: order.total_price %}{% endif %}
+            {% if order_month == "03" %}{% assign chart_total_mar = chart_total_mar | plus: order.total_price %}{% endif %}
+            {% if order_month == "04" %}{% assign chart_total_apr = chart_total_apr | plus: order.total_price %}{% endif %}
+            {% if order_month == "05" %}{% assign chart_total_may = chart_total_may | plus: order.total_price %}{% endif %}
+            {% if order_month == "06" %}{% assign chart_total_jun = chart_total_jun | plus: order.total_price %}{% endif %}
+            {% if order_month == "07" %}{% assign chart_total_jul = chart_total_jul | plus: order.total_price %}{% endif %}
+            {% if order_month == "08" %}{% assign chart_total_aug = chart_total_aug | plus: order.total_price %}{% endif %}
+          {% endfor %}
+        {% endif %}
+        {% assign chart_max = chart_total_feb %}
+        {% if chart_total_mar > chart_max %}{% assign chart_max = chart_total_mar %}{% endif %}
+        {% if chart_total_apr > chart_max %}{% assign chart_max = chart_total_apr %}{% endif %}
+        {% if chart_total_may > chart_max %}{% assign chart_max = chart_total_may %}{% endif %}
+        {% if chart_total_jun > chart_max %}{% assign chart_max = chart_total_jun %}{% endif %}
+        {% if chart_total_jul > chart_max %}{% assign chart_max = chart_total_jul %}{% endif %}
+        {% if chart_total_aug > chart_max %}{% assign chart_max = chart_total_aug %}{% endif %}
+        {% if chart_max == 0 %}{% assign chart_max = 1 %}{% endif %}
+
+        {% assign chart_months = 'Fév,Mar,Avr,Mai,Juin,Juil,Août' | split: ',' %}
+        {% assign chart_totals = chart_total_feb | append: ',' | append: chart_total_mar | append: ',' | append: chart_total_apr | append: ',' | append: chart_total_may | append: ',' | append: chart_total_jun | append: ',' | append: chart_total_jul | append: ',' | append: chart_total_aug | split: ',' %}
+
         <div class="nx-pv-chart-card">
-          <div class="nx-pv-chart-meta"><strong>{{ section.settings.chart_value }}</strong><span class="nx-pv-positive">{{ section.settings.chart_growth }}</span></div>
+          <div class="nx-pv-chart-meta"><strong>{{ total_spent | money_without_trailing_zeros }}</strong><span class="nx-pv-positive">{{ section.settings.chart_growth }}</span></div>
           <div class="nx-pv-chart" aria-label="Graphique des revenus mensuels">
-            {% assign chart_values = '28,40,34,58,70,86,74' | split: ',' %}
-            {% assign chart_months = 'Fév,Mar,Avr,Mai,Juin,Juil,Août' | split: ',' %}
-            {% for value in chart_values %}
+            {% for total in chart_totals %}
+              {% assign pct = total | times: 100 | divided_by: chart_max %}
+              {% if pct < 5 and total > 0 %}{% assign pct = 5 %}{% endif %}
+              {% if total == 0 %}{% assign pct = 0 %}{% endif %}
               <div class="nx-pv-bar-wrap">
-                <span class="nx-pv-bar" style="height: {{ value }}%;"></span>
+                <span class="nx-pv-bar" style="height: {{ pct }}%;"></span>
                 <small>{{ chart_months[forloop.index0] }}</small>
               </div>
             {% endfor %}
-            <b class="nx-pv-chart-bubble">€{{ section.settings.chart_peak }}</b>
+            <b class="nx-pv-chart-bubble">{{ total_spent | money_without_trailing_zeros }}</b>
           </div>
         </div>
 
@@ -97,7 +137,7 @@
     { "type": "text", "id": "greeting_subtitle", "label": "Sous-titre", "default": "Voici un aperçu de vos investissements." },
     { "type": "text", "id": "portfolio_value", "label": "Valeur portefeuille", "default": "€ 4 600" },
     { "type": "text", "id": "portfolio_growth", "label": "Croissance portefeuille", "default": "+12.4% depuis le début" },
-    { "type": "text", "id": "monthly_income", "label": "Revenus mensuels", "default": "€185" },
+    { "type": "text", "id": "monthly_income", "label": "Revenus mensuels", "default": "-" },
     { "type": "text", "id": "monthly_growth", "label": "Croissance mensuelle", "default": "6.8%" },
     { "type": "text", "id": "total_invested", "label": "Total investi", "default": "€2 345" },
     { "type": "text", "id": "invested_count", "label": "Nombre d'investissements", "default": "5 projets" },
