@@ -32,7 +32,16 @@
         "eyebrow": "",
         "heading": "Des opportunités sélectionnées.",
         "link_label": "Tous les projets"
-      }
+      },
+      "blocks": {
+        "slide-1": {
+          "type": "project",
+          "settings": {
+            "product": "nexora-smart-security"
+          }
+        }
+      },
+      "block_order": ["slide-1"]
     },
     "values": {
       "type": "value-props",

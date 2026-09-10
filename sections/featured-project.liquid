@@ -25,13 +25,22 @@
     </div>
 
     <!-- SLIDER -->
-    {% assign all_projects = collections['projects'].products %}
+    {% assign has_projects = false %}
+    {% for block in section.blocks %}
+      {% if block.settings.product != blank %}
+        {% assign has_projects = true %}
+      {% endif %}
+    {% endfor %}
 
-    {% if all_projects.size > 0 %}
+    {% if has_projects %}
       <div class="featured-projects-slider" data-featured-slider>
 
         <div class="featured-projects-slider__track" data-slider-track>
-          {% for product in all_projects %}
+          {% for block in section.blocks %}
+            {% assign product = block.settings.product %}
+            {% if product == blank %}
+              {% continue %}
+            {% endif %}
 
             {% assign feat_current = product.metafields.project.total_purchases.value | default: 0 %}
             {% assign feat_target = product.metafields.project.target_amount.value | default: 1 %}
@@ -115,7 +124,10 @@
         </div>
 
         <div class="featured-projects-slider__dots" data-slider-dots>
-          {% for product in all_projects %}
+          {% for block in section.blocks %}
+            {% if block.settings.product == blank %}
+              {% continue %}
+            {% endif %}
             <button
               class="featured-projects-slider__dot{% if forloop.first %} is-active{% endif %}"
               data-slider-dot="{{ forloop.index0 }}"
@@ -129,8 +141,8 @@
 
       <div class="empty-state">
         <p>
-          Ajoutez des projets à la collection « projects »
-          pour afficher votre slider.
+          Sélectionnez des projets dans les réglages de cette
+          section pour afficher le slider.
         </p>
       </div>
 
@@ -163,9 +175,26 @@
       "default": "Tous les projets"
     }
   ],
+  "blocks": [
+    {
+      "type": "project",
+      "name": "Projet en vedette",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Projet"
+        }
+      ]
+    }
+  ],
   "presets": [
     {
-      "name": "Slider projets"
+      "name": "Slider projets",
+      "blocks": [
+        { "type": "project" },
+        { "type": "project" }
+      ]
     }
   ]
 }
