@@ -5495,9 +5495,17 @@ h3 {
 
 .featured-projects-slider__track {
   display: flex;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
   cursor: grab;
   user-select: none;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.featured-projects-slider__track::-webkit-scrollbar {
+  display: none;
 }
 
 .featured-projects-slider__slide {
@@ -5505,6 +5513,7 @@ h3 {
   min-width: 0;
   padding: 0 12px;
   box-sizing: border-box;
+  scroll-snap-align: start;
 }
 
 .featured-projects-slider__dots {
