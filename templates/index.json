@@ -25,23 +25,39 @@
         "image": "shopify://shop_images/new_main.jpg"
       }
     },
-    "featured": {
+    "featured_project_A3DgJi": {
       "type": "featured-project",
-      "name": "Des opportunités sélectionnées.",
-      "settings": {
-        "eyebrow": "",
-        "heading": "Des opportunités sélectionnées.",
-        "link_label": "Tous les projets"
-      },
       "blocks": {
-        "slide-1": {
+        "project_H3eegi": {
           "type": "project",
           "settings": {
-            "product": "nexora-smart-security"
+            "product": "nexora-real-estate"
+          }
+        },
+        "project_NGgyQK": {
+          "type": "project",
+          "settings": {
+            "product": "nexora-energy"
+          }
+        },
+        "project_ABg9pU": {
+          "type": "project",
+          "settings": {
+            "product": "nexora-health"
           }
         }
       },
-      "block_order": ["slide-1"]
+      "block_order": [
+        "project_H3eegi",
+        "project_NGgyQK",
+        "project_ABg9pU"
+      ],
+      "name": "Slider projets",
+      "settings": {
+        "eyebrow": "PROJETS EN COURS",
+        "heading": "Des opportunités sélectionnées.",
+        "link_label": "Tous les projets"
+      }
     },
     "values": {
       "type": "value-props",
@@ -90,7 +106,7 @@
   },
   "order": [
     "hero_yUB4ht",
-    "featured",
+    "featured_project_A3DgJi",
     "values"
   ]
 }
