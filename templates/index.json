@@ -27,14 +27,11 @@
     },
     "featured": {
       "type": "featured-project",
+      "name": "Des opportunités sélectionnées.",
       "settings": {
         "eyebrow": "",
         "heading": "Des opportunités sélectionnées.",
-        "link_label": "Tous les projets",
-        "product": "nexora-smart-security",
-        "category": "Résidentiel & Pro",
-        "description": "Système d'alarme intelligent pour maisons et entreprises",
-        "minimum": 100
+        "link_label": "Tous les projets"
       }
     },
     "values": {

@@ -127,3 +127,114 @@ document
       }
     });
   });
+
+
+/* =========================================================
+   FEATURED PROJECTS SLIDER
+========================================================= */
+
+document.querySelectorAll('[data-featured-slider]').forEach((slider) => {
+  const track = slider.querySelector('[data-slider-track]');
+  const dotsContainer = slider.querySelector('[data-slider-dots]');
+  const slides = track ? track.querySelectorAll('.featured-projects-slider__slide') : [];
+  const dots = dotsContainer ? dotsContainer.querySelectorAll('[data-slider-dot]') : [];
+
+  if (!track || slides.length === 0) return;
+
+  let currentIndex = 0;
+  let slideWidth = 0;
+  let maxIndex = 0;
+  let startX = 0;
+  let currentX = 0;
+  let isDragging = false;
+  let dragOffset = 0;
+
+  function recalc() {
+    const first = slides[0];
+    if (!first) return;
+    slideWidth = first.offsetWidth;
+    maxIndex = Math.max(0, slides.length - Math.floor(track.offsetWidth / slideWidth));
+    if (currentIndex > maxIndex) currentIndex = maxIndex;
+    render(false);
+  }
+
+  function render(animate) {
+    if (animate === undefined) animate = true;
+    track.style.transition = animate ? 'transform 0.4s cubic-bezier(0.25, 1, 0.5, 1)' : 'none';
+    track.style.transform = 'translateX(' + (-currentIndex * slideWidth) + 'px)';
+
+    dots.forEach(function (dot, i) {
+      dot.classList.toggle('is-active', i === currentIndex);
+    });
+  }
+
+  function goTo(index) {
+    currentIndex = Math.max(0, Math.min(index, maxIndex));
+    render(true);
+  }
+
+  dots.forEach(function (dot) {
+    dot.addEventListener('click', function () {
+      var idx = parseInt(dot.getAttribute('data-slider-dot'), 10);
+      if (!isNaN(idx)) goTo(idx);
+    });
+  });
+
+  track.addEventListener('touchstart', function (e) {
+    startX = e.touches[0].clientX;
+    isDragging = true;
+    track.style.transition = 'none';
+  }, { passive: true });
+
+  track.addEventListener('touchmove', function (e) {
+    if (!isDragging) return;
+    currentX = e.touches[0].clientX;
+    dragOffset = currentX - startX;
+    track.style.transform = 'translateX(' + (-currentIndex * slideWidth + dragOffset) + 'px)';
+  }, { passive: true });
+
+  track.addEventListener('touchend', function () {
+    if (!isDragging) return;
+    isDragging = false;
+    if (dragOffset < -50) {
+      goTo(currentIndex + 1);
+    } else if (dragOffset > 50) {
+      goTo(currentIndex - 1);
+    } else {
+      render(true);
+    }
+    dragOffset = 0;
+  });
+
+  track.addEventListener('mousedown', function (e) {
+    startX = e.clientX;
+    isDragging = true;
+    track.style.transition = 'none';
+    track.style.cursor = 'grabbing';
+    e.preventDefault();
+  });
+
+  document.addEventListener('mousemove', function (e) {
+    if (!isDragging) return;
+    currentX = e.clientX;
+    dragOffset = currentX - startX;
+    track.style.transform = 'translateX(' + (-currentIndex * slideWidth + dragOffset) + 'px)';
+  });
+
+  document.addEventListener('mouseup', function () {
+    if (!isDragging) return;
+    isDragging = false;
+    track.style.cursor = '';
+    if (dragOffset < -50) {
+      goTo(currentIndex + 1);
+    } else if (dragOffset > 50) {
+      goTo(currentIndex - 1);
+    } else {
+      render(true);
+    }
+    dragOffset = 0;
+  });
+
+  recalc();
+  window.addEventListener('resize', recalc);
+});
