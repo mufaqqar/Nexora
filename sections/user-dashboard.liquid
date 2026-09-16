@@ -1,3 +1,13 @@
+{% unless customer %}
+  {% assign login_url = routes.account_login_url | append: '?return_to=' | append: request.path %}
+  <meta http-equiv="refresh" content="0; url={{ login_url }}">
+  <script>window.location.href = "{{ login_url }}";</script>
+  <div class="nx-pv-login-guard">
+    <strong>Accès réservé</strong>
+    <p>Connectez-vous pour consulter votre tableau de bord.</p>
+    <a href="{{ login_url }}">Se connecter</a>
+  </div>
+{% else %}
 <section class="nx-project-view nx-pv-dashboard-page" data-user-dashboard>
   <div class="nx-project-view__shell">
     <div class="nx-pv-panel nx-pv-dashboard">
@@ -143,6 +153,7 @@
     </div>
   </div>
 </section>
+{% endunless %}
 
 {% schema %}
 {

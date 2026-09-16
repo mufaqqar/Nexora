@@ -4985,7 +4985,7 @@ h3 {
   padding-left: 24px;
 }
 
-.nx-pv-important li::before {
+.nx-pv-important li::before , .figma-reasons li::before {
   content: "✓ ";
   position: absolute;
   left: 0;
@@ -5864,3 +5864,5 @@ h3 {
     margin-top: 23px;
   }
 }
+
+.none { display: none;}

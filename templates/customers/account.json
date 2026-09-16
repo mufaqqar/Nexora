@@ -10,7 +10,7 @@
 {
   "sections": {
     "main": {
-      "type": "main-account",
+      "type": "user-dashboard",
       "settings": {}
     }
   },
