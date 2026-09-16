@@ -1,10 +1,10 @@
-{% if cart.item_count > 0 %}
+{% assign platform_fee_rate = 2 %}{% assign fee_amount = cart.total_price | times: platform_fee_rate | divided_by: 100 %}{% assign grand_total = cart.total_price | plus: fee_amount %}{% if cart.item_count > 0 %}
 
   <section class="section cart-section">
     <div class="container cart-container">
       <div class="page-heading">
         <h1>Votre panier</h1>
-        <p>{{ cart.item_count }} projet(s) à investir pour un montant total de {{ cart.total_price | money }}.</p>
+        <p>{{ cart.item_count }} projet(s) à investir pour un montant total de {{ grand_total | money }}.</p>
       </div>
 
       <form action="{{ routes.cart_url }}" method="post" novalidate class="cart-layout cart-layout--summary">
@@ -15,12 +15,12 @@
             <strong>{{ cart.total_price | money }}</strong>
           </div>
           <div class="cart-summary__row">
-            <span>Frais</span>
-            <strong>Inclus lors du paiement</strong>
+            <span>Frais de plateforme ({{ platform_fee_rate }}%)</span>
+            <strong>{{ fee_amount | money }}</strong>
           </div>
           <div class="cart-summary__row cart-summary__row--total">
             <span>Total</span>
-            <strong>{{ cart.total_price | money }}</strong>
+            <strong>{{ grand_total | money }}</strong>
           </div>
 
           <button type="submit" name="checkout" class="button button--wide" data-cart-checkout>

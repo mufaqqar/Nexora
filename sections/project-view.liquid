@@ -100,7 +100,7 @@
             <div class="nx-pv-summary-row"><span>Parts à vendre:</span><strong><b data-summary-quantity>5</b> parts</strong></div>
             <div class="nx-pv-summary-row"><span>Prix par part:</span><strong>€<b data-summary-price>12</b></strong></div>
             <div class="nx-pv-summary-row"><span>Valeur totale:</span><strong>€<b data-summary-total>675</b></strong></div>
-            <div class="nx-pv-summary-row nx-pv-summary-row--fee"><span>Frais de plateforme ({{ platform_fee }}%)</span><strong>-€<b data-summary-fee>13.50</b></strong></div>
+            <div class="nx-pv-summary-row nx-pv-summary-row--fee"><span>Frais de plateforme ({{ platform_fee }}%)</span><strong>+€<b data-summary-fee>13.50</b></strong></div>
             <div class="nx-pv-summary-total"><span>Vous recevez</span><strong>€<b data-summary-net>661.50</b></strong></div>
           </div>
 
@@ -209,7 +209,7 @@
 
     var total = q * p;
     var fee = total * feeRate;
-    var net = total - fee;
+    var net = total + fee;
 
 
     /* Summary */
@@ -424,28 +424,8 @@
             throw new Error('error');
           }
 
-          self.textContent =
-            '✓ Ajouté au panier';
-
-          self.classList.add(
-            'is-success'
-          );
-
-
-          var cartLink =
-            document.createElement('a');
-
-          cartLink.href =
+          window.location.href =
             '{{ routes.cart_url }}';
-
-          cartLink.className =
-            'nx-pv-list-button';
-
-          cartLink.textContent =
-            'Voir le panier →';
-
-
-          self.replaceWith(cartLink);
 
         })
         .catch(function () {
