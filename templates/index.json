@@ -28,6 +28,12 @@
     "featured_project_A3DgJi": {
       "type": "featured-project",
       "blocks": {
+        "project_9p3UP9": {
+          "type": "project",
+          "settings": {
+            "product": "nexora-energy"
+          }
+        },
         "project_H3eegi": {
           "type": "project",
           "settings": {
@@ -48,6 +54,7 @@
         }
       },
       "block_order": [
+        "project_9p3UP9",
         "project_H3eegi",
         "project_NGgyQK",
         "project_ABg9pU"
