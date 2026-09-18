@@ -2,10 +2,7 @@
 
   <section class="section cart-section">
     <div class="container cart-container">
-      <div class="page-heading">
-        <h1>Votre panier</h1>
-        <p>{{ cart.item_count }} projet(s) à investir pour un montant total de {{ grand_total | money }}.</p>
-      </div>
+     
 
       <form action="{{ routes.cart_url }}" method="post" novalidate class="cart-layout cart-layout--summary">
         <aside class="cart-summary">
@@ -26,9 +23,7 @@
           <button type="submit" name="checkout" class="button button--wide" data-cart-checkout>
             Procéder au paiement
           </button>
-          <button type="button" class="cart-summary__update" data-cart-clear>
-            Vider le panier
-          </button>
+         
         </aside>
       </form>
     </div>
