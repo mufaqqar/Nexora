@@ -299,6 +299,20 @@ h3 {
   height: 17px;
 }
 
+.menu-toggle__icon {
+  display: grid;
+  place-items: center;
+}
+
+.menu-toggle__icon--close,
+.menu-toggle[aria-expanded="true"] .menu-toggle__icon--open {
+  display: none;
+}
+
+.menu-toggle[aria-expanded="true"] .menu-toggle__icon--close {
+  display: grid;
+}
+
 .mobile-nav {
   display: none;
   border-top: 1px solid var(--nx-line);
@@ -4936,7 +4950,7 @@ h3 {
 }
 
 .nx-pv-summary-row--fee strong {
-  color: #ff7a8a;
+  color: green;
 }
 
 .nx-pv-summary-total {
