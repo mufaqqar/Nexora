@@ -192,3 +192,90 @@ document.querySelectorAll('[data-featured-slider]').forEach((slider) => {
 
   updateDots();
 });
+
+/* =========================================================
+   PRODUCT GALLERY SLIDER
+========================================================= */
+
+document.querySelectorAll('[data-product-gallery]').forEach((gallery) => {
+  const track = gallery.querySelector('[data-gallery-track]');
+  const slides = track ? Array.from(track.querySelectorAll('[data-gallery-slide]')) : [];
+  const prevBtn = gallery.querySelector('[data-gallery-prev]');
+  const nextBtn = gallery.querySelector('[data-gallery-next]');
+  const thumbs = gallery.querySelectorAll('[data-gallery-thumb]');
+  
+  if (!track || slides.length <= 1) return;
+  
+  let currentIndex = 0;
+  
+  function updateThumbs() {
+    thumbs.forEach((thumb, i) => {
+      thumb.classList.toggle('is-active', i === currentIndex);
+    });
+  }
+  
+  function goTo(index) {
+    currentIndex = Math.max(0, Math.min(index, slides.length - 1));
+    const slideWidth = slides[0].offsetWidth;
+    track.scrollTo({ left: currentIndex * slideWidth, behavior: 'smooth' });
+    updateThumbs();
+    const activeThumb = thumbs[currentIndex];
+    if (activeThumb) {
+      activeThumb.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    }
+  }
+  
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => goTo(currentIndex - 1));
+  }
+  
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => goTo(currentIndex + 1));
+  }
+  
+  thumbs.forEach((thumb) => {
+    thumb.addEventListener('click', () => {
+      const idx = parseInt(thumb.getAttribute('data-gallery-thumb'), 10);
+      if (!isNaN(idx)) goTo(idx);
+    });
+  });
+  
+  track.addEventListener('scroll', () => {
+    const slideWidth = slides[0].offsetWidth;
+    const idx = Math.round(track.scrollLeft / slideWidth);
+    if (idx !== currentIndex) {
+      currentIndex = idx;
+      updateThumbs();
+    }
+  });
+  
+  let isDragging = false;
+  let startX = 0;
+  let startScroll = 0;
+  
+  track.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    startX = e.clientX;
+    startScroll = track.scrollLeft;
+    track.style.scrollBehavior = 'auto';
+    e.preventDefault();
+  });
+  
+  document.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    track.scrollLeft = startScroll - (e.clientX - startX);
+  });
+  
+  document.addEventListener('mouseup', () => {
+    if (!isDragging) return;
+    isDragging = false;
+    track.style.scrollBehavior = 'smooth';
+    const slideWidth = slides[0].offsetWidth;
+    const idx = Math.round(track.scrollLeft / slideWidth);
+    goTo(idx);
+  });
+  
+  window.addEventListener('resize', () => {
+    goTo(currentIndex);
+  });
+});

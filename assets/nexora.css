@@ -2545,6 +2545,7 @@ h3 {
   overflow: hidden;
   border-radius: 9px;
   background: #111124;
+  position: relative;
 }
 
 .figma-detail-visual .project-visual,
@@ -2556,6 +2557,136 @@ h3 {
 
 .figma-detail-visual .project-visual__image {
   object-fit: cover;
+}
+
+/* Product Gallery */
+.figma-detail-visual {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  max-height: 420px;
+  overflow: hidden;
+  border-radius: 9px;
+  background: #111124;
+  position: relative;
+}
+
+.product-gallery {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.product-gallery__main {
+  position: relative;
+  width: 100%;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: 9px;
+}
+
+.product-gallery__track {
+  display: flex;
+  height: 100%;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.product-gallery__track::-webkit-scrollbar {
+  display: none;
+}
+
+.product-gallery__slide {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  scroll-snap-align: start;
+  position: relative;
+}
+
+.product-gallery__image,
+.product-gallery__video,
+.product-gallery__model,
+.product-gallery__media,
+.product-gallery__single {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.product-gallery__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  z-index: 2;
+  padding: 0;
+}
+
+.product-gallery__nav:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.product-gallery__nav--prev {
+  left: 10px;
+}
+
+.product-gallery__nav--next {
+  right: 10px;
+}
+
+.product-gallery__thumbs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.product-gallery__thumbs::-webkit-scrollbar {
+  display: none;
+}
+
+.product-gallery__thumb {
+  flex: 0 0 64px;
+  width: 64px;
+  height: 64px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid transparent;
+  background: #111124;
+  padding: 0;
+  cursor: pointer;
+  position: relative;
+}
+
+.product-gallery__thumb.is-active {
+  border-color: #7044f7;
+}
+
+.product-gallery__thumb-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .figma-detail-summary {
