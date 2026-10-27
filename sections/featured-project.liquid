@@ -43,7 +43,7 @@
             {% endif %}
 
             {% assign feat_current = product.metafields.project.total_purchases.value | default: 0 %}
-            {% assign feat_target = product.metafields.project.target_amount.value | default: 1 %}
+            {% assign feat_target = product.metafields.project.funding_goal.value | default: product.metafields.project.target_amount.value | default: 1 %}
             {% assign feat_funded = feat_current | times: 100 | divided_by: feat_target %}
             {% assign feat_customers = product.metafields.project.customers.value | default: 0 %}
             {% assign feat_category = product.metafields.project.category.value | default: 'Technologie' %}
@@ -87,8 +87,8 @@
                       <span>Financé</span>
                     </div>
                     <div class="featured-project__stat">
-                      <strong>{{ feat_current | money_without_trailing_zeros }}</strong>
-                      <span>Total achats / {{ feat_target | money_without_trailing_zeros }}</span>
+                      <strong>{{ feat_target | money_without_trailing_zeros }}</strong>
+                      <span>Objectif</span>
                     </div>
                     <div class="featured-project__stat">
                       <strong>{{ feat_customers }}</strong>

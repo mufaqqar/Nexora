@@ -284,7 +284,7 @@ h3 {
 }
 
 .menu-toggle {
-  display: grid;
+  display: none;
   place-items: center;
   width: 30px;
   height: 30px;
@@ -1248,6 +1248,10 @@ h3 {
     display: none;
   }
 
+  .menu-toggle {
+    display: grid;
+  }
+
   .mobile-nav.is-open {
     display: block;
   }
@@ -1331,6 +1335,11 @@ h3 {
 }
 
 @media (max-width: 560px) {
+  .brand-logo,
+  .site-header__logo-image {
+    width: 120px;
+  }
+
   .container {
     width: min(calc(100% - 15px), var(--nx-container));
   }
@@ -1876,7 +1885,8 @@ h3 {
   display: none;
 }
 
-.site-header__logo-image {
+.site-header__logo-image,
+.brand-logo {
   display: block;
   width: 160px;
   height: auto;
