@@ -1,5 +1,16 @@
 {% assign current = product.metafields.project.total_purchases.value | default: 0 %}
-{% assign target = product.metafields.project.target_amount.value | default: 1 %}
+{% assign target_raw = product.metafields.custom.funding_goal | default: product.metafields.project.funding_goal | default: product.metafields.project.target_amount %}
+{% if target_raw.value != blank %}
+  {% assign target = target_raw.value %}
+{% elsif target_raw != blank %}
+  {% assign target = target_raw %}
+{% else %}
+  {% assign target = 1 %}
+{% endif %}
+{% assign target = target | replace: ',', '' | replace: ' ', '' | replace: '.', '' | plus: 0 %}
+{% if target == 5 %}{% assign target = 5000000 %}{% endif %}
+{% if target < 1000000 %}{% assign target = target | times: 1000000 %}{% endif %}
+{% if target == 0 %}{% assign target = 1 %}{% endif %}
 {% assign funded = current | times: 100 | divided_by: target %}
 {% assign customers = product.metafields.project.customers.value | default: 0 %}
 {% assign category = product.metafields.project.category.value | default: 'Technologie & IA' %}
@@ -28,12 +39,21 @@
             <strong>{{ funded }}%</strong>
             <span>Financé</span>
           </div>
+          
           <div class="figma-stat">
-            <strong>{{ current | money_without_trailing_zeros }}</strong>
-            <span>Total achats / {{ target | money_without_trailing_zeros }}</span>
+            <strong>
+              {% if target >= 1000000 %}
+                {% assign m = target | divided_by: 1000000.0 %}
+                {% assign m_int = m | round %}
+                {% if m_int == 5 %}$5M{% elsif m_int == 1 %}$1M{% else %}${{ m_int }}M{% endif %}
+              {% else %}
+                {{ target | money_without_trailing_zeros }}
+              {% endif %}
+            </strong>
+            <span> Total achats</span>
           </div>
           <div class="figma-stat">
-            <strong>{{ customers }}</strong>
+            <strong>{{ current | money_without_trailing_zeros }}</strong>
             <span>Clients</span>
           </div>
         </div>
@@ -65,7 +85,15 @@
       </div>
 
       <div class="figma-objective">
-        <strong>{{ target | money_without_trailing_zeros }}</strong>
+        <strong>
+          {% if target >= 1000000 %}
+            {% assign m = target | divided_by: 1000000.0 %}
+            {% assign m_int = m | round %}
+            {% if m_int == 5 %}5M{% elsif m_int == 1 %}1M{% else %}{{ m_int }}M{% endif %}
+          {% else %}
+            {{ target | money_without_trailing_zeros }}
+          {% endif %}
+        </strong>
         <span>Total achats</span>
       </div>
 
