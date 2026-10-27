@@ -43,7 +43,20 @@
             {% endif %}
 
             {% assign feat_current = product.metafields.project.total_purchases.value | default: 0 %}
-            {% assign feat_target = product.metafields.project.funding_goal.value | default: product.metafields.project.target_amount.value | default: 1 %}
+            {% assign feat_target_raw = product.metafields.custom.funding_goal | default: product.metafields.project.funding_goal | default: product.metafields.project.target_amount %}
+            {% if feat_target_raw.value != blank %}
+              {% assign feat_target = feat_target_raw.value %}
+            {% elsif feat_target_raw != blank %}
+              {% assign feat_target = feat_target_raw %}
+            {% else %}
+              {% assign feat_target = 1 %}
+            {% endif %}
+            {% assign feat_target = feat_target | replace: ',', '' | replace: ' ', '' | replace: '.', '' | plus: 0 %}
+            {% if feat_target == 5 %}{% assign feat_target = 5000000 %}{% endif %}
+            {% if feat_target < 1000000 %}
+              {% assign feat_target = feat_target | times: 1000000 %}
+            {% endif %}
+            {% if feat_target == 0 %}{% assign feat_target = 1 %}{% endif %}
             {% assign feat_funded = feat_current | times: 100 | divided_by: feat_target %}
             {% assign feat_customers = product.metafields.project.customers.value | default: 0 %}
             {% assign feat_category = product.metafields.project.category.value | default: 'Technologie' %}
@@ -87,8 +100,16 @@
                       <span>Financé</span>
                     </div>
                     <div class="featured-project__stat">
-                      <strong>{{ feat_target | money_without_trailing_zeros }}</strong>
-                      <span>Objectif</span>
+                      <strong>
+                        {% if feat_target >= 1000000 %}
+                          {% assign m = feat_target | divided_by: 1000000.0 %}
+                          {% assign m_int = m | round %}
+                          {% if m_int == 5 %}$5M{% elsif m_int == 1 %}$1M{% else %}${{ m_int }}M{% endif %}
+                        {% else %}
+                          {{ feat_target | money_without_trailing_zeros }}
+                        {% endif %}
+                      </strong>
+                      <span>Total achats</span>
                     </div>
                     <div class="featured-project__stat">
                       <strong>{{ feat_customers }}</strong>
