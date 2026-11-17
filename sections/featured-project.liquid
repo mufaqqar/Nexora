@@ -89,7 +89,7 @@
                     <h3>{{ product.title }}</h3>
                     {% if product.description != blank %}
                       <p class="featured-project__description">
-                        {{ product.description | strip_html }}
+                        {{ product.description | strip_html | truncate: 300 }}
                       </p>
                     {% endif %}
                   </div>
@@ -104,7 +104,7 @@
                         {% if feat_target >= 1000000 %}
                           {% assign m = feat_target | divided_by: 1000000.0 %}
                           {% assign m_int = m | round %}
-                          {% if m_int == 5 %}$5M{% elsif m_int == 1 %}$1M{% else %}${{ m_int }}M{% endif %}
+                          {% if m_int == 5 %}€5M{% elsif m_int == 1 %}€1M{% else %}€{{ m_int }}M{% endif %}
                         {% else %}
                           {{ feat_target | money_without_trailing_zeros }}
                         {% endif %}

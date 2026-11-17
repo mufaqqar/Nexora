@@ -42,7 +42,7 @@
           {% if target >= 1000000 %}
             {% assign m = target | divided_by: 1000000.0 %}
             {% assign m_int = m | round %}
-            {% if m_int == 5 %}$5M{% elsif m_int == 1 %}$1M{% else %}${{ m_int }}M{% endif %}
+            {% if m_int == 5 %}€5M{% elsif m_int == 1 %}€1M{% else %}€{{ m_int }}M{% endif %}
           {% else %}
             {{ target | money_without_trailing_zeros }}
           {% endif %}

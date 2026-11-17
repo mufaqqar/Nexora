@@ -2337,6 +2337,13 @@ h3 {
   padding: 70px 80px;
 }
 
+.featured-project__header {
+  max-height: 300px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: 12px;
+}
+
 .featured-project__header h3 {
   margin: 0 0 10px;
 
@@ -2562,8 +2569,8 @@ h3 {
 /* Product Gallery */
 .figma-detail-visual {
   width: 100%;
-  aspect-ratio: 4 / 3;
-  max-height: 420px;
+  aspect-ratio: 1 / 1;
+  max-height: 460px;
   overflow: hidden;
   border-radius: 9px;
   background: #111124;
@@ -2659,6 +2666,7 @@ h3 {
   padding-bottom: 2px;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  height: 90px;
 }
 
 .product-gallery__thumbs::-webkit-scrollbar {
