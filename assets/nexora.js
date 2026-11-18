@@ -279,3 +279,102 @@ document.querySelectorAll('[data-product-gallery]').forEach((gallery) => {
     goTo(currentIndex);
   });
 });
+
+
+/* =========================================================
+   LANGUAGE SWITCHER (Uplinkly) INSIDE THE MOBILE NAV
+   The app injects its widget asynchronously (floating button or
+   into a configured selector), so we relocate it into the
+   [data-language-switcher] slot while the mobile nav is active
+   and put it back where it came from on desktop.
+========================================================= */
+
+(() => {
+  const mobileQuery = window.matchMedia('(max-width: 900px)');
+  const mobileNav = document.querySelector('[data-mobile-nav]');
+  const slot = mobileNav ? mobileNav.querySelector('[data-language-switcher]') : null;
+
+  if (!mobileNav || !slot) return;
+
+  let moved = null;
+  let poll = null;
+
+  function findWidget() {
+    const buttons = Array.from(
+      document.querySelectorAll('.uplinkly-language-translate-button')
+    ).filter((button) => !slot.contains(button));
+
+    if (!buttons.length) return null;
+
+    // If the app already inserts a widget in the mobile nav, use that one.
+    const button = buttons.find((item) => mobileNav.contains(item)) || buttons[0];
+
+    // A floating widget has a fixed-position wrapper: move the whole wrapper.
+    return button.closest('.uplinkly-language-translate-floating') || button;
+  }
+
+  function moveIntoNav() {
+    if (moved) return;
+
+    const widget = findWidget();
+    if (!widget) return;
+
+    moved = {
+      element: widget,
+      parent: widget.parentNode,
+      next: widget.nextSibling,
+    };
+
+    slot.appendChild(widget);
+    slot.classList.add('has-language-switcher');
+  }
+
+  function moveBack() {
+    if (!moved) return;
+
+    if (moved.next && moved.next.parentNode === moved.parent) {
+      moved.parent.insertBefore(moved.element, moved.next);
+    } else {
+      moved.parent.appendChild(moved.element);
+    }
+
+    moved = null;
+    slot.classList.remove('has-language-switcher');
+  }
+
+  function sync() {
+    if (mobileQuery.matches) {
+      moveIntoNav();
+    } else {
+      moveBack();
+    }
+  }
+
+  // The app loads after the page: keep checking until the widget exists.
+  function watchForWidget() {
+    if (poll) return;
+
+    let attempts = 0;
+
+    poll = window.setInterval(() => {
+      sync();
+      attempts += 1;
+
+      if (moved || findWidget() || attempts > 120) {
+        window.clearInterval(poll);
+        poll = null;
+      }
+    }, 250);
+  }
+
+  sync();
+  watchForWidget();
+
+  if (typeof mobileQuery.addEventListener === 'function') {
+    mobileQuery.addEventListener('change', sync);
+  } else if (typeof mobileQuery.addListener === 'function') {
+    mobileQuery.addListener(sync);
+  }
+
+  window.addEventListener('load', sync);
+})();

@@ -331,6 +331,40 @@ h3 {
   font-size: 18px;
 }
 
+/* Uplinkly Language Translate widget inside the mobile nav */
+.mobile-nav__language {
+  margin-top: 8px;
+  padding-top: 12px;
+  border-top: 1px solid var(--nx-line);
+}
+
+.mobile-nav__language .uplinkly-language-translate-floating {
+  position: static !important;
+}
+
+.mobile-nav__language .uplinkly-language-translate-button {
+  width: 100%;
+}
+
+.mobile-nav__language .uplinkly-language-translate-dropdown-button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 5px 0;
+  border-radius: 0;
+  background: transparent;
+  color: #fff;
+  font-size: 18px;
+  line-height: inherit;
+}
+
+.mobile-nav__language .uplinkly-language-translate-dropdown-button:hover {
+  background: transparent;
+  color: var(--nx-purple-2);
+}
+
 .hero {
   min-height: 690px;
   display: grid;
@@ -6029,3 +6063,20 @@ h3 {
 }
 
 .none { display: none;}
+
+/* =====================================================
+   FORCE DARK BACKGROUND — ACCOUNT / FOOTER
+   ===================================================== */
+
+html,
+body {
+  background: #020204 !important;
+}
+
+body.template-customers,
+body.template-customers main,
+.customer-page,
+.site-footer {
+  background: #020204;
+  color: var(--nx-text);
+}

@@ -55,6 +55,14 @@
       <a href="{{ pages['about'].url | default: '/pages/about' }}">À propos</a>
       <a href="/account">Dashboard</a>
       <a href="/account">Se connecter</a>
+
+      {%- comment -%}
+        Language switcher slot.
+        The Uplinkly Language Translate widget is moved here on mobile by nexora.js.
+        It can also be targeted directly from the app settings with the selector
+        [data-language-switcher] (position: end).
+      {%- endcomment -%}
+      <div class="mobile-nav__language" data-language-switcher></div>
     </div>
   </div>
 </header>
