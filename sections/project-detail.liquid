@@ -13,14 +13,14 @@
 {% if target == 0 %}{% assign target = 1 %}{% endif %}
 {% assign funded = current | times: 100 | divided_by: target %}
 {% assign customers = product.metafields.project.customers.value | default: 0 %}
-{% assign category = product.metafields.project.category.value | default: 'Technologie & IA' %}
+{% assign category = product.metafields.project.category.value | default: 'Technology & AI' %}
 {% assign minimum = product.metafields.project.investment_minimum.value | default: 100 %}
 
 <section class="section project-detail project-detail--figma">
   <div class="container project-detail__container">
 
     <a class="figma-back-link" href="{{ routes.collections_url }}/projects">
-      <span aria-hidden="true">←</span> Retour aux projets
+      <span aria-hidden="true">←</span> Back to projects
     </a>
 
     <div class="figma-detail-hero">
@@ -50,12 +50,12 @@
                   </div>
                 {% endfor %}
               </div>
-              <button class="product-gallery__nav product-gallery__nav--prev" data-gallery-prev aria-label="Image précédente">
+              <button class="product-gallery__nav product-gallery__nav--prev" data-gallery-prev aria-label="Previous image">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </button>
-              <button class="product-gallery__nav product-gallery__nav--next" data-gallery-next aria-label="Image suivante">
+              <button class="product-gallery__nav product-gallery__nav--next" data-gallery-next aria-label="Next image">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
@@ -63,7 +63,7 @@
             </div>
             <div class="product-gallery__thumbs" data-gallery-thumbs>
               {% for media in product.media %}
-                <button class="product-gallery__thumb{% if forloop.first %} is-active{% endif %}" data-gallery-thumb="{{ forloop.index0 }}" aria-label="Aller à l'image {{ forloop.index }}">
+                <button class="product-gallery__thumb{% if forloop.first %} is-active{% endif %}" data-gallery-thumb="{{ forloop.index0 }}" aria-label="Go to image {{ forloop.index }}">
                   {% case media.media_type %}
                     {% when 'image' %}
                       {{ media | image_url: width: 150 | image_tag: loading: 'lazy', widths: '80,150', class: 'product-gallery__thumb-image', alt: media.alt | escape }}
@@ -104,7 +104,7 @@
         <div class="figma-stats">
           <div class="figma-stat figma-stat--purple">
             <strong>{{ funded }}%</strong>
-            <span>Financé</span>
+            <span>Funded</span>
           </div>
           
           <div class="figma-stat">
@@ -117,11 +117,11 @@
                 {{ target | money_without_trailing_zeros }}
               {% endif %}
             </strong>
-            <span> Total achats</span>
+            <span> Total purchases</span>
           </div>
           <div class="figma-stat">
             <strong>{{ current | money_without_trailing_zeros }}</strong>
-            <span>Clients</span>
+            <span>Investors</span>
           </div>
         </div>
 
@@ -136,13 +136,13 @@
         </div>
 
         <a class="figma-primary-button" href="?view=view-project">
-          Investir dès 100 € <span aria-hidden="true">→</span>
+          Invest from €100 <span aria-hidden="true">→</span>
         </a>
       </div>
     </div>
 
     <div class="figma-about">
-      <h2>À propos du projet</h2>
+      <h2>About the project</h2>
       <div class="figma-about__text">
         {% if product.metafields.project.long_description.value != blank %}
           {{ product.metafields.project.long_description.value }}
@@ -161,10 +161,10 @@
             {{ target | money_without_trailing_zeros }}
           {% endif %}
         </strong>
-        <span>Total achats</span>
+        <span>Total purchases</span>
       </div>
 
-      <h2>Pourquoi investir ?</h2>
+      <h2>Why invest?</h2>
       <ul class="figma-reasons">
         {% assign reasons = product.metafields.project.reasons.value %}
         {% if reasons != blank %}
@@ -172,9 +172,9 @@
             <li>{{ reason }}</li>
           {% endfor %}
         {% else %}
-          <li>Marché en forte croissance (+15% par an).</li>
-          <li>Équipe expérimentée et vision claire.</li>       
-          <li>Partenariats stratégiques déjà en place.</li>
+          <li>Fast-growing market (+15% per year).</li>
+          <li>Experienced team with a clear vision.</li>       
+          <li>Strategic partnerships already in place.</li>
         {% endif %}
       </ul>
     </div>
@@ -186,13 +186,13 @@
 
 {% schema %}
 {
-  "name": "Détail projet Figma",
+  "name": "Figma project detail",
   "settings": [
     {
       "type": "text",
       "id": "button_label",
-      "label": "Bouton",
-      "default": "Investir maintenant"
+      "label": "Button",
+      "default": "Invest now"
     }
   ]
 }

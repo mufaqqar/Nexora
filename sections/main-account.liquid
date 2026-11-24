@@ -3,26 +3,26 @@
   <section class="section customer-page">
     <div class="container customer-account">
       <div class="page-heading">
-        <p class="eyebrow">VOTRE ESPACE</p>
-        <h1>Bonjour, {{ customer.first_name | default: customer.name }}</h1>
+        <p class="eyebrow">YOUR ACCOUNT</p>
+        <h1>Hello, {{ customer.first_name | default: customer.name }}</h1>
         <p class="customer-account__email">{{ customer.email }}</p>
       </div>
 
       <div class="customer-account__grid">
         <div class="customer-account__panel">
           <div class="customer-account__panel-head">
-            <h2>Vos investissements</h2>
-            <a class="customer-account__logout" href="{{ routes.account_logout_url }}">Déconnexion</a>
+            <h2>Your investments</h2>
+            <a class="customer-account__logout" href="{{ routes.account_logout_url }}">Log out</a>
           </div>
 
           {% if customer.orders.size > 0 %}
             <table class="customer-orders">
               <thead>
                 <tr>
-                  <th>Commande</th>
+                  <th>Order</th>
                   <th>Date</th>
-                  <th>Montant</th>
-                  <th>Statut</th>
+                  <th>Amount</th>
+                  <th>Status</th>
                 </tr>
               </thead>
               <tbody>
@@ -39,14 +39,14 @@
               </tbody>
             </table>
           {% else %}
-            <p class="customer-account__empty">Vous n'avez pas encore effectué d'investissement.</p>
+            <p class="customer-account__empty">You haven't made any investments yet.</p>
           {% endif %}
         </div>
 
         <aside class="customer-account__panel customer-account__panel--tight">
-          <h2>Profil</h2>
+          <h2>Profile</h2>
           <p class="customer-account__row">
-            <strong>Nom</strong>
+            <strong>Name</strong>
             <span>{{ customer.name }}</span>
           </p>
           <p class="customer-account__row">
@@ -55,7 +55,7 @@
           </p>
           {% if customer.default_address != blank %}
             <p class="customer-account__row">
-              <strong>Adresse</strong>
+              <strong>Address</strong>
               <span>{{ customer.default_address | format_address }}</span>
             </p>
           {% endif %}
@@ -69,8 +69,8 @@
   <section class="section">
     <div class="container empty-state">
       <p class="eyebrow">NEXORA</p>
-      <h1>Accédez à votre espace</h1>
-      <a class="button" href="{{ routes.account_login_url }}">Se connecter</a>
+      <h1>Access your account</h1>
+      <a class="button" href="{{ routes.account_login_url }}">Log in</a>
     </div>
   </section>
 
@@ -78,7 +78,7 @@
 
 {% schema %}
 {
-  "name": "Espace client",
+  "name": "Customer account",
   "settings": []
 }
 {% endschema %}

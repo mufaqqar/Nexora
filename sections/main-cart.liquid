@@ -6,13 +6,13 @@
 
       <form action="{{ routes.cart_url }}" method="post" novalidate class="cart-layout cart-layout--summary">
         <aside class="cart-summary">
-          <h2>Résumé</h2>
+          <h2>Summary</h2>
           <div class="cart-summary__row">
-            <span>Sous-total</span>
+            <span>Subtotal</span>
             <strong>{{ cart.total_price | money }}</strong>
           </div>
           <div class="cart-summary__row">
-            <span>Frais de plateforme ({{ platform_fee_rate }}%)</span>
+            <span>Platform fee ({{ platform_fee_rate }}%)</span>
             <strong>{{ fee_amount | money }}</strong>
           </div>
           <div class="cart-summary__row cart-summary__row--total">
@@ -21,7 +21,7 @@
           </div>
 
           <button type="submit" name="checkout" class="button button--wide" data-cart-checkout>
-            Procéder au paiement
+            Proceed to checkout
           </button>
          
         </aside>
@@ -34,9 +34,9 @@
   <section class="section">
     <div class="container empty-state">
       <p class="eyebrow">NEXORA</p>
-      <h1>Votre panier est vide</h1>
-      <p>Découvrez les projets actuellement ouverts aux investisseurs.</p>
-      <a class="button" href="{{ routes.collections_url }}/projects">Voir tous les projets</a>
+      <h1>Your cart is empty</h1>
+      <p>Discover the opportunities currently available to investors.</p>
+      <a class="button" href="{{ routes.collections_url }}/projects">View all projects</a>
     </div>
   </section>
 
@@ -44,7 +44,7 @@
 
 {% schema %}
 {
-  "name": "Panier",
+  "name": "Cart",
   "settings": []
 }
 {% endschema %}

@@ -13,15 +13,15 @@
       "type": "hero",
       "name": "Hero Nexora",
       "settings": {
-        "eyebrow": "PLATEFORME D'INVESTISSEMENT",
-        "heading": "Investissez dans les entreprises qui construisent",
-        "heading_accent": "le futur.",
-        "description": "Accédez à des opportunités sélectionnées et participez à la croissance des entreprises de demain.",
-        "button_label": "Découvrir les projets",
+        "eyebrow": "INVESTMENT PLATFORM",
+        "heading": "Invest in companies that are building",
+        "heading_accent": "the future.",
+        "description": "Gain access to select opportunities and help shape the growth of tomorrow's businesses.",
+        "button_label": "Learn about the project",
         "button_link": "shopify://collections/projects",
         "icon": "shopify://shop_images/checkmark.png",
-        "icon_heading": "Plateforme sécurisée et réglementée",
-        "icon_text": "Vos investissements sont protégés",
+        "icon_heading": "Secure and Regulated Platform",
+        "icon_text": "Your investments are protected",
         "image": "shopify://shop_images/new_main.jpg"
       }
     },
@@ -59,11 +59,11 @@
         "project_NGgyQK",
         "project_ABg9pU"
       ],
-      "name": "Slider projets",
+      "name": "Project slider",
       "settings": {
-        "eyebrow": "PROJETS EN COURS",
-        "heading": "Des opportunités sélectionnées.",
-        "link_label": "Tous les projets"
+        "eyebrow": "CURRENT PROJECTS",
+        "heading": "Selected opportunities.",
+        "link_label": "All projects"
       }
     },
     "values": {
@@ -73,32 +73,32 @@
           "type": "value",
           "settings": {
             "icon": "shopify://shop_images/checkmark.png",
-            "heading": "Investissements sécurisés",
-            "text": "Vos fonds sont protégés à chaque étape."
+            "heading": "Secure Investments",
+            "text": "Your funds are protected every step of the way."
           }
         },
         "two": {
           "type": "value",
           "settings": {
             "icon": "shopify://shop_images/graph.png",
-            "heading": "Dividendes versés",
-            "text": "Recevez vos dividendes lorsqu'ils sont distribués."
+            "heading": "Dividends Paid",
+            "text": "Receive your dividends when they are distributed."
           }
         },
         "three": {
           "type": "value",
           "settings": {
             "icon": "shopify://shop_images/sharp.png",
-            "heading": "Suivi en temps réel",
-            "text": "Suivez la performance de vos investissements."
+            "heading": "Real-Time Tracking",
+            "text": "Track the performance of your investments."
           }
         },
         "four": {
           "type": "value",
           "settings": {
             "icon": "shopify://shop_images/globe.png",
-            "heading": "Des projets sélectionnés",
-            "text": "Nous sélectionnons les meilleures opportunités."
+            "heading": "Selected Projects",
+            "text": "We select the best opportunities."
           }
         }
       },

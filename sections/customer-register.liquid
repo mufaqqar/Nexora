@@ -8,11 +8,11 @@
       </div>
 
       <p class="customer-welcome">
-        Créer un compte
+        Create an account
       </p>
 
       <p class="customer-subtitle">
-        Rejoignez Nexora et découvrez les opportunités sélectionnées.
+        Join Nexora and discover curated opportunities.
       </p>
 
 
@@ -26,7 +26,7 @@
         <div class="customer-field">
 
           <label for="RegisterFirstName">
-            Prénom
+            First name
           </label>
 
           <input
@@ -34,7 +34,7 @@
             type="text"
             name="customer[first_name]"
             autocomplete="given-name"
-            placeholder="Jean"
+            placeholder="John"
             required
           >
 
@@ -45,7 +45,7 @@
         <div class="customer-field">
 
           <label for="RegisterLastName">
-            Nom de famille
+            Last name
           </label>
 
           <input
@@ -53,7 +53,7 @@
             type="text"
             name="customer[last_name]"
             autocomplete="family-name"
-            placeholder="Dupont"
+            placeholder="Smith"
             required
           >
 
@@ -75,7 +75,7 @@
             autocomplete="email"
             autocorrect="off"
             autocapitalize="off"
-            placeholder="jean@example.com"
+            placeholder="john@example.com"
             required
           >
 
@@ -86,7 +86,7 @@
         <div class="customer-field">
 
           <label for="RegisterPhone">
-            Téléphone
+            Phone
           </label>
 
           <input
@@ -94,7 +94,7 @@
             type="tel"
             name="customer[phone]"
             autocomplete="tel"
-            placeholder="+33 6 12 34 56 78"
+            placeholder="+1 555 123 4567"
           >
 
         </div>
@@ -104,14 +104,14 @@
         <div class="customer-field">
 
           <label for="RegisterCompany">
-            Entreprise
+            Company
           </label>
 
           <input
             id="RegisterCompany"
             type="text"
             name="customer[note]"
-            placeholder="Nom de votre entreprise"
+            placeholder="Your company name"
           >
 
         </div>
@@ -122,7 +122,7 @@
         <div class="customer-field">
 
           <label for="RegisterPassword">
-            Mot de passe
+            Password
           </label>
 
           <div class="customer-password">
@@ -141,7 +141,7 @@
               class="password-toggle"
               data-password-toggle
               data-target="RegisterPassword"
-              aria-label="Afficher le mot de passe"
+              aria-label="Show password"
             >
               ◉
             </button>
@@ -162,16 +162,16 @@
 
           <span>
 
-            J'accepte les
+            I agree to the
 
             <a href="/policies/terms-of-service">
-              Conditions d'utilisation
+              Terms of Use
             </a>
 
-            et la
+            and the
 
             <a href="/policies/privacy-policy">
-              Politique de confidentialité
+              Privacy Policy
             </a>.
 
           </span>
@@ -183,14 +183,14 @@
           class="customer-submit"
           type="submit"
         >
-          Créer mon compte
+          Create account
         </button>
 
       {% endform %}
 
 
       <div class="customer-divider">
-        <span>OU</span>
+        <span>OR</span>
       </div>
 
 
@@ -201,7 +201,7 @@
         <button
           type="button"
           class="social-button"
-          aria-label="Continuer avec Google"
+          aria-label="Continue with Google"
         >
           G
         </button>
@@ -209,7 +209,7 @@
         <button
           type="button"
           class="social-button"
-          aria-label="Continuer avec Apple"
+          aria-label="Continue with Apple"
         >
           ●
         </button>
@@ -219,10 +219,10 @@
 
       <p class="customer-bottom">
 
-        Vous avez déjà un compte ?
+        Already have an account?
 
         <a href="{{ routes.account_login_url }}">
-          Se connecter
+          Log in
         </a>
 
       </p>
@@ -236,7 +236,7 @@
 {% schema %}
 
 {
-  "name": "Création de compte",
+  "name": "Account creation",
   "settings": []
 }
 

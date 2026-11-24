@@ -1,19 +1,19 @@
 {
   "general": {
-    "skip_to_content": "Aller au contenu",
-    "login": "Se connecter",
+    "skip_to_content": "Skip to content",
+    "login": "Log in",
     "menu": "Menu",
-    "view_project": "Voir le projet",
-    "view_all": "Voir tous les projets",
-    "invest": "Investir maintenant",
-    "back_projects": "Retour aux projets",
-    "learn_more": "En savoir plus"
+    "view_project": "View the project",
+    "view_all": "All projects",
+    "invest": "Invest now",
+    "back_projects": "Back to projects",
+    "learn_more": "Learn more"
   },
   "sections": {
-    "projects": "Projets en cours",
-    "about": "À propos de Nexora",
+    "projects": "Current Projects",
+    "about": "About Nexora",
     "documents": "Documents",
-    "why_invest": "Pourquoi investir ?",
-    "investment": "Investir dans ce projet"
+    "why_invest": "Why invest?",
+    "investment": "Invest in this project"
   }
 }

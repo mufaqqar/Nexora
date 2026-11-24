@@ -1,7 +1,7 @@
 <section class="section projects-listing">
   <div class="container">
     <div class="page-heading">
-      <h1>Tous les projets</h1>
+      <h1>All Projects</h1>
       <p class="projects-richtxt">{{ section.settings.intro }}</p>
     </div>
 
@@ -19,7 +19,7 @@
       {% endif %}
     {% else %}
       <div class="empty-state">
-        <p>Aucun projet n'est encore disponible.</p>
+        <p>No projects are available yet.</p>
       </div>
     {% endif %}
   </div>
@@ -27,13 +27,13 @@
 
 {% schema %}
 {
-  "name": "Liste des projets",
+  "name": "Project list",
   "settings": [
     {
       "type": "textarea",
       "id": "intro",
       "label": "Introduction",
-      "default": "Découvrez les opportunités actuellement ouvertes aux investisseurs."
+      "default": "Discover the opportunities currently available to investors."
     }
   ]
 }

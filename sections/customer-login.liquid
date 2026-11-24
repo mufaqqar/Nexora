@@ -7,10 +7,10 @@
         {% render 'logo' %}
       </div>
 
-      <p class="customer-welcome">Bienvenue de retour !</p>
+      <p class="customer-welcome">Welcome back!</p>
 
       <p class="customer-subtitle">
-        Connectez-vous pour accéder à votre espace Nexora.
+        Log in to access your Nexora account.
       </p>
 
       {% form 'customer_login', class: 'customer-form' %}
@@ -37,7 +37,7 @@
         <div class="customer-field">
 
           <label for="CustomerPassword">
-            Mot de passe
+            Password
           </label>
 
           <div class="customer-password">
@@ -56,7 +56,7 @@
               class="password-toggle"
               data-password-toggle
               data-target="CustomerPassword"
-              aria-label="Afficher le mot de passe"
+              aria-label="Show password"
             >
               ◉
             </button>
@@ -76,7 +76,7 @@
             >
 
             <span>
-              Se souvenir de moi
+              Remember me
             </span>
 
           </label>
@@ -85,7 +85,7 @@
             href="#recover"
             data-recover-toggle
           >
-            Mot de passe oublié ?
+            Forgot your password?
           </a>
 
         </div>
@@ -94,13 +94,13 @@
           class="customer-submit"
           type="submit"
         >
-          Se connecter
+          Log in
         </button>
 
       {% endform %}
 
       <div class="customer-divider">
-        <span>OU</span>
+        <span>OR</span>
       </div>
 
       <div class="customer-social">
@@ -108,7 +108,7 @@
         <button
           type="button"
           class="social-button"
-          aria-label="Continuer avec Google"
+          aria-label="Continue with Google"
         >
           G
         </button>
@@ -116,7 +116,7 @@
         <button
           type="button"
           class="social-button"
-          aria-label="Continuer avec Apple"
+          aria-label="Continue with Apple"
         >
           ●
         </button>
@@ -125,10 +125,10 @@
 
       <p class="customer-bottom">
 
-        Pas encore de compte ?
+        Don't have an account?
 
         <a href="{{ routes.account_register_url }}">
-          Créer un compte
+          Create an account
         </a>
 
       </p>
@@ -142,12 +142,12 @@
       %}
 
         <h2>
-          Réinitialiser votre mot de passe
+          Reset your password
         </h2>
 
         <p>
-          Entrez votre email et nous vous enverrons
-          un lien de récupération.
+          Enter your email and we'll send you
+          a recovery link.
         </p>
 
         {{ form.errors | default_errors }}
@@ -155,7 +155,7 @@
         {% if form.posted_successfully? %}
 
           <p class="customer-success">
-            Un email de récupération vient d'être envoyé.
+            A recovery email has been sent.
           </p>
 
         {% endif %}
@@ -180,7 +180,7 @@
           class="customer-submit"
           type="submit"
         >
-          Envoyer le lien
+          Send link
         </button>
 
         <button
@@ -188,7 +188,7 @@
           type="button"
           data-recover-toggle
         >
-          Annuler
+          Cancel
         </button>
 
       {% endform %}
@@ -202,7 +202,7 @@
 {% schema %}
 
 {
-  "name": "Connexion client",
+  "name": "Customer login",
   "settings": []
 }
 

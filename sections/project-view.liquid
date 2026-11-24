@@ -11,8 +11,8 @@
   <div class="nx-project-view__shell">
       <article class="nx-pv-panel nx-pv-sell">
         <header class="nx-pv-sell-header">
-          <a href="{{ product.url }}" class="nx-pv-back" aria-label="Retour">←</a>
-          <strong>Investir</strong>
+          <a href="{{ product.url }}" class="nx-pv-back" aria-label="Back">←</a>
+          <strong>Invest</strong>
           
         </header>
 
@@ -30,7 +30,7 @@
        <div class="nx-pv-step">
 
   <div class="nx-pv-step-title">
-    <strong>1. Combien de parts voulez-vous investir ?</strong>
+    <strong>1. How many shares would you like to invest in?</strong>
   
   </div>
 
@@ -40,7 +40,7 @@
     <button
       type="button"
       data-qty-minus
-      aria-label="Diminuer"
+      aria-label="Decrease"
       class="nx-pv-qty-btn"
     >
       −
@@ -54,7 +54,7 @@
         min="1"
         max="{{ remaining_shares }}"
         data-share-quantity
-        aria-label="Nombre de parts"
+        aria-label="Number of shares"
       >
     </div>
 
@@ -62,7 +62,7 @@
     <button
       type="button"
       data-qty-plus
-      aria-label="Augmenter"
+      aria-label="Increase"
       class="nx-pv-qty-btn"
     >
       +
@@ -78,7 +78,7 @@
       max="{{ remaining_shares }}"
       value="1"
       data-share-range
-      aria-label="Nombre de parts"
+      aria-label="Number of shares"
     >
   </div>
 
@@ -91,30 +91,30 @@
 </div>
 
           <div class="nx-pv-step">
-            <div class="nx-pv-step-title"><strong>2. Prix par part</strong><span>Prix du produit : 100</span></div>
-            <label class="nx-pv-price-input"><span>€</span><input type="number" value="100" min="1" step="0.01" data-share-price aria-label="Prix par part" readonly></label>
+            <div class="nx-pv-step-title"><strong>2. Price per share</strong><span>Product price: 100</span></div>
+            <label class="nx-pv-price-input"><span>€</span><input type="number" value="100" min="1" step="0.01" data-share-price aria-label="Price per share" readonly></label>
           </div>
 
           <div class="nx-pv-step nx-pv-summary">
-            <strong class="nx-pv-step-heading">3. Récapitulatif de la vente</strong>
+            <strong class="nx-pv-step-heading">3. Sale summary</strong>
           
-            <div class="nx-pv-summary-row"><span>Prix par part:</span><strong>€<b data-summary-price>12</b></strong></div>
-            <div class="nx-pv-summary-row"><span>Valeur totale:</span><strong>€<b data-summary-total>675</b></strong></div>
-            <div class="nx-pv-summary-row nx-pv-summary-row--fee"><span>Frais de plateforme ({{ platform_fee }}%)</span><strong>+€<b data-summary-fee>13.50</b></strong></div>
-            <div class="nx-pv-summary-total"><span>Vous payez</span><strong>€<b data-summary-net>661.50</b></strong></div>
+            <div class="nx-pv-summary-row"><span>Price per share:</span><strong>€<b data-summary-price>12</b></strong></div>
+            <div class="nx-pv-summary-row"><span>Total value:</span><strong>€<b data-summary-total>675</b></strong></div>
+            <div class="nx-pv-summary-row nx-pv-summary-row--fee"><span>Platform fee ({{ platform_fee }}%)</span><strong>+€<b data-summary-fee>13.50</b></strong></div>
+            <div class="nx-pv-summary-total"><span>You pay</span><strong>€<b data-summary-net>661.50</b></strong></div>
           </div>
 
           <div class="nx-pv-important">
-            <strong>Informations importantes</strong>
+            <strong>Important information</strong>
             <ul>
-              <li> Votre investissement sera ajouté au panier.</li>
-              <li> Vous restez propriétaire de vos parts une fois la transaction effectuée.</li>
-              <li> Les frais sont indiqués lors du paiement.</li>
+              <li> Your investment will be added to your cart.</li>
+              <li> You retain ownership of your shares once the transaction is complete.</li>
+              <li> Fees are shown at checkout.</li>
             </ul>
           </div>
 
-          <button type="button" class="nx-pv-list-button" data-list-sale> Acheter</button>
-          <button type="button" class="nx-pv-cancel" data-cancel-sale>Annuler</button>
+          <button type="button" class="nx-pv-list-button" data-list-sale> Buy</button>
+          <button type="button" class="nx-pv-cancel" data-cancel-sale>Cancel</button>
 
          
         </div>
@@ -472,28 +472,28 @@
 </script>
 {% schema %}
 {
-  "name": "Vue projet / vente",
+  "name": "Project view / sale",
   "settings": [
-    { "type": "text", "id": "user_name", "label": "Nom utilisateur", "default": "Bonjour, Alex 👋" },
-    { "type": "text", "id": "greeting", "label": "Salutation", "default": "Bienvenue" },
-    { "type": "text", "id": "greeting_subtitle", "label": "Sous-titre", "default": "Voici un aperçu de vos investissements." },
-    { "type": "text", "id": "portfolio_value", "label": "Valeur portefeuille", "default": "€ 4 600" },
-    { "type": "text", "id": "portfolio_growth", "label": "Croissance portefeuille", "default": "+12.4% depuis le début" },
-    { "type": "text", "id": "monthly_income", "label": "Revenus mensuels", "default": "€185" },
-    { "type": "text", "id": "monthly_growth", "label": "Croissance mensuelle", "default": "0" },
-    { "type": "text", "id": "total_invested", "label": "Total investi", "default": "€2 345" },
-    { "type": "text", "id": "invested_count", "label": "Nombre d'investissements", "default": "5 projets" },
-    { "type": "text", "id": "next_payment", "label": "Prochain versement", "default": "5 Août 2025" },
-    { "type": "text", "id": "next_payment_subtitle", "label": "Sous-titre prochain versement", "default": "Dans 5 jours" },
-    { "type": "text", "id": "active_projects", "label": "Projets actifs", "default": "46" },
-    { "type": "text", "id": "total_projects", "label": "Total projets", "default": "50" },
-    { "type": "text", "id": "chart_value", "label": "Valeur graphique", "default": "€185" },
-    { "type": "text", "id": "chart_growth", "label": "Croissance graphique", "default": "0" },
-    { "type": "text", "id": "chart_peak", "label": "Pic graphique", "default": "185" },
-    { "type": "text", "id": "default_share_count", "label": "Parts par défaut", "default": "10" },
-    { "type": "text", "id": "default_growth", "label": "Croissance par défaut", "default": "3.6%" },
-    { "type": "text", "id": "default_status", "label": "Statut annonce", "default": "En attente" },
-    { "type": "number", "id": "platform_fee", "label": "Frais de plateforme (%)", "default": 2 }
+    { "type": "text", "id": "user_name", "label": "User name", "default": "Hello, Alex 👋" },
+    { "type": "text", "id": "greeting", "label": "Greeting", "default": "Welcome" },
+    { "type": "text", "id": "greeting_subtitle", "label": "Subtitle", "default": "Here's an overview of your investments." },
+    { "type": "text", "id": "portfolio_value", "label": "Portfolio value", "default": "€4,600" },
+    { "type": "text", "id": "portfolio_growth", "label": "Portfolio growth", "default": "+12.4% since the beginning" },
+    { "type": "text", "id": "monthly_income", "label": "Monthly income", "default": "€185" },
+    { "type": "text", "id": "monthly_growth", "label": "Monthly growth", "default": "0" },
+    { "type": "text", "id": "total_invested", "label": "Total invested", "default": "€2,345" },
+    { "type": "text", "id": "invested_count", "label": "Number of investments", "default": "5 projects" },
+    { "type": "text", "id": "next_payment", "label": "Next payout", "default": "5 Aug 2025" },
+    { "type": "text", "id": "next_payment_subtitle", "label": "Next payout subtitle", "default": "In 5 days" },
+    { "type": "text", "id": "active_projects", "label": "Active projects", "default": "46" },
+    { "type": "text", "id": "total_projects", "label": "Total projects", "default": "50" },
+    { "type": "text", "id": "chart_value", "label": "Chart value", "default": "€185" },
+    { "type": "text", "id": "chart_growth", "label": "Chart growth", "default": "0" },
+    { "type": "text", "id": "chart_peak", "label": "Chart peak", "default": "185" },
+    { "type": "text", "id": "default_share_count", "label": "Default shares", "default": "10" },
+    { "type": "text", "id": "default_growth", "label": "Default growth", "default": "3.6%" },
+    { "type": "text", "id": "default_status", "label": "Listing status", "default": "Pending" },
+    { "type": "number", "id": "platform_fee", "label": "Platform fee (%)", "default": 2 }
   ]
 }
 {% endschema %}

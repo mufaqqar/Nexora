@@ -13,17 +13,17 @@
       "type": "about-intro",
       "settings": {
         "eyebrow": "",
-        "heading": "À PROPOS DE NEXORA",
-        "text": "<p>Nexora connecte les investisseurs à des entreprises ambitieuses qui développent les technologies, services et infrastructures du futur.</p><p>Notre objectif est de rendre l'accès aux opportunités plus simple, plus transparent et plus humain.</p>",
+        "heading": "ABOUT NEXORA",
+        "text": "<p>Nexora connects investors with ambitious companies that are developing the technologies, services, and infrastructure of the future.</p><p>Our goal is to make access to opportunities simpler, more transparent, and more human.</p>",
         "image": "shopify://shop_images/Group_1.png"
       }
     },
     "cta": {
       "type": "investment-cta",
       "settings": {
-        "heading": "Commencez à investir dès aujourd'hui.",
-        "text": "<p>Rejoignez Nexora et investissez dans les entreprises qui construiront le futur.</p>",
-        "button_label": "Créer un compte",
+        "heading": "Start investing today.",
+        "text": "<p>Join Nexora and invest in the companies that will build the future.</p>",
+        "button_label": "Create an account",
         "button_link": "",
         "image": "shopify://shop_images/Group_59.png"
       }

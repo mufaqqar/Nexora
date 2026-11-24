@@ -20,17 +20,17 @@
     </a>
 
     <!-- Desktop Navigation -->
-    <nav class="desktop-nav" aria-label="Navigation principale">
-      <a href="{{ routes.root_url }}">Accueil</a>
-      <a href="{{ routes.collections_url }}/projects">Projets</a>
-      <a href="{{ pages['about'].url | default: '/pages/about' }}">À propos</a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <a href="{{ routes.root_url }}">Home</a>
+      <a href="{{ routes.collections_url }}/projects">Projects</a>
+      <a href="{{ pages['about'].url | default: '/pages/about' }}">About</a>
       <a href="/account">Dashboard</a>
     </nav>
 
     <!-- Header Actions -->
     <div class="site-header__actions">
       <a class="login-link" href="/account">
-        Se connecter
+        Log in
       </a>
 
       <button
@@ -50,11 +50,11 @@
   <!-- Mobile Navigation -->
   <div id="MobileNav" class="mobile-nav" data-mobile-nav>
     <div class="mobile-nav__inner container">
-      <a href="{{ routes.root_url }}">Accueil</a>
-      <a href="{{ routes.collections_url }}/projects">Projets</a>
-      <a href="{{ pages['about'].url | default: '/pages/about' }}">À propos</a>
+      <a href="{{ routes.root_url }}">Home</a>
+      <a href="{{ routes.collections_url }}/projects">Projects</a>
+      <a href="{{ pages['about'].url | default: '/pages/about' }}">About</a>
       <a href="/account">Dashboard</a>
-      <a href="/account">Se connecter</a>
+      <a href="/account">Log in</a>
 
       {%- comment -%}
         Language switcher slot.
@@ -70,7 +70,7 @@
 
 {% schema %}
 {
-  "name": "En-tête Nexora",
+  "name": "Nexora header",
   "settings": [
     {
       "type": "image_picker",
@@ -80,7 +80,7 @@
   ],
   "presets": [
     {
-      "name": "En-tête Nexora"
+      "name": "Nexora header"
     }
   ]
 }

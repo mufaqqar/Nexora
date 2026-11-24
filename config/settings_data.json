@@ -10,7 +10,7 @@
 {
   "current": {
     "brand_name": "NEXORA",
-    "footer_description": "La plateforme d'investissement dédiée aux entreprises qui construisent le futur.",
+    "footer_description": "The investment platform dedicated to companies building the future.",
     "background": "#05051B",
     "purple": "#6938FF",
     "text": "#F8F7FF",
@@ -26,8 +26,8 @@
         "type": "footer",
         "settings": {
           "logo": "shopify://shop_images/logo.png",
-          "description": "Investir aujourd'hui dans les leaders de demain.",
-          "email": "contact@nexora.example",
+          "description": "Investing today in tomorrow's leaders.",
+          "email": "nexoraclub@hotmail.com",
           "partner_link": "",
           "terms_link": "",
           "privacy_link": "",

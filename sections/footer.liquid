@@ -34,24 +34,24 @@
       <div class="footer-links">
 
         <span class="footer-title">
-          À propos
+          About
         </span>
 
         <a href="{{ routes.root_url }}">
-          Accueil
+          Home
         </a>
 
         <a href="{{ routes.collections_url }}/projects">
-          Projets
+          Projects
         </a>
 
         {% if section.settings.partner_link != blank %}
           <a href="{{ section.settings.partner_link }}">
-            Devenir partenaire
+            Become a Partner
           </a>
         {% else %}
           <a href="/pages/contact">
-            Devenir partenaire
+            Become a Partner
           </a>
         {% endif %}
 
@@ -72,11 +72,11 @@
         {% endif %}
 
         <a href="{{ section.settings.terms_link | default: '/policies/terms-of-service' }}">
-          Conditions d'utilisation
+          Terms of Use
         </a>
 
         <a href="{{ section.settings.privacy_link | default: '/policies/privacy-policy' }}">
-          Confidentialité
+          Privacy Policy
         </a>
 
       </div>
@@ -198,7 +198,7 @@
       <span>
         © {{ 'now' | date: '%Y' }}
         {{ settings.brand_name | default: 'Nexora' }}
-        Tous droits réservés
+        All rights reserved
       </span>
 
     </div>
@@ -209,7 +209,7 @@
 
 {% schema %}
 {
-  "name": "Pied de page Nexora",
+  "name": "Nexora footer",
   "settings": [
     {
       "type": "image_picker",
@@ -220,28 +220,28 @@
       "type": "textarea",
       "id": "description",
       "label": "Description",
-      "default": "Investir aujourd'hui dans les leaders de demain."
+      "default": "Investing today in tomorrow's leaders."
     },
     {
       "type": "text",
       "id": "email",
       "label": "Email",
-      "default": "contact@nexora.example"
+      "default": "nexoraclub@hotmail.com"
     },
     {
       "type": "url",
       "id": "partner_link",
-      "label": "Lien devenir partenaire"
+      "label": "Become a partner link"
     },
     {
       "type": "url",
       "id": "terms_link",
-      "label": "Lien conditions d'utilisation"
+      "label": "Terms of Use link"
     },
     {
       "type": "url",
       "id": "privacy_link",
-      "label": "Lien confidentialité"
+      "label": "Privacy Policy link"
     },
     {
       "type": "url",

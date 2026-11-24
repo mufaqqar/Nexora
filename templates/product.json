@@ -12,7 +12,7 @@
     "main": {
       "type": "project-detail",
       "settings": {
-        "button_label": "Investir maintenant"
+        "button_label": "Invest now"
       }
     }
   },

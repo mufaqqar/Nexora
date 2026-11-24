@@ -13,7 +13,7 @@
 {% if target == 0 %}{% assign target = 1 %}{% endif %}
 {% assign funded = current | times: 100 | divided_by: target %}
 {% assign customers = product.metafields.project.customers.value | default: 0 %}
-{% assign category = product.metafields.project.category.value | default: 'Technologie' %}
+{% assign category = product.metafields.project.category.value | default: 'Technology' %}
 
 <article class="project-card">
   <a class="project-card__media" href="{{ product.url }}">
@@ -34,7 +34,7 @@
     <div class="project-card__stats">
       <div class="project__stat project__stat--highlight">
         <strong>{{ funded }}%</strong>
-        <span>Financé</span>
+        <span>Funded</span>
       </div>
     
       <div class="project__stat">
@@ -47,11 +47,11 @@
             {{ target | money_without_trailing_zeros }}
           {% endif %}
         </strong>
-        <span>Total achats</span>
+        <span>Total purchases</span>
       </div>
         <div class="project__stat">
         <strong>{{ current | money_without_trailing_zeros }}</strong>
-        <span>Clients</span>
+        <span>Investors</span>
       </div>
     </div>
 
@@ -60,7 +60,7 @@
     </div>
  </div>
     <a class="project__button--secondary" href="{{ product.url }}">
-      Voir le projet
+      View the project
     </a>
  
 </article>
