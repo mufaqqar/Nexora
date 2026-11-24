@@ -6086,10 +6086,17 @@ body.template-customers main,
    ===================================================== */
 
 .hide-shop-login .shopify-login-button-wrapper,
+.hide-shop-login .shopify-payment-button,
+.hide-shop-login .shopify-payment-button__button,
+.hide-shop-login .shopify-payment-button__button-container,
+.hide-shop-login [class*="shopify-login-button"],
+.hide-shop-login [class*="shopify-pay"],
 .hide-shop-login [data-shopify-login-button],
+.hide-shop-login [data-shopify-payment-button],
 .hide-shop-login shopify-login-button,
+.hide-shop-login shopify-payment-button,
 .hide-shop-login shop-login-button,
-.hide-shop-login [aria-label="Continue with shop" i],
-.hide-shop-login [aria-label="Sign in with Shop" i] {
+.hide-shop-login [aria-label*="with Shop" i],
+.hide-shop-login [aria-label*="with shop" i] {
   display: none !important;
 }

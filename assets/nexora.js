@@ -393,44 +393,40 @@ document.querySelectorAll('[data-product-gallery]').forEach((gallery) => {
 
   if (!onAccountPage) return;
 
-  const shopButtonText = /^(?:continue|sign in|log in)\s+with\s+shop$/i;
+  const shopButtonText = /(?:continue|sign in|log in)\s+with\s+shop/i;
+  const shopButtonClass = /shopify[-_]?(payment|login)[-_]?button|shop[-_]?login[-_]?button|shopify-login/i;
 
-  const knownSelectors = [
-    '.shopify-login-button-wrapper',
-    '.shopify-payment-button',
-    '[data-shopify-login-button]',
-    'shopify-login-button',
-    'shop-login-button'
-  ].join(',');
+  function isShopButton(element) {
+    if (!element || element.nodeType !== 1) return false;
+
+    const attrs = [
+      element.getAttribute('aria-label'),
+      element.getAttribute('title'),
+      element.getAttribute('alt'),
+      element.id,
+      typeof element.className === 'string' ? element.className : ''
+    ].filter(Boolean).join(' ');
+
+    if (shopButtonClass.test(attrs)) return true;
+
+    const text = (element.innerText || element.textContent || '')
+      .trim().replace(/\s+/g, ' ');
+
+    return shopButtonText.test(text) && element.children.length <= 3;
+  }
 
   function hide(element) {
     if (!element || element.nodeType !== 1) return;
     element.style.setProperty('display', 'none', 'important');
+    element.setAttribute('hidden', '');
   }
 
   function scan(root, host) {
-    if (!root) return;
+    if (!root || !root.querySelectorAll) return;
 
     root.querySelectorAll('*').forEach((element) => {
-
-      if (element.matches(knownSelectors)) {
-        hide(host || element);
-      }
-
-      const text = (
-        element.getAttribute('aria-label') ||
-        element.textContent ||
-        ''
-      ).trim().replace(/\s+/g, ' ');
-
-      if (shopButtonText.test(text) && element.children.length <= 2) {
-        hide(host || element);
-      }
-
-      if (element.shadowRoot) {
-        scan(element.shadowRoot, element);
-      }
-
+      if (isShopButton(element)) hide(host || element);
+      if (element.shadowRoot) scan(element.shadowRoot, element);
     });
   }
 
@@ -440,13 +436,21 @@ document.querySelectorAll('[data-product-gallery]').forEach((gallery) => {
 
   hideShopButtons();
 
-  // The button can be injected after the theme script runs.
-  let attempts = 0;
-  const timer = window.setInterval(() => {
-    hideShopButtons();
-    attempts += 1;
-    if (attempts > 40) window.clearInterval(timer);
-  }, 250);
+  // Shopify injects the button after the theme script runs; keep watching.
+  let queued = false;
+  const observer = new MutationObserver(() => {
+    if (queued) return;
+    queued = true;
+    window.requestAnimationFrame(() => {
+      queued = false;
+      hideShopButtons();
+    });
+  });
+
+  observer.observe(document.documentElement, {
+    childList: true,
+    subtree: true
+  });
 
   window.addEventListener('load', hideShopButtons);
 })();
