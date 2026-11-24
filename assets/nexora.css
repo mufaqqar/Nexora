@@ -2700,7 +2700,7 @@ h3 {
   padding-bottom: 2px;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  height: 90px;
+  height: 170px;
 }
 
 .product-gallery__thumbs::-webkit-scrollbar {
@@ -6099,4 +6099,78 @@ body.template-customers main,
 .hide-shop-login [aria-label*="with Shop" i],
 .hide-shop-login [aria-label*="with shop" i] {
   display: none !important;
+}
+
+/* =====================================================
+   DARK SCHEME - DASHBOARD & CUSTOMER AUTHENTICATION PAGES
+   Matches the sign-in page palette on all account views.
+   ===================================================== */
+
+body.template-customers,
+body.template-customers main,
+body.template-customers #MainContent,
+body:has(.nx-pv-dashboard-page),
+body:has(.nx-pv-dashboard-page) main,
+body:has(.nx-pv-dashboard-page) #MainContent,
+.nx-pv-dashboard-page {
+  background: #05051b !important;
+  color: #f8f7ff !important;
+}
+
+.nx-pv-dashboard-page {
+  background:
+    radial-gradient(circle at 50% 0%,
+      rgba(88, 54, 210, 0.16),
+      transparent 25rem),
+    #05051b !important;
+}
+
+body.template-customers .section,
+.nx-pv-dashboard-page .section,
+body:has(.nx-pv-dashboard-page) .section {
+  background: transparent !important;
+  color: inherit !important;
+}
+
+.customer-page,
+.customer-page h1,
+.customer-page h2,
+.customer-page p,
+.customer-page span,
+.customer-page a,
+.customer-page th,
+.customer-page td,
+.nx-pv-dashboard-page,
+.nx-pv-dashboard-page h1,
+.nx-pv-dashboard-page h2,
+.nx-pv-dashboard-page p,
+.nx-pv-dashboard-page span,
+.nx-pv-dashboard-page a,
+.nx-pv-dashboard-page strong {
+  color: #f8f7ff !important;
+}
+
+.customer-account__panel,
+.customer-account__panel--tight,
+.nx-pv-panel,
+.nx-pv-list-item {
+  background: rgba(20, 16, 62, 0.72) !important;
+  color: #f8f7ff !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.customer-orders th,
+.customer-orders td {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.customer-orders tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.03) !important;
+}
+
+.customer-page input,
+.nx-pv-dashboard-page input {
+  background: rgba(255, 255, 255, 0.04) !important;
+  color: #f8f7ff !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
 }
