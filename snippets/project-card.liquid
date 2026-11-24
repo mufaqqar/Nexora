@@ -27,10 +27,7 @@
        <span class="project-card__category">{{ category }}</span>
     </div>
 
-    {% if product.description != blank %}
-      <p class="project-card__description">{{ product.description | strip_html | truncate: 105 }}</p>
-    {% endif %}
-
+   
     <div class="project-card__stats">
       <div class="project__stat project__stat--highlight">
         <strong>{{ funded }}%</strong>
