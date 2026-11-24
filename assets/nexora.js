@@ -378,3 +378,75 @@ document.querySelectorAll('[data-product-gallery]').forEach((gallery) => {
 
   window.addEventListener('load', sync);
 })();
+
+
+/* =========================================================
+   HIDE SHOPIFY'S "CONTINUE WITH SHOP" BUTTON ON ACCOUNT PAGES
+   Shopify renders this button itself (sometimes inside a
+   shadow root), so hide both the host and its inner button.
+   ========================================================= */
+(() => {
+
+  const onAccountPage =
+    document.body.classList.contains('hide-shop-login') ||
+    /\/account(\/|$)/.test(window.location.pathname);
+
+  if (!onAccountPage) return;
+
+  const shopButtonText = /^(?:continue|sign in|log in)\s+with\s+shop$/i;
+
+  const knownSelectors = [
+    '.shopify-login-button-wrapper',
+    '.shopify-payment-button',
+    '[data-shopify-login-button]',
+    'shopify-login-button',
+    'shop-login-button'
+  ].join(',');
+
+  function hide(element) {
+    if (!element || element.nodeType !== 1) return;
+    element.style.setProperty('display', 'none', 'important');
+  }
+
+  function scan(root, host) {
+    if (!root) return;
+
+    root.querySelectorAll('*').forEach((element) => {
+
+      if (element.matches(knownSelectors)) {
+        hide(host || element);
+      }
+
+      const text = (
+        element.getAttribute('aria-label') ||
+        element.textContent ||
+        ''
+      ).trim().replace(/\s+/g, ' ');
+
+      if (shopButtonText.test(text) && element.children.length <= 2) {
+        hide(host || element);
+      }
+
+      if (element.shadowRoot) {
+        scan(element.shadowRoot, element);
+      }
+
+    });
+  }
+
+  function hideShopButtons() {
+    scan(document);
+  }
+
+  hideShopButtons();
+
+  // The button can be injected after the theme script runs.
+  let attempts = 0;
+  const timer = window.setInterval(() => {
+    hideShopButtons();
+    attempts += 1;
+    if (attempts > 40) window.clearInterval(timer);
+  }, 250);
+
+  window.addEventListener('load', hideShopButtons);
+})();

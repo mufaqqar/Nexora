@@ -6080,3 +6080,16 @@ body.template-customers main,
   background: #020204;
   color: var(--nx-text);
 }
+
+/* =====================================================
+   HIDE SHOPIFY "SIGN IN / CONTINUE WITH SHOP" ON ACCOUNT PAGES
+   ===================================================== */
+
+.hide-shop-login .shopify-login-button-wrapper,
+.hide-shop-login [data-shopify-login-button],
+.hide-shop-login shopify-login-button,
+.hide-shop-login shop-login-button,
+.hide-shop-login [aria-label="Continue with shop" i],
+.hide-shop-login [aria-label="Sign in with Shop" i] {
+  display: none !important;
+}
