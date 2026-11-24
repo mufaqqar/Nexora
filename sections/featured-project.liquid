@@ -87,11 +87,7 @@
 
                   <div class="featured-project__header">
                     <h3>{{ product.title }}</h3>
-                    {% if product.description != blank %}
-                      <p class="featured-project__description">
-                        {{ product.description | strip_html | truncate: 300 }}
-                      </p>
-                    {% endif %}
+                    
                   </div>
 
                   <div class="featured-project__stats">
